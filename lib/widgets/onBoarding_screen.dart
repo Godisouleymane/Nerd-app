@@ -34,7 +34,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('Passer'),
+            GestureDetector(
+              onTap: () {
+                _controller.nextPage(duration: 
+                Duration(milliseconds: 500), 
+                curve: Curves.easeIn);
+              },
+              child: Text('Passer'),
+              ),
+
+
             SmoothPageIndicator(
               controller: _controller, 
               count: 3),
