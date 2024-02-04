@@ -48,7 +48,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               controller: _controller, 
               count: 3),
 
-              Text('Suivant'),
+              GestureDetector(
+                onTap: () {
+                _controller.nextPage(duration: 
+                Duration(milliseconds: 500), 
+                curve: Curves.easeIn);
+              },
+                child: Text('Suivant')
+                ),
           ],
         ),
       )
