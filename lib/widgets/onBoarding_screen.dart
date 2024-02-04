@@ -22,7 +22,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           PageView(
             controller: _controller,
-        children: [
+        children: const [
          introPage1(),
          introPage2(),
          introPage3(),
@@ -31,9 +31,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
       Container(
         alignment: Alignment(0, 0.75),
-        child: SmoothPageIndicator(
-          controller: _controller, 
-          count: 3),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('Passer'),
+            SmoothPageIndicator(
+              controller: _controller, 
+              count: 3),
+
+              Text('Suivant'),
+          ],
+        ),
       )
         ],
       )
