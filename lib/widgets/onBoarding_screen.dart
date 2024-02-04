@@ -63,9 +63,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               count: 3),
 
               onLastPage ?
-             ElevatedButton(onPressed: 
+             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange,
+              ),
+              onPressed: 
              (){}, 
-             child: Icon(Icons.arrow_forward)) :
+             child: Icon(
+              Icons.arrow_forward, color: Colors.white,)
+              ) :
                   GestureDetector(
                 onTap: () {
                 _controller.nextPage(duration: 
