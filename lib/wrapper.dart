@@ -1,4 +1,4 @@
-import 'package:code_crafters/widgets/introduction.dart';
+import 'package:code_crafters/choixParcours/introduction.dart';
 import 'package:code_crafters/widgets/onBoarding_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
