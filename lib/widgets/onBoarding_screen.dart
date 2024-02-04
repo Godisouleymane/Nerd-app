@@ -38,7 +38,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       ),
 
       Container(
-        alignment: Alignment(0, 0.75),
+        alignment: Alignment(0, 0.80),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
