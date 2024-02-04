@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "679422611460",
+    "project_id": "code-crafters-app",
+    "storage_bucket": "code-crafters-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679422611460:android:288687779b38e3b3d86551",
+        "android_client_info": {
+          "package_name": "com.example.code_mentor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPdpeIZkWpnekU3dE97iRhEHdNZ0A7PCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
