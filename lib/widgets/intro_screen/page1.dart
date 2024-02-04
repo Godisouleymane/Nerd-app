@@ -21,7 +21,7 @@ class introPage1 extends StatelessWidget {
         
           const Align(
             alignment: Alignment.centerLeft,
-            child: Text("Bienvenue sur codeMentor.", style:TextStyle(
+            child: Text("Bienvenue sur codeCrafters.", style:TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
               color: Colors.black
