@@ -1,4 +1,4 @@
-import 'package:code_mentor/widgets/onBoarding_screen.dart';
+import 'package:code_crafters/widgets/onBoarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
