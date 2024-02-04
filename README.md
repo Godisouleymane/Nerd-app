@@ -1,4 +1,4 @@
-# code_mentor
+# code_crafters
 
 A new Flutter project.
 
