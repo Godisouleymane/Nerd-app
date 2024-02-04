@@ -10,6 +10,20 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: PageView(
+        children: [
+          Container(
+            color: Colors.blue,
+          ),
+          Container(
+            color: Colors.green,
+          ),
+          Container(
+            color: Colors.amber,
+          ),
+        ],
+      ),
+    );
   }
 }
