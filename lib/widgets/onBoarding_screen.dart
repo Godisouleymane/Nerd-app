@@ -1,3 +1,4 @@
+import 'package:code_mentor/widgets/home_page.dart';
 import 'package:code_mentor/widgets/intro_screen/page1.dart';
 import 'package:code_mentor/widgets/intro_screen/page2.dart';
 import 'package:code_mentor/widgets/intro_screen/page3.dart';
@@ -14,6 +15,8 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
    final PageController _controller = PageController();
 
+   bool onLastPage = false;
+
   @override
   Widget build(BuildContext context) {
    
@@ -22,6 +25,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           PageView(
             controller: _controller,
+            onPageChanged: (index) {
+              setState(() {
+                onLastPage = (index == 2);
+              });
+            },
         children: const [
          introPage1(),
          introPage2(),
@@ -36,25 +44,45 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           children: [
             GestureDetector(
               onTap: () {
-                _controller.nextPage(duration: 
-                Duration(milliseconds: 500), 
-                curve: Curves.easeIn);
+                _controller.jumpToPage(2);
               },
-              child: Text('Passer'),
+              child: Text('Passer', style: TextStyle(
+                fontWeight: FontWeight.bold,
+               fontSize: 15
+              ),),
               ),
 
 
             SmoothPageIndicator(
+              effect: WormEffect(
+                dotColor: Colors.grey.shade300,
+                activeDotColor: Colors.orange
+              ),
               controller: _controller, 
               count: 3),
 
+              onLastPage ?
               GestureDetector(
+                onTap: () {
+                  Navigator.push(context, 
+                  MaterialPageRoute(builder: (context){
+                    return HomePage();
+                  }
+                  )
+                  );
+              },
+                child: Text('Commencer')
+                ) :
+                  GestureDetector(
                 onTap: () {
                 _controller.nextPage(duration: 
                 Duration(milliseconds: 500), 
                 curve: Curves.easeIn);
               },
-                child: Text('Suivant')
+                child: Text('Suivant', style: TextStyle(
+                     fontWeight: FontWeight.bold,
+                     fontSize: 15
+                ),)
                 ),
           ],
         ),
