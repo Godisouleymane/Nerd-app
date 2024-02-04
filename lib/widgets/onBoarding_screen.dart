@@ -46,9 +46,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               onTap: () {
                 _controller.jumpToPage(2);
               },
-              child: Text('Passer', style: TextStyle(
+              child: const Text('Passer', style: TextStyle(
                 fontWeight: FontWeight.bold,
-               fontSize: 15
+               fontSize: 15,
+                 color: Colors.orange
               ),),
               ),
 
@@ -62,26 +63,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               count: 3),
 
               onLastPage ?
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context, 
-                  MaterialPageRoute(builder: (context){
-                    return HomePage();
-                  }
-                  )
-                  );
-              },
-                child: Text('Commencer')
-                ) :
+             ElevatedButton(onPressed: 
+             (){}, 
+             child: Icon(Icons.arrow_forward)) :
                   GestureDetector(
                 onTap: () {
                 _controller.nextPage(duration: 
                 Duration(milliseconds: 500), 
                 curve: Curves.easeIn);
               },
-                child: Text('Suivant', style: TextStyle(
+                child: const Text('Suivant', style: TextStyle(
                      fontWeight: FontWeight.bold,
-                     fontSize: 15
+                     fontSize: 15,
+                     color: Colors.orange
                 ),)
                 ),
           ],
