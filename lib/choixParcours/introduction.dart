@@ -8,9 +8,7 @@ class IntroductionPage extends StatefulWidget {
 }
 
 class _IntroductionPageState extends State<IntroductionPage> {
-  String selectedContainerId = "";
-  Color defaultBorderColor = Colors.transparent;
-  Color selectedBorderColor = Colors.green;
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +22,35 @@ class _IntroductionPageState extends State<IntroductionPage> {
           backgroundColor: Color.fromARGB(255, 53, 32, 149),
         ),
         backgroundColor: const Color.fromARGB(255, 27, 16, 74),
-        body: const Padding(
+        body: Padding(
           padding: EdgeInsets.all(30.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Choisissez ce que vous voullez apprendre", style: TextStyle(
+              const Text("Choisissez ce que vous voullez apprendre", style: TextStyle(
                 color: Colors.white,
-                fontSize: 25
-              ),)
+                fontSize: 25,
+                fontWeight: FontWeight.bold
+              ),
+              textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 30.0,),
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Text("Nos Cours :", style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 18
+                ),textAlign: TextAlign.left,),
+              ),
+
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: ElevatedButton(
+                  onPressed: (){}, 
+                  child: Text("Continuer")),
+              )
               ],
           ),
         ));
