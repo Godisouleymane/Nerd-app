@@ -84,6 +84,8 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
                       widget.autreVariable,
                       style: const TextStyle(
                         color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold
                         ),
                     ),
                   ),

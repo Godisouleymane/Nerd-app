@@ -168,12 +168,42 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Maîtrisez les fondamentaux du langage C. Plongez dans la programmation bas niveau,",
                         ),
+                         CustomGestureDetector(
+                          containerId: 'nodejs',
+                          defaultBorderColor: Colors.transparent,
+                          selectedBorderColor: Colors.green,
+                          onTapCallback: updateSelectedContainer,
+                          containerIcon: const Icon(
+                            DevIcons.nodejsPlain,
+                            size: 100,
+                            color: Colors.green,
+                          ),
+                          isSelected: selectedContainerId == 'nodejs',
+                          autreInformation: 'NODE JS',
+                          autreVariable:
+                              "* Explorez le monde de la programmation côté serveur avec Node.js. Apprenez à construire des applications web cote serveur",
+                        ),
+                         CustomGestureDetector(
+                          containerId: 'python',
+                          defaultBorderColor: Colors.transparent,
+                          selectedBorderColor: Colors.green,
+                          onTapCallback: updateSelectedContainer,
+                          containerIcon: const Icon(
+                            DevIcons.pythonPlain,
+                            size: 100,
+                            color: Colors.green,
+                          ),
+                          isSelected: selectedContainerId == 'nodejs',
+                          autreInformation: 'NODE JS',
+                          autreVariable:
+                              "* Explorez le monde de la programmation côté serveur avec Node.js. Apprenez à construire des applications web cote serveur",
+                        ),
                         
                       ],
                     ),
                   ),
                   CustomGestureDetector(
-                    containerId: 'bootstrap',
+                    containerId: '',
                     defaultBorderColor: Colors.transparent,
                     selectedBorderColor: Colors.deepPurple,
                     onTapCallback: updateSelectedContainer,
@@ -182,7 +212,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                       size: 100,
                       color: Colors.deepPurple,
                     ),
-                    isSelected: selectedContainerId == 'bootstrap',
+                    isSelected: selectedContainerId == '',
                     autreInformation: 'BOOTSTRAP',
                     autreVariable:
                         "* Mettez en œuvre des designs web modernes et réactifs avec Bootstrap. Apprenez à utiliser ce framework front-end",
