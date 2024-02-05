@@ -59,17 +59,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       activeDotColor: Colors.orange),
                   controller: _controller,
                   count: 3),
-              onLastPage ? 
-              inLoginProcess ? Container(child: CircularProgressIndicator()) :
-              ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
-                      ),
-                      onPressed: () => signIn(),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                      ))
+              onLastPage
+                  ? inLoginProcess
+                      ? Container(child: CircularProgressIndicator())
+                      : ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orange,
+                          ),
+                          onPressed: () => signIn(),
+                          child: const Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ))
                   : GestureDetector(
                       onTap: () {
                         _controller.nextPage(
@@ -100,10 +101,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       // Une fois la connexion réussie, naviguer vers la page suivante ou la page d'accueil
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-            builder: (context) =>
-                const IntroductionPage()),
+        MaterialPageRoute(builder: (context) => const IntroductionPage()),
       );
+
+    
     } catch (e) {
       // Gérer les erreurs ici
       print("Erreur lors de la connexion avec Google : $e");
@@ -114,5 +115,4 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       });
     }
   }
-
 }

@@ -37,17 +37,24 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
           widget.onTapCallback(widget.containerId);
         },
         child: Container(
-         
-          width: 300,
+          width: 250,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.white10,
             border: Border.all(
               color: widget.isSelected
                   ? widget.selectedBorderColor
                   : widget.defaultBorderColor,
               width: 4.0,
             ),
-            borderRadius: BorderRadius.circular(10)
+            borderRadius: BorderRadius.circular(10),
+             boxShadow: const [
+              BoxShadow(
+                color:  Colors.black,
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
+            ],
           ),
           child: Center(
             child: Column(
@@ -61,7 +68,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
                     child: Text(
                      widget.autreInformation,
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold
                         )
                         ,textAlign: TextAlign.left,
@@ -75,7 +82,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
                     child: Text(
                       widget.autreVariable,
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         ),
                     ),
                   ),

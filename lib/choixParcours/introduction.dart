@@ -21,7 +21,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 53, 32, 149),
+          backgroundColor: const Color.fromARGB(255, 53, 32, 149),
         ),
         backgroundColor: const Color.fromARGB(255, 27, 16, 74),
         body: ListView(
@@ -29,7 +29,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
             const Padding(
               padding: EdgeInsets.all(30.0),
               child: Text(
-                "Choisissez ce que vous voullez apprendre",
+                "Choisissez ce que vous voulez apprendre",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 25,
@@ -37,7 +37,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
             const Align(
@@ -56,7 +56,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
               ),
             ),
             Container(
-            
               height: 300,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -73,7 +72,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     ),
                     isSelected: selectedContainerId == 'html',
                     autreInformation: 'HTML',
-                    autreVariable: '',
+                    autreVariable: '- ',
                    
                   ),
                   CustomGestureDetector(
@@ -81,7 +80,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     defaultBorderColor: Colors.transparent,
                     selectedBorderColor: Colors.green,
                     onTapCallback: updateSelectedContainer,
-                    containerIcon: Icon(
+                    containerIcon: const Icon(
                       DevIcons.nodejsPlainWordmark,
                       size: 100,
                       color: Colors.green,

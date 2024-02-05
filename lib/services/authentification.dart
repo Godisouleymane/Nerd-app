@@ -29,3 +29,5 @@ class AuthService {
 
   Stream<User?> get user => _auth.authStateChanges();
 }
+
+
