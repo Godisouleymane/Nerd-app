@@ -153,24 +153,39 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Mettez en œuvre des designs web modernes et réactifs avec Bootstrap. Apprenez à utiliser ce framework front-end",
                         ),
+                         CustomGestureDetector(
+                          containerId: 'c',
+                          defaultBorderColor: Colors.transparent,
+                          selectedBorderColor: Colors.blue,
+                          onTapCallback: updateSelectedContainer,
+                          containerIcon: const Icon(
+                            DevIcons.cLine,
+                            size: 100,
+                            color: Colors.blue,
+                          ),
+                          isSelected: selectedContainerId == 'c',
+                          autreInformation: 'C',
+                          autreVariable:
+                              "* Maîtrisez les fondamentaux du langage C. Plongez dans la programmation bas niveau,",
+                        ),
                         
                       ],
                     ),
                   ),
                   CustomGestureDetector(
-                    containerId: 'github',
+                    containerId: 'bootstrap',
                     defaultBorderColor: Colors.transparent,
-                    selectedBorderColor: Colors.amber,
+                    selectedBorderColor: Colors.deepPurple,
                     onTapCallback: updateSelectedContainer,
                     containerIcon: const Icon(
-                      DevIcons.githubOriginalWordmark,
+                      DevIcons.bootstrapPlainWordmark,
                       size: 100,
-                      color: Colors.black,
+                      color: Colors.deepPurple,
                     ),
-                    isSelected: selectedContainerId == 'github',
-                    autreInformation: 'Github',
+                    isSelected: selectedContainerId == 'bootstrap',
+                    autreInformation: 'BOOTSTRAP',
                     autreVariable:
-                        "* Explorez l'interactivité avec JavaScript. Manipulez le contenu dynamique, gérez les événements ",
+                        "* Mettez en œuvre des designs web modernes et réactifs avec Bootstrap. Apprenez à utiliser ce framework front-end",
                   ),
                 ],
               ),
