@@ -45,7 +45,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
               child: Padding(
                 padding: EdgeInsets.only(left: 20.0),
                 child: Text(
-                  "Dévéloppement web :",
+                  "Développement web :",
                   style: TextStyle(
                       color: Colors.orange,
                       fontWeight: FontWeight.bold,
@@ -69,10 +69,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     containerIcon: Icon(
                       DevIcons.html5PlainWordmark,
                       size: 100,
+                      color: Colors.orange[700],
                     ),
                     isSelected: selectedContainerId == 'html',
-                    autreInformation: 'Description du conteneur 1',
-                    autreVariable: 'Valeur 1',
+                    autreInformation: 'HTML',
+                    autreVariable: '',
+                   
                   ),
                   CustomGestureDetector(
                     containerId: 'node',
@@ -82,6 +84,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     containerIcon: Icon(
                       DevIcons.nodejsPlainWordmark,
                       size: 100,
+                      color: Colors.green,
                     ),
                     isSelected: selectedContainerId == 'node',
                     autreInformation: 'Description du conteneur 2',

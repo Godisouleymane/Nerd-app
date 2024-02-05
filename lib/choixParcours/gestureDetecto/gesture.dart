@@ -37,7 +37,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
           widget.onTapCallback(widget.containerId);
         },
         child: Container(
-          height: 200.0,
+         
           width: 300,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -45,7 +45,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
               color: widget.isSelected
                   ? widget.selectedBorderColor
                   : widget.defaultBorderColor,
-              width: 3.0,
+              width: 4.0,
             ),
             borderRadius: BorderRadius.circular(10)
           ),
@@ -54,17 +54,31 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (widget.containerIcon != null) widget.containerIcon!,
-                Text(
-                  'Container ${widget.containerId}',
-                  style: TextStyle(color: Colors.white),
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                     widget.autreInformation,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold
+                        )
+                        ,textAlign: TextAlign.left,
+                    ),
+                  ),
                 ),
-                Text(
-                  'Autre Information : ${widget.autreInformation}',
-                  style: TextStyle(color: Colors.white),
-                ),
-                Text(
-                  'Autre Variable : ${widget.autreVariable}',
-                  style: TextStyle(color: Colors.white),
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0, top: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      widget.autreVariable,
+                      style: TextStyle(
+                        color: Colors.black,
+                        ),
+                    ),
+                  ),
                 ),
               ],
             ),
