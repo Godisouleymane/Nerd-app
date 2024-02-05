@@ -108,6 +108,22 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Explorez l'interactivité avec JavaScript. Manipulez le contenu dynamique, gérez les événements ",
                         ),
+                         CustomGestureDetector(
+                          containerId: 'github',
+                          defaultBorderColor: Colors.transparent,
+                          selectedBorderColor: Colors.amber,
+                          onTapCallback: updateSelectedContainer,
+                          containerIcon: const Icon(
+                            DevIcons.githubOriginalWordmark,
+                            size: 100,
+                            color: Colors.black,
+                          ),
+                          isSelected: selectedContainerId == 'github',
+                          autreInformation: 'Github',
+                          autreVariable:
+                              "*Maîtrisez le contrôle de version avec Git et GitHub. Apprenez à suivre les changements",
+                        ),
+                        
                       ],
                     ),
                   ),
