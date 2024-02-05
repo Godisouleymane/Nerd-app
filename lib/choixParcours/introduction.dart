@@ -112,17 +112,17 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     ),
                   ),
                   CustomGestureDetector(
-                    containerId: 'javaScript',
+                    containerId: 'github',
                     defaultBorderColor: Colors.transparent,
                     selectedBorderColor: Colors.amber,
                     onTapCallback: updateSelectedContainer,
                     containerIcon: const Icon(
-                      DevIcons.javascriptPlain,
+                      DevIcons.githubOriginalWordmark,
                       size: 100,
-                      color: Colors.amber,
+                      color: Colors.black,
                     ),
-                    isSelected: selectedContainerId == 'javaScript',
-                    autreInformation: 'JavaScript',
+                    isSelected: selectedContainerId == 'github',
+                    autreInformation: 'Github',
                     autreVariable:
                         "* Explorez l'interactivité avec JavaScript. Manipulez le contenu dynamique, gérez les événements ",
                   ),
@@ -139,7 +139,10 @@ class _IntroductionPageState extends State<IntroductionPage> {
               backgroundColor: const Color.fromARGB(255, 53, 32, 149),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
-              minimumSize: Size(double.infinity, 50.0)),
+              minimumSize: const Size(double.infinity, 50.0),
+              elevation: 10
+              ),
+              
           onPressed: () {},
           child: const Text(
             "Commencer",
