@@ -24,12 +24,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
           backgroundColor: Color.fromARGB(255, 53, 32, 149),
         ),
         backgroundColor: const Color.fromARGB(255, 27, 16, 74),
-        body: Padding(
-          padding: EdgeInsets.all(30.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
+        body: ListView(
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Text(
                 "Choisissez ce que vous voullez apprendre",
                 style: TextStyle(
                     color: Colors.white,
@@ -37,48 +36,66 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
-                height: 30.0,
-              ),
-              const Align(
-                alignment: Alignment.topLeft,
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            const Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left: 20.0),
                 child: Text(
-                  "Nos Cours :",
+                  "Dévéloppement web :",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.orange,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,
-                      fontSize: 18),
+                      fontSize: 20),
                   textAlign: TextAlign.left,
                 ),
               ),
-              CustomGestureDetector(
-                containerId: 'fullStack1',
-                defaultBorderColor: Colors.transparent,
-                selectedBorderColor: Colors.green,
-                onTapCallback: updateSelectedContainer,
-                containerIcon: Icon(Icons.code),
-                isSelected: selectedContainerId == 'fullStack1',
-                autreInformation: 'Description du conteneur 1',
-                autreVariable: 'Valeur 1',
+            ),
+            Container(
+            
+              height: 300,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                   CustomGestureDetector(
+                    containerId: 'html',
+                    defaultBorderColor: Colors.transparent,
+                    selectedBorderColor: Colors.green,
+                    onTapCallback: updateSelectedContainer,
+                    containerIcon: Icon(
+                      DevIcons.html5PlainWordmark,
+                      size: 100,
+                    ),
+                    isSelected: selectedContainerId == 'html',
+                    autreInformation: 'Description du conteneur 1',
+                    autreVariable: 'Valeur 1',
+                  ),
+                  CustomGestureDetector(
+                    containerId: 'node',
+                    defaultBorderColor: Colors.transparent,
+                    selectedBorderColor: Colors.green,
+                    onTapCallback: updateSelectedContainer,
+                    containerIcon: Icon(
+                      DevIcons.nodejsPlainWordmark,
+                      size: 100,
+                    ),
+                    isSelected: selectedContainerId == 'node',
+                    autreInformation: 'Description du conteneur 2',
+                    autreVariable: 'Valeur 2',
+                  ),
+                ],
               ),
-              CustomGestureDetector(
-                containerId: 'fullStack2',
-                defaultBorderColor: Colors.transparent,
-                selectedBorderColor: Colors.green,
-                onTapCallback: updateSelectedContainer,
-                containerIcon: Icon(Icons.layers),
-                isSelected: selectedContainerId == 'fullStack2',
-                autreInformation: 'Description du conteneur 2',
-                autreVariable: 'Valeur 2',
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child:
-                    ElevatedButton(onPressed: () {}, child: Text("Continuer")),
-              )
-            ],
-          ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child:
+                  ElevatedButton(onPressed: () {}, child: Text("Continuer")),
+            )
+          ],
         ));
   }
 

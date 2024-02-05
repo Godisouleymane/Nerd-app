@@ -30,40 +30,44 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
   @override
   Widget build(BuildContext context) {
    
-    return GestureDetector(
-      onTap: () {
-        widget.onTapCallback(widget.containerId);
-      },
-      child: Container(
-        width: 200.0,
-        height: 200.0,
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          border: Border.all(
-            color: widget.isSelected
-                ? widget.selectedBorderColor
-                : widget.defaultBorderColor,
-            width: 2.0,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: GestureDetector(
+        onTap: () {
+          widget.onTapCallback(widget.containerId);
+        },
+        child: Container(
+          height: 200.0,
+          width: 300,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: widget.isSelected
+                  ? widget.selectedBorderColor
+                  : widget.defaultBorderColor,
+              width: 3.0,
+            ),
+            borderRadius: BorderRadius.circular(10)
           ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (widget.containerIcon != null) widget.containerIcon!,
-              Text(
-                'Container ${widget.containerId}',
-                style: TextStyle(color: Colors.white),
-              ),
-              Text(
-                'Autre Information : ${widget.autreInformation}',
-                style: TextStyle(color: Colors.white),
-              ),
-              Text(
-                'Autre Variable : ${widget.autreVariable}',
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (widget.containerIcon != null) widget.containerIcon!,
+                Text(
+                  'Container ${widget.containerId}',
+                  style: TextStyle(color: Colors.white),
+                ),
+                Text(
+                  'Autre Information : ${widget.autreInformation}',
+                  style: TextStyle(color: Colors.white),
+                ),
+                Text(
+                  'Autre Variable : ${widget.autreVariable}',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
           ),
         ),
       ),
