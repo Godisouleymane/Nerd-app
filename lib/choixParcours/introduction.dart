@@ -1,3 +1,4 @@
+import 'package:code_crafters/choixParcours/gestureDetecto/gesture.dart';
 import 'package:flutter/material.dart';
 
 class IntroductionPage extends StatefulWidget {
@@ -44,7 +45,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   fontSize: 18
                 ),textAlign: TextAlign.left,),
               ),
-
+              GesturePage(idContainer : ""),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
