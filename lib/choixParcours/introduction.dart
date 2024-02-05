@@ -111,7 +111,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                          CustomGestureDetector(
                           containerId: 'github',
                           defaultBorderColor: Colors.transparent,
-                          selectedBorderColor: Colors.amber,
+                          selectedBorderColor: Colors.black,
                           onTapCallback: updateSelectedContainer,
                           containerIcon: const Icon(
                             DevIcons.githubOriginalWordmark,
@@ -119,9 +119,24 @@ class _IntroductionPageState extends State<IntroductionPage> {
                             color: Colors.black,
                           ),
                           isSelected: selectedContainerId == 'github',
-                          autreInformation: 'Github',
+                          autreInformation: 'GITHUB',
                           autreVariable:
                               "*Maîtrisez le contrôle de version avec Git et GitHub. Apprenez à suivre les changements",
+                        ),
+                         CustomGestureDetector(
+                          containerId: 'kotlin',
+                          defaultBorderColor: Colors.transparent,
+                          selectedBorderColor: Colors.amber,
+                          onTapCallback: updateSelectedContainer,
+                          containerIcon: const Icon(
+                            DevIcons.kotlinPlainWordmark,
+                            size: 100,
+                            color: Colors.orangeAccent,
+                          ),
+                          isSelected: selectedContainerId == 'kotlin',
+                          autreInformation: 'KOTLIN',
+                          autreVariable:
+                              "* Explorez le monde puissant et expressif de Kotlin. Apprenez à développer des applications Android modernes",
                         ),
                         
                       ],
