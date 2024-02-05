@@ -38,6 +38,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
         },
         child: Container(
           width: 250,
+          height: 250,
           decoration: BoxDecoration(
             color: Colors.white10,
             border: Border.all(
