@@ -138,6 +138,21 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Explorez le monde puissant et expressif de Kotlin. Apprenez à développer des applications Android modernes",
                         ),
+                         CustomGestureDetector(
+                          containerId: 'bootstrap',
+                          defaultBorderColor: Colors.transparent,
+                          selectedBorderColor: Colors.deepPurple,
+                          onTapCallback: updateSelectedContainer,
+                          containerIcon: const Icon(
+                            DevIcons.bootstrapPlainWordmark,
+                            size: 100,
+                            color: Colors.deepPurple,
+                          ),
+                          isSelected: selectedContainerId == 'bootstrap',
+                          autreInformation: 'BOOTSTRAP',
+                          autreVariable:
+                              "* Mettez en œuvre des designs web modernes et réactifs avec Bootstrap. Apprenez à utiliser ce framework front-end",
+                        ),
                         
                       ],
                     ),
