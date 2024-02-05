@@ -126,18 +126,25 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     autreVariable:
                         "* Explorez l'interactivité avec JavaScript. Manipulez le contenu dynamique, gérez les événements ",
                   ),
-                 
                 ],
               ),
             ),
           ),
         ],
       ),
-       bottomNavigationBar: Padding(
+      bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 15.0),
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 53, 32, 149),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              minimumSize: Size(double.infinity, 50.0)),
           onPressed: () {},
-          child: const Text("Continuer"),
+          child: const Text(
+            "Commencer",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );

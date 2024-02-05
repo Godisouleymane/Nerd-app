@@ -39,7 +39,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
         child: Container(
           width: 250,
           decoration: BoxDecoration(
-            color: Colors.white10,
+            color: const Color.fromARGB(137, 255, 255, 255),
             border: Border.all(
               color: widget.isSelected
                   ? widget.selectedBorderColor
