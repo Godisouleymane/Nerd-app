@@ -38,7 +38,6 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
         },
         child: Container(
           width: 250,
-          height: 250,
           decoration: BoxDecoration(
             color: Colors.white10,
             border: Border.all(
@@ -63,21 +62,22 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
               children: [
                 if (widget.containerIcon != null) widget.containerIcon!,
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0),
+                  padding: const EdgeInsets.only(left:8.0, top: 8.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                      widget.autreInformation,
                       style: TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17
                         )
                         ,textAlign: TextAlign.left,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0, top: 5.0),
+                  padding: const EdgeInsets.only(left:8.0, top: 10.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
