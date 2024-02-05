@@ -24,7 +24,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 53, 32, 149),
       ),
-      backgroundColor: const Color.fromARGB(255, 27, 16, 74),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           Expanded(
@@ -37,7 +37,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     child: Text(
                       "Choisissez ce que vous voulez apprendre",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 25,
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,

@@ -67,7 +67,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                      widget.autreInformation,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 17
@@ -82,7 +82,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       widget.autreVariable,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         ),
                     ),

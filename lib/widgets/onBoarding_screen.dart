@@ -50,13 +50,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      color: Colors.orange),
+                      color: const Color.fromARGB(255, 53, 32, 149)),
                 ),
               ),
               SmoothPageIndicator(
                   effect: WormEffect(
                       dotColor: Colors.grey.shade300,
-                      activeDotColor: Colors.orange),
+                      activeDotColor: const Color.fromARGB(255, 53, 32, 149)),
                   controller: _controller,
                   count: 3),
               onLastPage
@@ -64,7 +64,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       ? Container(child: CircularProgressIndicator())
                       : ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange,
+                            backgroundColor: const Color.fromARGB(255, 53, 32, 149),
                           ),
                           onPressed: () => signIn(),
                           child: const Icon(
@@ -82,7 +82,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
-                            color: Colors.orange),
+                            color: const Color.fromARGB(255, 53, 32, 149)),
                       )),
             ],
           ),
