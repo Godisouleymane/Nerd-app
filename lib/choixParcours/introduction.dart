@@ -225,8 +225,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     onTapCallback: updateSelectedContainer,
                     isSelected: selectedContainerId == 'devFullSctack',
                     autreInformation: 'Full Stack',
+                    hasImage: true,
                     autreVariable:
-                        "* Mettez en œuvre des designs web modernes et réactifs avec Bootstrap. Apprenez à utiliser ce framework front-end",
+                        "Transformez votre passion en carrière avec notre cours de Développement Full Stack. Maîtrisez chaque aspect du développement web moderne, obtenez une certification reconnue, et lancez-vous dans une carrière dynamique en tant que développeur Full Stack.",
                   ),
                 ],
               ),
@@ -267,6 +268,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForPYTHON();
             } else if (selectedContainerId == 'mongodb') {
               sendDataForMONGODB();
+            } else if (selectedContainerId == 'devFullSctack') {
+              sendDataForFULLSTACK();
             } else {
               showNotification(context, "Aucune donnee trouver pour ce cours");
             }
@@ -325,5 +328,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
 
   void sendDataForMONGODB() {
     print('Données pour le parcours "MONGODB" envoyées.');
+  }
+
+  void sendDataForFULLSTACK() {
+    print('Données pour le parcours "FULL STACK" envoyées.');
   }
 }

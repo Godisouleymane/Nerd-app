@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomGestureDetector extends StatefulWidget {
   final String containerId;
@@ -10,8 +11,8 @@ class CustomGestureDetector extends StatefulWidget {
   final String autreVariable;
   final bool isSelected; // Ajout de la variable isSelected
   final double width;
-  final Widget? child;
   final BoxDecoration? decoration;
+  final bool hasImage;
 
   const CustomGestureDetector({
     required this.containerId,
@@ -23,8 +24,8 @@ class CustomGestureDetector extends StatefulWidget {
     required this.autreVariable,
     this.isSelected = false, // Initialisation de la variable isSelected
     this.width = 250,
-    this.child,
     this.decoration,
+    this.hasImage = false,
     Key? key,
   }) : super(key: key);
   @override
@@ -33,6 +34,7 @@ class CustomGestureDetector extends StatefulWidget {
 
 class _CustomGestureDetectorState extends State<CustomGestureDetector> {
   bool isSelected = false;
+ 
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -61,42 +63,40 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
               ),
             ],
           ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (widget.child != null) widget.child!,
-                if (widget.containerIcon != null) widget.containerIcon!,
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, top: 8.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      widget.autreInformation,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17),
-                      textAlign: TextAlign.left,
-                    ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              if (widget.hasImage)
+               SvgPicture.asset('assets/fullStack.svg',fit: BoxFit.cover, height: 300,),
+              if (widget.containerIcon != null) widget.containerIcon!,
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    widget.autreInformation,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                    textAlign: TextAlign.left,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, top: 10.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      widget.autreVariable,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold),
-                    ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, top: 10.0, bottom: 5.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    widget.autreVariable,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
-               
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
