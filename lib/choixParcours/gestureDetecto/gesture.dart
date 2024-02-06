@@ -10,6 +10,7 @@ class CustomGestureDetector extends StatefulWidget {
   final String autreVariable;
   final bool isSelected; // Ajout de la variable isSelected
   final double width;
+  final Widget? child;
 
   const CustomGestureDetector({
     required this.containerId,
@@ -21,6 +22,7 @@ class CustomGestureDetector extends StatefulWidget {
     required this.autreVariable,
     this.isSelected = false, // Initialisation de la variable isSelected
     this.width = 250,
+    this.child,
     Key? key,
   }) : super(key: key);
   @override
