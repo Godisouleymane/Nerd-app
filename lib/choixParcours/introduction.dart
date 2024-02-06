@@ -256,7 +256,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForHTML();
             } else if (selectedContainerId == 'css') {
               sendDataForCSS();
-            } else if (selectedContainerId == 'javascript') {
+            } else if (selectedContainerId == 'javaScript') {
               sendDataForJAVASCRIPT();
             } else if (selectedContainerId == 'github') {
               sendDataForGITHUB();
@@ -272,6 +272,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForPYTHON();
             } else if (selectedContainerId == 'mongodb') {
               sendDataForMONGODB();
+            } else {
+              showNotification(context, "Aucune donnee trouver pour ce cours");
             }
           },
           child: const Text(
