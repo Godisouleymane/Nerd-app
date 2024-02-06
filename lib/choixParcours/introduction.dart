@@ -247,7 +247,13 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   borderRadius: BorderRadius.circular(10)),
               minimumSize: const Size(double.infinity, 50.0),
               elevation: 10),
-          onPressed: () {},
+          onPressed: () {
+             if (selectedContainerId == null) {
+              
+            } else {
+               sendDataForSelectedContainer();
+            }
+          },
           child: const Text(
             "Commencer",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -262,5 +268,36 @@ class _IntroductionPageState extends State<IntroductionPage> {
       selectedContainerId = id;
       print(id);
     });
+  }
+
+  void sendDataForHTML() {
+    print('Données pour le parcours "HTML" envoyées.');
+  }
+  void sendDataForCSS() {
+    print('Données pour le parcours "CSS" envoyées.');
+  }
+  void sendDataForJAVASCRIPT() {
+    print('Données pour le parcours "JAVASCRIPT" envoyées.');
+  }
+  void sendDataForGITHUB() {
+    print('Données pour le parcours "GITHUB" envoyées.');
+  }
+  void sendDataForKOTLIN() {
+    print('Données pour le parcours "KOTLIN" envoyées.');
+  }
+  void sendDataForBOOTSTRAP() {
+    print('Données pour le parcours "BOOTSTRAP" envoyées.');
+  }
+  void sendDataForC() {
+    print('Données pour le parcours "C" envoyées.');
+  }
+  void sendDataForNODEJS() {
+    print('Données pour le parcours "NODEJS" envoyées.');
+  }
+  void sendDataForPYTHON() {
+    print('Données pour le parcours "PYTHON" envoyées.');
+  }
+  void sendDataForMONGODB() {
+    print('Données pour le parcours "MONGODB" envoyées.');
   }
 }
