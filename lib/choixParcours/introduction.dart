@@ -256,6 +256,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForHTML();
             } else if (selectedContainerId == 'css') {
               sendDataForCSS();
+            } else if (selectedContainerId == 'javascript') {
+              sendDataForJAVASCRIPT();
             }
           },
           child: const Text(
