@@ -258,6 +258,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForCSS();
             } else if (selectedContainerId == 'javascript') {
               sendDataForJAVASCRIPT();
+            } else if (selectedContainerId == 'github') {
+              sendDataForGITHUB();
             }
           },
           child: const Text(
