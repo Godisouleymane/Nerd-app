@@ -218,18 +218,13 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     ),
                   ),
                   CustomGestureDetector(
-                    containerId: '',
+                    containerId: 'devFullSctack',
                     width: MediaQuery.of(context).size.width,
                     defaultBorderColor: Colors.transparent,
                     selectedBorderColor: Colors.deepPurple,
                     onTapCallback: updateSelectedContainer,
-                    containerIcon: const Icon(
-                      DevIcons.bootstrapPlainWordmark,
-                      size: 100,
-                      color: Colors.deepPurple,
-                    ),
-                    isSelected: selectedContainerId == '',
-                    autreInformation: 'BOOTSTRAP',
+                    isSelected: selectedContainerId == 'devFullSctack',
+                    autreInformation: 'Full Stack',
                     autreVariable:
                         "* Mettez en œuvre des designs web modernes et réactifs avec Bootstrap. Apprenez à utiliser ce framework front-end",
                   ),

@@ -11,6 +11,7 @@ class CustomGestureDetector extends StatefulWidget {
   final bool isSelected; // Ajout de la variable isSelected
   final double width;
   final Widget? child;
+  final BoxDecoration? decoration;
 
   const CustomGestureDetector({
     required this.containerId,
@@ -23,6 +24,7 @@ class CustomGestureDetector extends StatefulWidget {
     this.isSelected = false, // Initialisation de la variable isSelected
     this.width = 250,
     this.child,
+    this.decoration,
     Key? key,
   }) : super(key: key);
   @override
@@ -63,6 +65,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                if (widget.child != null) widget.child!,
                 if (widget.containerIcon != null) widget.containerIcon!,
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0, top: 8.0),
@@ -91,7 +94,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
                     ),
                   ),
                 ),
-                if (widget.child != null) widget.child!
+               
               ],
             ),
           ),
