@@ -1,4 +1,5 @@
 import 'package:code_crafters/choixParcours/gestureDetecto/gesture.dart';
+import 'package:code_crafters/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -248,10 +249,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
               minimumSize: const Size(double.infinity, 50.0),
               elevation: 10),
           onPressed: () {
-             if (selectedContainerId == null) {
-              
-            } else {
-               sendDataForSelectedContainer();
+            if (selectedContainerId == null) {
+              showNotification(context,
+                  "Veuillez sellectionner un cours ou un parcours s'ils vous plait");
+            } else if (selectedContainerId == 'html') {
+              sendDataForHTML();
             }
           },
           child: const Text(
@@ -273,30 +275,39 @@ class _IntroductionPageState extends State<IntroductionPage> {
   void sendDataForHTML() {
     print('Données pour le parcours "HTML" envoyées.');
   }
+
   void sendDataForCSS() {
     print('Données pour le parcours "CSS" envoyées.');
   }
+
   void sendDataForJAVASCRIPT() {
     print('Données pour le parcours "JAVASCRIPT" envoyées.');
   }
+
   void sendDataForGITHUB() {
     print('Données pour le parcours "GITHUB" envoyées.');
   }
+
   void sendDataForKOTLIN() {
     print('Données pour le parcours "KOTLIN" envoyées.');
   }
+
   void sendDataForBOOTSTRAP() {
     print('Données pour le parcours "BOOTSTRAP" envoyées.');
   }
+
   void sendDataForC() {
     print('Données pour le parcours "C" envoyées.');
   }
+
   void sendDataForNODEJS() {
     print('Données pour le parcours "NODEJS" envoyées.');
   }
+
   void sendDataForPYTHON() {
     print('Données pour le parcours "PYTHON" envoyées.');
   }
+
   void sendDataForMONGODB() {
     print('Données pour le parcours "MONGODB" envoyées.');
   }
