@@ -9,6 +9,7 @@ class CustomGestureDetector extends StatefulWidget {
   final String autreInformation;
   final String autreVariable;
   final bool isSelected; // Ajout de la variable isSelected
+  final double width;
 
   const CustomGestureDetector({
     required this.containerId,
@@ -19,6 +20,7 @@ class CustomGestureDetector extends StatefulWidget {
     required this.autreInformation,
     required this.autreVariable,
     this.isSelected = false, // Initialisation de la variable isSelected
+    this.width = 250,
     Key? key,
   }) : super(key: key);
   @override
@@ -26,10 +28,9 @@ class CustomGestureDetector extends StatefulWidget {
 }
 
 class _CustomGestureDetectorState extends State<CustomGestureDetector> {
-   bool isSelected = false;
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
-   
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
@@ -37,7 +38,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
           widget.onTapCallback(widget.containerId);
         },
         child: Container(
-          width: 250,
+          width: widget.width,
           decoration: BoxDecoration(
             color: const Color.fromARGB(137, 255, 255, 255),
             border: Border.all(
@@ -47,9 +48,9 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
               width: 4.0,
             ),
             borderRadius: BorderRadius.circular(10),
-             boxShadow: const [
+            boxShadow: const [
               BoxShadow(
-                color:  Colors.black,
+                color: Colors.black,
                 spreadRadius: 2,
                 blurRadius: 5,
                 offset: Offset(0, 2), // changes position of shadow
@@ -62,31 +63,29 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
               children: [
                 if (widget.containerIcon != null) widget.containerIcon!,
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0, top: 8.0),
+                  padding: const EdgeInsets.only(left: 8.0, top: 8.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                     widget.autreInformation,
+                      widget.autreInformation,
                       style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17
-                        )
-                        ,textAlign: TextAlign.left,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17),
+                      textAlign: TextAlign.left,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0, top: 10.0),
+                  padding: const EdgeInsets.only(left: 8.0, top: 10.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       widget.autreVariable,
                       style: const TextStyle(
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold
-                        ),
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),

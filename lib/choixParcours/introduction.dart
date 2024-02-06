@@ -108,7 +108,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Explorez l'interactivité avec JavaScript. Manipulez le contenu dynamique, gérez les événements ",
                         ),
-                         CustomGestureDetector(
+                        CustomGestureDetector(
                           containerId: 'github',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.black,
@@ -123,7 +123,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "*Maîtrisez le contrôle de version avec Git et GitHub. Apprenez à suivre les changements",
                         ),
-                         CustomGestureDetector(
+                        CustomGestureDetector(
                           containerId: 'kotlin',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amber,
@@ -138,7 +138,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Explorez le monde puissant et expressif de Kotlin. Apprenez à développer des applications Android modernes",
                         ),
-                         CustomGestureDetector(
+                        CustomGestureDetector(
                           containerId: 'bootstrap',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.deepPurple,
@@ -153,7 +153,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Mettez en œuvre des designs web modernes et réactifs avec Bootstrap. Apprenez à utiliser ce framework front-end",
                         ),
-                         CustomGestureDetector(
+                        CustomGestureDetector(
                           containerId: 'c',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.blue,
@@ -168,7 +168,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Maîtrisez les fondamentaux du langage C. Plongez dans la programmation bas niveau,",
                         ),
-                         CustomGestureDetector(
+                        CustomGestureDetector(
                           containerId: 'nodejs',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.green,
@@ -183,7 +183,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Explorez le monde de la programmation côté serveur avec Node.js",
                         ),
-                         CustomGestureDetector(
+                        CustomGestureDetector(
                           containerId: 'python',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amberAccent,
@@ -198,7 +198,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* Un langage polyvalent et convivial. Apprenez les bases de la programmation, la manipulation de données",
                         ),
-                         CustomGestureDetector(
+                        CustomGestureDetector(
                           containerId: 'mongodb',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.green,
@@ -213,12 +213,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           autreVariable:
                               "* La base de données NoSQL avec MongoDB. Apprenez à stocker et à interroger des données de manière flexible",
                         ),
-                        
                       ],
                     ),
                   ),
                   CustomGestureDetector(
                     containerId: '',
+                    width: MediaQuery.of(context).size.width,
                     defaultBorderColor: Colors.transparent,
                     selectedBorderColor: Colors.deepPurple,
                     onTapCallback: updateSelectedContainer,
@@ -246,12 +246,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               minimumSize: const Size(double.infinity, 50.0),
-              elevation: 10
-              ),
-              
-          onPressed: () {
-            
-          },
+              elevation: 10),
+          onPressed: () {},
           child: const Text(
             "Commencer",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
