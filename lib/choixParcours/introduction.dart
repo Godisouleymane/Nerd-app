@@ -262,6 +262,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForGITHUB();
             } else if (selectedContainerId == 'kotlin') {
               sendDataForKOTLIN();
+            } else if (selectedContainerId == 'bootstrap') {
+              sendDataForBOOTSTRAP();
             }
           },
           child: const Text(
