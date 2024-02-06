@@ -181,22 +181,37 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           isSelected: selectedContainerId == 'nodejs',
                           autreInformation: 'NODE JS',
                           autreVariable:
-                              "* Explorez le monde de la programmation côté serveur avec Node.js. Apprenez à construire des applications web cote serveur",
+                              "* Explorez le monde de la programmation côté serveur avec Node.js",
                         ),
                          CustomGestureDetector(
                           containerId: 'python',
                           defaultBorderColor: Colors.transparent,
-                          selectedBorderColor: Colors.green,
+                          selectedBorderColor: Colors.amberAccent,
                           onTapCallback: updateSelectedContainer,
                           containerIcon: const Icon(
                             DevIcons.pythonPlain,
                             size: 100,
+                            color: Colors.amberAccent,
+                          ),
+                          isSelected: selectedContainerId == 'python',
+                          autreInformation: 'PYTHON',
+                          autreVariable:
+                              "* Un langage polyvalent et convivial. Apprenez les bases de la programmation, la manipulation de données",
+                        ),
+                         CustomGestureDetector(
+                          containerId: 'mongodb',
+                          defaultBorderColor: Colors.transparent,
+                          selectedBorderColor: Colors.green,
+                          onTapCallback: updateSelectedContainer,
+                          containerIcon: const Icon(
+                            DevIcons.mongodbPlain,
+                            size: 100,
                             color: Colors.green,
                           ),
-                          isSelected: selectedContainerId == 'nodejs',
-                          autreInformation: 'NODE JS',
+                          isSelected: selectedContainerId == 'mongodb',
+                          autreInformation: 'MONGO DB',
                           autreVariable:
-                              "* Explorez le monde de la programmation côté serveur avec Node.js. Apprenez à construire des applications web cote serveur",
+                              "* Un langage polyvalent et convivial. Apprenez les bases de la programmation, la manipulation de données",
                         ),
                         
                       ],
@@ -234,7 +249,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
               elevation: 10
               ),
               
-          onPressed: () {},
+          onPressed: () {
+            
+          },
           child: const Text(
             "Commencer",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
