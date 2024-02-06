@@ -270,6 +270,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForNODEJS();
             } else if (selectedContainerId == 'python') {
               sendDataForPYTHON();
+            } else if (selectedContainerId == 'mongodb') {
+              sendDataForMONGODB();
             }
           },
           child: const Text(
