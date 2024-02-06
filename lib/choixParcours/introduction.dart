@@ -211,7 +211,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           isSelected: selectedContainerId == 'mongodb',
                           autreInformation: 'MONGO DB',
                           autreVariable:
-                              "* Un langage polyvalent et convivial. Apprenez les bases de la programmation, la manipulation de données",
+                              "* La base de données NoSQL avec MongoDB. Apprenez à stocker et à interroger des données de manière flexible",
                         ),
                         
                       ],
