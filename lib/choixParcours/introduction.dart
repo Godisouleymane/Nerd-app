@@ -264,6 +264,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForKOTLIN();
             } else if (selectedContainerId == 'bootstrap') {
               sendDataForBOOTSTRAP();
+            } else if (selectedContainerId == 'c') {
+              sendDataForC();
             }
           },
           child: const Text(
