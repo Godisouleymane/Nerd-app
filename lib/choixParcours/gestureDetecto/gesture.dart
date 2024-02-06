@@ -91,6 +91,7 @@ class _CustomGestureDetectorState extends State<CustomGestureDetector> {
                     ),
                   ),
                 ),
+                if (widget.child != null) widget.child!
               ],
             ),
           ),
