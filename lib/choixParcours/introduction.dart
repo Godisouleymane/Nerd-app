@@ -268,6 +268,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
               sendDataForC();
             } else if (selectedContainerId == 'nodejs') {
               sendDataForNODEJS();
+            } else if (selectedContainerId == 'python') {
+              sendDataForPYTHON();
             }
           },
           child: const Text(
