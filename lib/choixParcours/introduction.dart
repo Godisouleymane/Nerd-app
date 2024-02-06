@@ -254,6 +254,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   "Veuillez sellectionner un cours ou un parcours s'ils vous plait");
             } else if (selectedContainerId == 'html') {
               sendDataForHTML();
+            } else if (selectedContainerId == 'css') {
+              sendDataForCSS();
             }
           },
           child: const Text(
