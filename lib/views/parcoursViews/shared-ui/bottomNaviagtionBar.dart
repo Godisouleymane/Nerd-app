@@ -1,56 +1,46 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
-class BottomNaviBar extends StatefulWidget {
-  const BottomNaviBar({super.key});
+class CustomBottomNavigationBar extends StatelessWidget {
+  final int currentIndex;
+  final List<Widget> screens;
+  final ValueChanged<int> onTap;
+  final List<IconData> icons;
+  final List<String> labels;
+  final List<Color> selectedColors;
+  final List<Color> unselectedColors;
 
-  @override
-  State<BottomNaviBar> createState() => _BottomNaviBarState();
-}
-
-class _BottomNaviBarState extends State<BottomNaviBar> {
-  late final String? titre;
-
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  CustomBottomNavigationBar({
+    required this.currentIndex,
+    required this.screens,
+    required this.onTap,
+    required this.icons,
+    required this.labels,
+    required this.selectedColors,
+    required this.unselectedColors,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(titre!),
+    assert(
+      icons.length == labels.length &&
+          icons.length == selectedColors.length &&
+          icons.length == unselectedColors.length,
+      'The number of icons, labels, selectedColors, and unselectedColors must be the same.',
+    );
+
+    return BottomNavigationBar(
+      currentIndex: currentIndex,
+      onTap: onTap,
+      items: List.generate(
+        icons.length,
+        (index) => BottomNavigationBarItem(
+          icon: Icon(icons[index]),
+          label: labels[index],
+          backgroundColor: Colors.transparent,
+        ),
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_upward),
-            label: 'Progression',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Communaute',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Cours',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.deepPurple,
-        onTap: _onItemTapped,
-      ),
+      selectedItemColor: selectedColors[currentIndex],
+      unselectedItemColor: unselectedColors[currentIndex],
     );
   }
 }

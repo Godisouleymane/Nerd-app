@@ -1,3 +1,4 @@
+import 'package:code_crafters/views/parcoursViews/shared-ui/bottomNaviagtionBar.dart';
 import 'package:flutter/material.dart';
 
 class HTMLView extends StatefulWidget {
@@ -10,8 +11,6 @@ class HTMLView extends StatefulWidget {
 class _HTMLViewState extends State<HTMLView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-    );
+    return BottomNaviBar();
   }
 }
