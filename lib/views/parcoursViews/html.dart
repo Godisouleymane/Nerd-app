@@ -17,7 +17,11 @@ class _HTMLViewState extends State<HTMLView> {
      final _user = Provider.of<User?>(context);
     return Scaffold(
       appBar:  AppBar(
-        title: Text('Parcours HTML'),
+        backgroundColor:  const Color.fromARGB(255, 53, 32, 149),
+        title: const Text('HTML', style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
