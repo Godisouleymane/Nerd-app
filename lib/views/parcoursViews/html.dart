@@ -38,28 +38,21 @@ class _HTMLViewState extends State<HTMLView> {
       body: CustomBottomNavigationBar(
           currentIndex: _currentIndex,
           screens: [],
-
           onTap: (int value) {
             setState(() {
               _currentIndex = value;
             });
           },
-          icons: const [
-            Icons.arrow_upward,
-            Icons.business_sharp,
-            Icons.school
-          ],
-          labels: const [
-            "Progression",
-            "Communaute",
-            "Cours"
-          ],
+          icons: const [Icons.arrow_upward, Icons.business_sharp, Icons.school],
+          labels: const ["Progression", "Communaute", "Cours"],
           selectedColors: const [
             Colors.deepPurple,
             Colors.deepPurple,
             Colors.deepPurple,
           ],
-          unselectedColors: unselectedColors),
+          unselectedColors: [
+            Colors.grey.shade400
+          ]),
     );
   }
 }
