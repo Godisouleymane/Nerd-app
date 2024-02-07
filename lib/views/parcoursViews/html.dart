@@ -1,3 +1,4 @@
+import 'package:code_crafters/views/parcoursViews/screenHTML.dart';
 import 'package:code_crafters/views/parcoursViews/shared-ui/bottomNaviagtionBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,10 @@ class _HTMLViewState extends State<HTMLView> {
       ),
       body: CustomBottomNavigationBar(
           currentIndex: _currentIndex,
-          screens: [],
+          screens: [
+            ScreenHtml(),
+            
+          ],
           onTap: (int value) {
             setState(() {
               _currentIndex = value;
