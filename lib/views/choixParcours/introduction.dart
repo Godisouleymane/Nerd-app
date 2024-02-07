@@ -287,15 +287,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
   void updateSelectedContainer(String id) {
     setState(() {
       selectedContainerId = id;
-      CourseSelection().setSelectedCourse(id);
       print(id);
     });
-    
   }
 
   void sendDataForHTML() {
     print('Données pour le parcours "HTML" envoyées.');
-    Navigator.pushNamed(context, '/html');
   }
 
   void sendDataForCSS() {
@@ -336,24 +333,5 @@ class _IntroductionPageState extends State<IntroductionPage> {
 
   void sendDataForFULLSTACK() {
     print('Données pour le parcours "FULL STACK" envoyées.');
-  }
-}
-
-
-class CourseSelection {
-  String? selectedCourse;
-
-  // Singleton pattern pour accéder à l'instance de la classe
-  static final CourseSelection _instance = CourseSelection._internal();
-
-  factory CourseSelection() {
-    return _instance;
-  }
-
-  CourseSelection._internal();
-
-  // Méthode pour définir le cours sélectionné
-  void setSelectedCourse(String course) {
-    selectedCourse = course;
   }
 }
