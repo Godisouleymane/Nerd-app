@@ -289,10 +289,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
       selectedContainerId = id;
       print(id);
     });
+    
   }
 
   void sendDataForHTML() {
     print('Données pour le parcours "HTML" envoyées.');
+    Navigator.pushNamed(context, '/html');
   }
 
   void sendDataForCSS() {
@@ -335,3 +337,4 @@ class _IntroductionPageState extends State<IntroductionPage> {
     print('Données pour le parcours "FULL STACK" envoyées.');
   }
 }
+

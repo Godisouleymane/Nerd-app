@@ -1,6 +1,5 @@
 import 'package:code_crafters/firebase_options.dart';
-import 'package:code_crafters/services/authentification.dart';
-import 'package:code_crafters/services/course_selection_notifier.dart';
+import 'package:code_crafters/provider/containerIdProvider.dart';
 import 'package:code_crafters/views/parcoursViews/html.dart';
 import 'package:code_crafters/views/parcoursViews/parcours.dart';
 import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
@@ -15,9 +14,9 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(
+    runApp(
     ChangeNotifierProvider(
-      create: (_) => CourseSelectionNotifier(),
+      create: (context) => SelectedContainerIdProvider(),
       child: MyApp(),
     ),
   );
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => const Wrapper(),
+        '/':(context) => Wrapper(),
         '/html':(context) => HTMLView(),
       },
     );
