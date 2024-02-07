@@ -1,5 +1,6 @@
 import 'package:code_crafters/views/parcoursViews/screenHTML.dart';
 import 'package:code_crafters/views/parcoursViews/shared-ui/bottomNaviagtionBar.dart';
+import 'package:code_crafters/views/parcoursViews/shared-ui/communaute.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,7 @@ class _HTMLViewState extends State<HTMLView> {
           currentIndex: _currentIndex,
           screens: [
             ScreenHtml(),
-            
+            Communaute(),
           ],
           onTap: (int value) {
             setState(() {
