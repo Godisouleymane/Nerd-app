@@ -16,7 +16,7 @@ class Wrapper extends StatelessWidget {
 
     if (_user != null) {
       if (selectedContainerId == 'html') {
-        return HTMLView();
+        return const HTMLView();
       } else {
         return Placeholder();
       }

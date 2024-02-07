@@ -270,11 +270,57 @@ class _IntroductionPageState extends State<IntroductionPage> {
       print(id);
     });
   }
+  
+  void sendData(String containerId) {
+    switch (containerId) {
+      case 'html':
+      sendDataForHTML(context);
+      break;
+      case 'css':
+        sendDataForCSS();
+        break;
+      case 'javaScript':
+        sendDataForJAVASCRIPT();
+        break;
+      case 'github':
+        sendDataForGITHUB();
+        break;
+      case 'kotlin':
+        sendDataForKOTLIN();
+        break;
+      case 'bootstrap':
+        sendDataForBOOTSTRAP();
+        break;
+      case 'c':
+        sendDataForC();
+        break;
+      case 'nodejs':
+        sendDataForNODEJS();
+        break;
+      case 'python':
+        sendDataForPYTHON();
+        break;
+      case 'mongodb':
+        sendDataForMONGODB();
+        break;
+      case 'devFullSctack':
+        sendDataForFULLSTACK();
+        break;
+      default:
+        showNotification(context, "Aucune donnée trouvée pour ce cours");
+    }
+  }
 
-  void sendDataForHTML(BuildContext context) {
-    Provider.of<SelectedContainerIdProvider>(context, listen: false)
-        .setSelectedContainerId('html');
-    print('html envoyes');
+  void sendDataForHTML(BuildContext? context) {
+    if (context != null) {
+      Provider.of<SelectedContainerIdProvider>(context, listen: false)
+          .setSelectedContainerId('html');
+      print('html view envoyée');
+      Navigator.pushNamed(context, '/html');
+    } else {
+      print(
+          'Le contexte est null, impossible d\'envoyer les données pour HTML.');
+    }
   }
 
   void sendDataForCSS() {
@@ -318,44 +364,5 @@ class _IntroductionPageState extends State<IntroductionPage> {
   }
 
 
-  void sendData(String containerId) {
-    switch (containerId) {
-      case 'html':
-        sendDataForHTML(context);
-        break;
-      case 'css':
-        sendDataForCSS();
-        break;
-      case 'javaScript':
-        sendDataForJAVASCRIPT();
-        break;
-      case 'github':
-        sendDataForGITHUB();
-        break;
-      case 'kotlin':
-        sendDataForKOTLIN();
-        break;
-      case 'bootstrap':
-        sendDataForBOOTSTRAP();
-        break;
-      case 'c':
-        sendDataForC();
-        break;
-      case 'nodejs':
-        sendDataForNODEJS();
-        break;
-      case 'python':
-        sendDataForPYTHON();
-        break;
-      case 'mongodb':
-        sendDataForMONGODB();
-        break;
-      case 'devFullSctack':
-        sendDataForFULLSTACK();
-        break;
-      default:
-        showNotification(context, "Aucune donnée trouvée pour ce cours");
-    }
-  }
 
 }

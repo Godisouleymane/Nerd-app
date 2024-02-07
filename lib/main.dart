@@ -4,6 +4,7 @@ import 'package:code_crafters/views/parcoursViews/html.dart';
 import 'package:code_crafters/views/parcoursViews/parcours.dart';
 import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
 import 'package:code_crafters/wrapper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,9 +16,16 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
     runApp(
-    ChangeNotifierProvider(
-      create: (context) => SelectedContainerIdProvider(),
-      child: MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (context) => SelectedContainerIdProvider()),
+        StreamProvider<User?>.value(
+          value: FirebaseAuth.instance.authStateChanges(),
+          initialData: null, 
+        ),
+      ],
+      child: const MyApp(),
     ),
   );
 }

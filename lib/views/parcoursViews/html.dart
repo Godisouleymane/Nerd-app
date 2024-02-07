@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HTMLView extends StatefulWidget {
-  const HTMLView({super.key});
+  const HTMLView({Key? key}) : super(key: key);
 
   @override
   State<HTMLView> createState() => _HTMLViewState();
@@ -15,9 +15,11 @@ class HTMLView extends StatefulWidget {
 
 class _HTMLViewState extends State<HTMLView> {
   int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    final _user = Provider.of<User?>(context);
+    final User? user = Provider.of<User?>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 53, 32, 149),
@@ -30,40 +32,42 @@ class _HTMLViewState extends State<HTMLView> {
         ),
         automaticallyImplyLeading: false,
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: CircleAvatar(
-              backgroundColor: Colors.grey,
-              backgroundImage: NetworkImage(_user!.photoURL!),
-            ),
-          )
+          if (user != null && user.photoURL != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: CircleAvatar(
+                backgroundColor: Colors.grey,
+                backgroundImage: NetworkImage(user.photoURL!),
+              ),
+            )
         ],
       ),
-      body: ScreenHtml(),
+      body: const ScreenHtml(),
       bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: _currentIndex,
-          screens: const [
-            ScreenHtml(),
-            Communaute(),
-            Cours(),
-          ],
-          onTap: (int value) {
-            setState(() {
-              _currentIndex = value;
-            });
-          },
-          icons: const [Icons.arrow_upward, Icons.business_sharp, Icons.school],
-          labels: const ["Progression", "Communaute", "Cours"],
-          selectedColors: const [
-            Colors.deepPurple,
-            Colors.deepPurple,
-            Colors.deepPurple,
-          ],
-          unselectedColors: [
-            Colors.grey.shade400,
-            Colors.grey.shade400,
-            Colors.grey.shade400,
-          ]),
+        currentIndex: _currentIndex,
+        screens: const [
+          ScreenHtml(),
+          Communaute(),
+          Cours(),
+        ],
+        onTap: (int value) {
+          setState(() {
+            _currentIndex = value;
+          });
+        },
+        icons: const [Icons.arrow_upward, Icons.business_sharp, Icons.school],
+        labels: const ["Progression", "Communaute", "Cours"],
+        selectedColors: const [
+          Colors.deepPurple,
+          Colors.deepPurple,
+          Colors.deepPurple,
+        ],
+        unselectedColors: [
+          Colors.grey.shade400,
+          Colors.grey.shade400,
+          Colors.grey.shade400,
+        ],
+      ),
     );
   }
 }
