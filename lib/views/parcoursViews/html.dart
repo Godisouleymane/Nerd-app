@@ -49,10 +49,10 @@ class _HTMLViewState extends State<HTMLView> {
             Icons.business_sharp,
             Icons.school
           ],
-          labels: [
+          labels: const [
             "Progression",
             "Communaute",
-            ""
+            "Cours"
           ],
           selectedColors: selectedColors,
           unselectedColors: unselectedColors),
