@@ -1,8 +1,10 @@
+import 'package:code_crafters/provider/containerIdProvider.dart';
 import 'package:code_crafters/views/choixParcours/gestureDetecto/gesture.dart';
 import 'package:code_crafters/views/parcoursViews/parcours.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class IntroductionPage extends StatefulWidget {
   const IntroductionPage({super.key});
@@ -248,31 +250,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
           onPressed: () {
             if (selectedContainerId == null) {
               showNotification(context,
-                  "Veuillez sellectionner un cours ou un parcours s'il vous plait");
-            } else if (selectedContainerId == 'html') {
-              sendDataForHTML();
-            } else if (selectedContainerId == 'css') {
-              sendDataForCSS();
-            } else if (selectedContainerId == 'javaScript') {
-              sendDataForJAVASCRIPT();
-            } else if (selectedContainerId == 'github') {
-              sendDataForGITHUB();
-            } else if (selectedContainerId == 'kotlin') {
-              sendDataForKOTLIN();
-            } else if (selectedContainerId == 'bootstrap') {
-              sendDataForBOOTSTRAP();
-            } else if (selectedContainerId == 'c') {
-              sendDataForC();
-            } else if (selectedContainerId == 'nodejs') {
-              sendDataForNODEJS();
-            } else if (selectedContainerId == 'python') {
-              sendDataForPYTHON();
-            } else if (selectedContainerId == 'mongodb') {
-              sendDataForMONGODB();
-            } else if (selectedContainerId == 'devFullSctack') {
-              sendDataForFULLSTACK();
+                  "Veuillez sélectionner un cours ou un parcours s'il vous plaît");
             } else {
-              showNotification(context, "Aucune donnee trouver pour ce cours");
+              sendData(selectedContainerId);
             }
           },
           child: const Text(
@@ -289,12 +269,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
       selectedContainerId = id;
       print(id);
     });
-    
   }
 
-  void sendDataForHTML() {
-    print('Données pour le parcours "HTML" envoyées.');
-    Navigator.pushNamed(context, '/html');
+  void sendDataForHTML(BuildContext context) {
+    Provider.of<SelectedContainerIdProvider>(context, listen: false)
+        .setSelectedContainerId('html');
+    print('html envoyes');
   }
 
   void sendDataForCSS() {
@@ -336,5 +316,46 @@ class _IntroductionPageState extends State<IntroductionPage> {
   void sendDataForFULLSTACK() {
     print('Données pour le parcours "FULL STACK" envoyées.');
   }
-}
 
+
+  void sendData(String containerId) {
+    switch (containerId) {
+      case 'html':
+        sendDataForHTML(context);
+        break;
+      case 'css':
+        sendDataForCSS();
+        break;
+      case 'javaScript':
+        sendDataForJAVASCRIPT();
+        break;
+      case 'github':
+        sendDataForGITHUB();
+        break;
+      case 'kotlin':
+        sendDataForKOTLIN();
+        break;
+      case 'bootstrap':
+        sendDataForBOOTSTRAP();
+        break;
+      case 'c':
+        sendDataForC();
+        break;
+      case 'nodejs':
+        sendDataForNODEJS();
+        break;
+      case 'python':
+        sendDataForPYTHON();
+        break;
+      case 'mongodb':
+        sendDataForMONGODB();
+        break;
+      case 'devFullSctack':
+        sendDataForFULLSTACK();
+        break;
+      default:
+        showNotification(context, "Aucune donnée trouvée pour ce cours");
+    }
+  }
+
+}
