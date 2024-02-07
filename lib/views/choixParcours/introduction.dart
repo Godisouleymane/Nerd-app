@@ -1,5 +1,6 @@
-import 'package:code_crafters/choixParcours/gestureDetecto/gesture.dart';
-import 'package:code_crafters/widgets/showSnackbar.dart';
+import 'package:code_crafters/views/choixParcours/gestureDetecto/gesture.dart';
+import 'package:code_crafters/views/parcoursViews/parcours.dart';
+import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -292,6 +293,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
 
   void sendDataForHTML() {
     print('Données pour le parcours "HTML" envoyées.');
+    Navigator.pushNamed(context, '/parcours');
   }
 
   void sendDataForCSS() {

@@ -1,15 +1,24 @@
 import 'package:code_crafters/firebase_options.dart';
-import 'package:code_crafters/widgets/onBoarding_screen.dart';
+import 'package:code_crafters/services/authentification.dart';
+import 'package:code_crafters/views/parcoursViews/parcours.dart';
+import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
+import 'package:code_crafters/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+runApp(MultiProvider(
+    providers: [
+      StreamProvider.value(value: AuthService().user, initialData: null),
+    ],
+    child: MyApp(),
+  ));
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,7 +34,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
       ),
-      home: OnBoardingScreen(),
+      initialRoute: '/',
+      routes: {
+        '/':(context) => Wrapper(),
+        '/parcours':(context) => CourseProgressScreen()
+      },
+    
     );
   }
 }

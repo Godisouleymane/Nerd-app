@@ -1,5 +1,6 @@
-import 'package:code_crafters/choixParcours/introduction.dart';
-import 'package:code_crafters/widgets/onBoarding_screen.dart';
+import 'package:code_crafters/views/choixParcours/introduction.dart';
+import 'package:code_crafters/views/parcoursViews/parcours.dart';
+import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,7 @@ class Wrapper extends StatelessWidget {
     if (_user == null) {
       return const OnBoardingScreen();
     } else {
-      return const IntroductionPage();
+      return CourseProgressScreen();
     }
   }
 }
