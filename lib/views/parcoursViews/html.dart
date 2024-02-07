@@ -54,7 +54,11 @@ class _HTMLViewState extends State<HTMLView> {
             "Communaute",
             "Cours"
           ],
-          selectedColors: selectedColors,
+          selectedColors: const [
+            Colors.deepPurple,
+            Colors.deepPurple,
+            Colors.deepPurple,
+          ],
           unselectedColors: unselectedColors),
     );
   }
