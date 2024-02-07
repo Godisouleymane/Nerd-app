@@ -28,6 +28,7 @@ class _HTMLViewState extends State<HTMLView> {
             color: Colors.white,
           ),
         ),
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
@@ -38,7 +39,8 @@ class _HTMLViewState extends State<HTMLView> {
           )
         ],
       ),
-      body: CustomBottomNavigationBar(
+      body: ScreenHtml(),
+      bottomNavigationBar: CustomBottomNavigationBar(
           currentIndex: _currentIndex,
           screens: const [
             ScreenHtml(),

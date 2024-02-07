@@ -12,7 +12,7 @@ class _CoursState extends State<Cours> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Cours'),
+        child: Text('Cours', style: TextStyle(color: Colors.black),),
       ),
     );
   }

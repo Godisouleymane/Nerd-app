@@ -1,5 +1,6 @@
 import 'package:code_crafters/firebase_options.dart';
 import 'package:code_crafters/services/authentification.dart';
+import 'package:code_crafters/views/parcoursViews/html.dart';
 import 'package:code_crafters/views/parcoursViews/parcours.dart';
 import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
 import 'package:code_crafters/wrapper.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(context) => const Wrapper(),
-        '/parcours':(context) => CourseProgressScreen()
+        '/html':(context) => HTMLView(),
       },
     );
   }
