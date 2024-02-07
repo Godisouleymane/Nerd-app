@@ -1,5 +1,6 @@
 import 'package:code_crafters/firebase_options.dart';
 import 'package:code_crafters/services/authentification.dart';
+import 'package:code_crafters/services/course_selection_notifier.dart';
 import 'package:code_crafters/views/parcoursViews/html.dart';
 import 'package:code_crafters/views/parcoursViews/parcours.dart';
 import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
@@ -14,12 +15,12 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-runApp(MultiProvider(
-    providers: [
-      StreamProvider.value(value: AuthService().user, initialData: null),
-    ],
-    child: MyApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CourseSelectionNotifier(),
+      child: MyApp(),
+    ),
+  );
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
