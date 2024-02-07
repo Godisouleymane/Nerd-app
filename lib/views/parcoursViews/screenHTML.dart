@@ -41,3 +41,35 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     );
   }
 }
+
+
+class CourseModule extends StatelessWidget {
+  final String moduleName;
+  final List<String> courses;
+
+  CourseModule({required this.moduleName, required this.courses});
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpansionTile(
+      title: Text(moduleName),
+      children: courses != null
+          ? courses
+              .map(
+                (course) => ListTile(
+                  title: Text(course),
+                  onTap: () {
+                    // Gérer le tap sur un cours
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Cours sélectionné: $course'),
+                      ),
+                    );
+                  },
+                ),
+              )
+              .toList()
+          : [],
+    );
+  }
+}
