@@ -1,11 +1,12 @@
 import 'package:code_crafters/views/choixParcours/gestureDetecto/gesture.dart';
 import 'package:code_crafters/views/parcoursViews/parcours.dart';
+import 'package:code_crafters/views/parcoursViews/shared-ui/appBar.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
 
 class IntroductionPage extends StatefulWidget {
-  const IntroductionPage({super.key});
+  const IntroductionPage({Key? key}) : super(key: key);
 
   @override
   State<IntroductionPage> createState() => _IntroductionPageState();
@@ -69,7 +70,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'html',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.orange,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'HTML');
+                          },
                           containerIcon: Icon(
                             DevIcons.html5PlainWordmark,
                             size: 100,
@@ -84,7 +87,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'css',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.blue,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                          updateSelectedContainer(id, 'CSS');
+                          },
                           containerIcon: const Icon(
                             DevIcons.css3PlainWordmark,
                             size: 100,
@@ -99,7 +104,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'javaScript',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amber,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'JavaScript');
+                          },
                           containerIcon: const Icon(
                             DevIcons.javascriptPlain,
                             size: 100,
@@ -114,7 +121,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'github',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.black,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'GITHUB');
+                          },
                           containerIcon: const Icon(
                             DevIcons.githubOriginalWordmark,
                             size: 100,
@@ -129,7 +138,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'kotlin',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amber,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'KOTLIN');
+                          },
                           containerIcon: const Icon(
                             DevIcons.kotlinPlainWordmark,
                             size: 100,
@@ -144,7 +155,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'bootstrap',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.deepPurple,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'BOOTSTRAP');
+                          },
                           containerIcon: const Icon(
                             DevIcons.bootstrapPlainWordmark,
                             size: 100,
@@ -159,7 +172,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'c',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.blue,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'C');
+                          },
                           containerIcon: const Icon(
                             DevIcons.cLine,
                             size: 100,
@@ -174,7 +189,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'nodejs',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.green,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'NODE JS');
+                          },
                           containerIcon: const Icon(
                             DevIcons.nodejsPlain,
                             size: 100,
@@ -189,7 +206,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'python',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amberAccent,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'PYTHON');
+                          },
                           containerIcon: const Icon(
                             DevIcons.pythonPlain,
                             size: 100,
@@ -204,7 +223,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'mongodb',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.green,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (id) {
+                            updateSelectedContainer(id, 'MONGO DB');
+                          },
                           containerIcon: const Icon(
                             DevIcons.mongodbPlain,
                             size: 100,
@@ -223,7 +244,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     width: MediaQuery.of(context).size.width,
                     defaultBorderColor: Colors.transparent,
                     selectedBorderColor: Colors.deepPurple,
-                    onTapCallback: updateSelectedContainer,
+                    onTapCallback: (id) {
+                      updateSelectedContainer(id, 'Full Stack');
+                    },
                     isSelected: selectedContainerId == 'devFullSctack',
                     autreInformation: 'Full Stack',
                     hasImage: true,
@@ -248,7 +271,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
           onPressed: () {
             if (selectedContainerId == null) {
               showNotification(context,
-                  "Veuillez sellectionner un cours ou un parcours s'ils vous plait");
+                  "Veuillez sellectionner un cours ou un parcours s'il vous plait");
             } else if (selectedContainerId == 'html') {
               sendDataForHTML();
             } else if (selectedContainerId == 'css') {
@@ -284,11 +307,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
     );
   }
 
-  void updateSelectedContainer(String id) {
+  void updateSelectedContainer(String id, String autreInformation) {
     setState(() {
       selectedContainerId = id;
       print(id);
     });
+    MyAppBar.updateAppBarTitle(context, autreInformation);
   }
 
   void sendDataForHTML() {

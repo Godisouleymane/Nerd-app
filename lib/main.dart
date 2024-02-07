@@ -36,10 +36,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => Wrapper(),
+        '/':(context) => const Wrapper(),
         '/parcours':(context) => CourseProgressScreen()
       },
-    
     );
   }
 }
