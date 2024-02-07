@@ -53,6 +53,7 @@ class _HTMLViewState extends State<HTMLView> {
           unselectedColors: [
             Colors.grey.shade400,
             Colors.grey.shade400,
+            Colors.grey.shade400,
           ]),
     );
   }
