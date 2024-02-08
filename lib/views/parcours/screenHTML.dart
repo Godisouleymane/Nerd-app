@@ -55,6 +55,14 @@ class _ScreenHtmlState extends State<ScreenHtml> {
               decoration: BoxDecoration(
                 color: Colors.white54,
                 borderRadius: BorderRadius.circular(16.0),
+                 boxShadow: const [
+                  BoxShadow(
+                    color: Colors.grey,
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 5), // changes position of shadow
+                  ),
+                ],
               ),
               child: Row(
                 children: [
