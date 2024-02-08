@@ -248,7 +248,13 @@ class _IntroductionPageState extends State<IntroductionPage> {
               minimumSize: const Size(double.infinity, 50.0),
               elevation: 10),
           onPressed: () {
-           
+            // verifier si l'id du container est null
+            if (selectedContainerId.isEmpty) {
+              // si aucun cours n'est selectionner
+              print("Aucun cours selectionner");
+              return showNotification(context,
+                  "Veuillez selectionner un cours ou un parcours s'il vous plait");
+            }
           },
           child: const Text(
             "Commencer",
