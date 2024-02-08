@@ -224,7 +224,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     width: MediaQuery.of(context).size.width,
                     defaultBorderColor: Colors.transparent,
                     selectedBorderColor: Colors.deepPurple,
-                    onTapCallback: updateSelectedContainer,
+                    onTapCallback: (p0) => updateSelectedContainer('devFullSctack', context),
                     isSelected: selectedContainerId == 'devFullSctack',
                     autreInformation: 'Full Stack',
                     hasImage: true,
