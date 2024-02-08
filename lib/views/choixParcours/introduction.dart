@@ -269,7 +269,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                 navigateToSelectedContainerPage(selectedContainerId);
               }).catchError((error) {
                 // Gérer les erreurs lors de l'enregistrement dans Firestore
-                print('Erreur lors de l\'enregistrement dans Firestore: $error');
+                print(
+                    'Erreur lors de l\'enregistrement dans Firestore: $error');
               });
             }
           },
@@ -294,6 +295,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
   void updateSelectedContainer(String id) {
     setState(() {
       selectedContainerId = id;
+      print(id);
     });
   }
 }
