@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:code_crafters/provider/code.dart';
+import 'package:code_crafters/views/choixParcours/introduction.dart';
 import 'package:code_crafters/views/parcours/html.dart';
 import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';

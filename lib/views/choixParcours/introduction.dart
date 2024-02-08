@@ -286,8 +286,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
   }
 
  void updateSelectedContainer(String id) {
-    Provider.of<ContainerSelectionModel>(context, listen: false)
-        .updateSelectedContainer(id);
     setState(() {
       selectedContainerId = id;
     });
