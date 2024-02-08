@@ -20,19 +20,21 @@ class Wrapper extends StatelessWidget {
             .doc(_user.uid)
             .snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator(); // Indicateur de chargement
+          } else if (snapshot.hasError) {
+            return Text('Erreur: ${snapshot.error}');
+          } else {
             final selectedContainerId =
                 snapshot.data!.get('selectedContainerId');
 
             if (selectedContainerId == null) {
-              return IntroductionPage();
+              return const IntroductionPage();
             } else if (selectedContainerId == 'html') {
               return HTMLView();
             } else {
               return Placeholder(); // Remplacez-le par le widget souhaité
             }
-          } else {
-            return CircularProgressIndicator(); // Indicateur de chargement
           }
         },
       );
