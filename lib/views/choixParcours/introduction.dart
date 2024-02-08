@@ -160,7 +160,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'c',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.blue,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) => updateSelectedContainer('c', context),
                           containerIcon: const Icon(
                             DevIcons.cLine,
                             size: 100,
