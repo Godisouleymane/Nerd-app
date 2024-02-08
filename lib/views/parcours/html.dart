@@ -27,6 +27,7 @@ class _HTMLViewState extends State<HTMLView> {
   Widget build(BuildContext context) {
     final User? user = Provider.of<User?>(context);
     return Scaffold(
+      backgroundColor: Colors.grey,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -77,9 +78,10 @@ class _HTMLViewState extends State<HTMLView> {
           Colors.deepPurple,
         ],
         unselectedColors: [
-          Colors.grey.shade400,
-          Colors.grey.shade400,
-          Colors.grey.shade400,
+          Colors.grey.shade500,
+          Colors.grey.shade500,
+          Colors.grey.shade500,
+        
         ],
       ),
     );

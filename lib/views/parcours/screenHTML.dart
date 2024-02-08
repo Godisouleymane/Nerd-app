@@ -37,6 +37,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,9 +57,9 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                    boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
-                        spreadRadius: 3,
-                        blurRadius: 3,
-                        offset: Offset(0, 2), // changes position of shadow
+                        spreadRadius: 2,
+                        blurRadius: 2,
+                        offset: Offset(0, 5), // changes position of shadow
                       ),
                     ],
                   ),
@@ -68,7 +69,6 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                       color:  const Color.fromARGB(255, 53, 32, 149),
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic
                     ),
                   ),
                 ),

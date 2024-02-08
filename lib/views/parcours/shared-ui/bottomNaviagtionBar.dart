@@ -29,6 +29,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     );
 
     return BottomNavigationBar(
+      backgroundColor: Colors.grey.shade300,
       currentIndex: currentIndex,
       onTap: onTap,
       items: List.generate(
