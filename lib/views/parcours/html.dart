@@ -26,7 +26,6 @@ class _HTMLViewState extends State<HTMLView> {
   @override
   Widget build(BuildContext context) {
     final User? user = Provider.of<User?>(context);
-
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
