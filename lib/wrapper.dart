@@ -15,7 +15,12 @@ class Wrapper extends StatelessWidget {
     String selectedContainerId =
         Provider.of<ContainerSelectionModel>(context).selectedContainerId;
     if (_user != null) {
-      
+      if (selectedContainerId.isEmpty) {
+        print("Aucun cours selectionner");
+        return IntroductionPage();
+      } else if (selectedContainerId == 'html') {
+        
+      }
     } else {
       return OnBoardingScreen();
     }
