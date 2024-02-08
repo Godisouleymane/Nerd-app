@@ -175,7 +175,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'nodejs',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.green,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) => updateSelectedContainer('nodejs', context),
                           containerIcon: const Icon(
                             DevIcons.nodejsPlain,
                             size: 100,
