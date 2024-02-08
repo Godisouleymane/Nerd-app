@@ -261,7 +261,13 @@ class _IntroductionPageState extends State<IntroductionPage> {
 
             if (user != null) {
               // Enregistrer l'ID du container selectionner dans le fireStore
-              
+              FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(user.uid)
+                  .set({'selectedContainerId': selectedContainerId}).then((_) {
+                // Enregistrement réussi, naviguer vers la page appropriée
+                navigateToSelectedContainerPage(selectedContainerId);
+              });
             }
           },
           child: const Text(
