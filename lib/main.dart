@@ -1,4 +1,5 @@
 import 'package:code_crafters/firebase_options.dart';
+import 'package:code_crafters/provider/cours_model.dart';
 import 'package:code_crafters/views/parcours/html.dart';
 import 'package:code_crafters/wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,18 +13,20 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-    runApp(
+  runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => ContainerSelectionModel()),
         StreamProvider<User?>.value(
           value: FirebaseAuth.instance.authStateChanges(),
-          initialData: null, 
+          initialData: null,
         ),
       ],
       child: const MyApp(),
     ),
   );
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -40,8 +43,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => Wrapper(),
-        '/html':(context) => HTMLView(),
+        '/': (context) => Wrapper(),
+        '/html': (context) => HTMLView(),
       },
     );
   }
