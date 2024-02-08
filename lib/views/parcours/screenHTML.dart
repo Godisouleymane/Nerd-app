@@ -50,17 +50,16 @@ class _ScreenHtmlState extends State<ScreenHtml> {
               _showModulesBottomSheet(context);
             },
             child: Container(
+              width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-                color: _selectedModule?.isUnlocked == true
-                    ? Colors.blue
-                    : Colors.grey.withOpacity(0.5),
+                color: Colors.white54,
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Text(
                 _selectedModule?.moduleName ?? _courseModules.first.moduleName,
                 style: TextStyle(
-                  color: Colors.white,
+                  color:const Color.fromARGB(255, 53, 32, 149),
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),
