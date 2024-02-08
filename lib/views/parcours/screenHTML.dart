@@ -67,6 +67,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
 
   void _showModulesBottomSheet(BuildContext context) {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
         return ListView.builder(
