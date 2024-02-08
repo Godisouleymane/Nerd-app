@@ -49,14 +49,22 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.only(),
+                  padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.white60,
                     borderRadius: BorderRadius.circular(16.0),
+                   boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 2), // changes position of shadow
+                      ),
+                    ],
                   ),
                   child: Text(
                     _selectedModule?.moduleName ?? _courseModules.first.moduleName,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
