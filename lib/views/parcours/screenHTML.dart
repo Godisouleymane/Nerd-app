@@ -11,6 +11,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
   final List<CourseModule> _courseModules = [
     CourseModule(
       moduleName: 'Module 1: Introduction à HTML',
+      isUnlocked: true, // Le premier module est déverrouillé par défaut
       courses: const [
         'Comprendre les bases du HTML',
         'Structure d\'une page HTML',
@@ -20,14 +21,17 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     ),
     CourseModule(
       moduleName: 'Module 2: Structure et Sémantique',
+      isUnlocked: false, // Les autres modules sont verrouillés par défaut
       courses: [],
     ),
     CourseModule(
       moduleName: 'Module 3: Liens, Images et Médias',
+      isUnlocked: false,
       courses: [],
     ),
     CourseModule(
       moduleName: 'Module 4: Formulaires',
+      isUnlocked: false,
       courses: [],
     ),
   ];
@@ -37,49 +41,31 @@ class _ScreenHtmlState extends State<ScreenHtml> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: GestureDetector(
+            onTap: () {
+              _showModulesBottomSheet(context);
+            },
+            child: Container(
               padding: const EdgeInsets.all(16.0),
-              child: GestureDetector(
-                onTap: () {
-                  _showModulesBottomSheet(context);
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white70,
-                    borderRadius: BorderRadius.circular(16.0),
-                   boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        offset: Offset(0, 5), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.list,size: 30,),
-                      Text(
-                        _selectedModule?.moduleName ?? _courseModules.first.moduleName,
-                        style: const TextStyle(
-                          color:  const Color.fromARGB(255, 53, 32, 149),
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
+              decoration: BoxDecoration(
+                color: _selectedModule?.isUnlocked == true
+                    ? Colors.blue
+                    : Colors.grey.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: Text(
+                _selectedModule?.moduleName ?? _courseModules.first.moduleName,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -96,10 +82,20 @@ class _ScreenHtmlState extends State<ScreenHtml> {
             return ListTile(
               title: Text(courseModule.moduleName),
               onTap: () {
-                setState(() {
-                  _selectedModule = courseModule;
-                });
-                Navigator.pop(context);
+                if (courseModule.isUnlocked) {
+                  setState(() {
+                    _selectedModule = courseModule;
+                  });
+                  Navigator.pop(context);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          'Veuillez terminer le module précédent pour déverrouiller celui-ci.'),
+                    ),
+                  );
+                  Navigator.pop(context);
+                }
               },
             );
           },
@@ -111,10 +107,13 @@ class _ScreenHtmlState extends State<ScreenHtml> {
 
 class CourseModule {
   final String moduleName;
+  bool
+      isUnlocked; // Ajoutez une variable pour indiquer si le module est déverrouillé ou non
   final List<String> courses;
 
   CourseModule({
     required this.moduleName,
+    required this.isUnlocked,
     required this.courses,
   });
 }
