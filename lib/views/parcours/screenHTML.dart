@@ -41,6 +41,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -98,6 +99,7 @@ void _showModulesBottomSheet(BuildContext context) {
                   setState(() {
                     _selectedModule = courseModule;
                   });
+                    Navigator.pop(context);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
