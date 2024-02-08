@@ -70,7 +70,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'html',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.orange,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('html', context),
                           containerIcon: Icon(
                             DevIcons.html5PlainWordmark,
                             size: 100,
@@ -85,7 +86,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'css',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.blue,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('css', context),
                           containerIcon: const Icon(
                             DevIcons.css3PlainWordmark,
                             size: 100,
@@ -100,7 +102,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'javaScript',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amber,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('javaScript', context),
                           containerIcon: const Icon(
                             DevIcons.javascriptPlain,
                             size: 100,
@@ -115,7 +118,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'github',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.black,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('github', context),
                           containerIcon: const Icon(
                             DevIcons.githubOriginalWordmark,
                             size: 100,
@@ -130,7 +134,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'kotlin',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amber,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('kotlin', context),
                           containerIcon: const Icon(
                             DevIcons.kotlinPlainWordmark,
                             size: 100,
@@ -145,7 +150,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'bootstrap',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.deepPurple,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('bootstrap', context),
                           containerIcon: const Icon(
                             DevIcons.bootstrapPlainWordmark,
                             size: 100,
@@ -160,7 +166,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'c',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.blue,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('c', context),
                           containerIcon: const Icon(
                             DevIcons.cLine,
                             size: 100,
@@ -175,7 +182,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'nodejs',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.green,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('nodejs', context),
                           containerIcon: const Icon(
                             DevIcons.nodejsPlain,
                             size: 100,
@@ -190,7 +198,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'python',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amberAccent,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('python', context),
                           containerIcon: const Icon(
                             DevIcons.pythonPlain,
                             size: 100,
@@ -205,7 +214,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'mongodb',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.green,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) =>
+                              updateSelectedContainer('mongodb', context),
                           containerIcon: const Icon(
                             DevIcons.mongodbPlain,
                             size: 100,
@@ -224,7 +234,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     width: MediaQuery.of(context).size.width,
                     defaultBorderColor: Colors.transparent,
                     selectedBorderColor: Colors.deepPurple,
-                    onTapCallback: updateSelectedContainer,
+                    onTapCallback: (p0) =>
+                        updateSelectedContainer('devFullSctack', context),
                     isSelected: selectedContainerId == 'devFullSctack',
                     autreInformation: 'Full Stack',
                     hasImage: true,
@@ -285,14 +296,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
     );
   }
 
- void updateSelectedContainer(String id) {
+  void updateSelectedContainer(String id, BuildContext context) {
     Provider.of<ContainerSelectionModel>(context, listen: false)
         .updateSelectedContainer(id);
-    setState(() {
-      selectedContainerId = id;
-    });
+    print(id);
   }
-
 
   void sendDataForHTML() {
     print('Données pour le parcours "HTML" envoyées.');

@@ -12,8 +12,9 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _user = Provider.of<User?>(context);
-    String selectedContainerId =
-        Provider.of<ContainerSelectionModel>(context).selectedContainerId;
+    final containerSelectionModel =
+        Provider.of<ContainerSelectionModel>(context);
+    final selectedContainerId = containerSelectionModel.selectedContainerId;
     if (_user != null) {
       if (selectedContainerId == null) {
         print("Aucun cours selectionner");

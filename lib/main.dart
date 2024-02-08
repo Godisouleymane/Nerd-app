@@ -16,7 +16,9 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ContainerSelectionModel()),
+        ChangeNotifierProvider(
+          create: (_) => ContainerSelectionModel(),
+        ),
         StreamProvider<User?>.value(
           value: FirebaseAuth.instance.authStateChanges(),
           initialData: null,
@@ -43,8 +45,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => Wrapper(),
-        '/html': (context) => HTMLView(),
+        '/': (context) => const Wrapper(),
+        '/html': (context) => const HTMLView(),
       },
     );
   }
