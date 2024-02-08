@@ -56,13 +56,18 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                 color: Colors.white54,
                 borderRadius: BorderRadius.circular(16.0),
               ),
-              child: Text(
-                _selectedModule?.moduleName ?? _courseModules.first.moduleName,
-                style: TextStyle(
-                  color:const Color.fromARGB(255, 53, 32, 149),
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Row(
+                children: [
+                  Icon(Icons.list, size: 30,),
+                  Text(
+                    _selectedModule?.moduleName ?? _courseModules.first.moduleName,
+                    style: TextStyle(
+                      color:const Color.fromARGB(255, 53, 32, 149),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
