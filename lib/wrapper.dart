@@ -22,7 +22,7 @@ class Wrapper extends StatelessWidget {
         print('Html view envoyer');
         return HTMLView();
       } else {
-        print('')
+        print('Application cracher');
         return Placeholder();
       }
     } else {
