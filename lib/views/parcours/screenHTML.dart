@@ -51,7 +51,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Colors.white60,
+                    color: Colors.white70,
                     borderRadius: BorderRadius.circular(16.0),
                    boxShadow: const [
                       BoxShadow(
@@ -65,9 +65,10 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                   child: Text(
                     _selectedModule?.moduleName ?? _courseModules.first.moduleName,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color:  const Color.fromARGB(255, 53, 32, 149),
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic
                     ),
                   ),
                 ),
