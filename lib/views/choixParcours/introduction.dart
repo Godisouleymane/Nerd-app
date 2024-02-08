@@ -267,6 +267,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   .set({'selectedContainerId': selectedContainerId}).then((_) {
                 // Enregistrement réussi, naviguer vers la page appropriée
                 navigateToSelectedContainerPage(selectedContainerId);
+              }).catchError((error) {
+                // Gérer les erreurs lors de l'enregistrement dans Firestore
+                print('Erreur lors de l\'enregistrement dans Firestore: $error');
               });
             }
           },
