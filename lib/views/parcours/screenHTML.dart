@@ -69,8 +69,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                   Icon(Icons.list, size: 30,),
                   Text(
                     _selectedModule?.moduleName ?? _courseModules.first.moduleName,
-                    style: TextStyle(
-                      color:const Color.fromARGB(255, 53, 32, 149),
+                    style: const TextStyle(
+                      color:Color.fromARGB(255, 53, 32, 149),
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -133,7 +133,7 @@ void _showModulesBottomSheet(BuildContext context) {
 
 class CourseModule {
   final String moduleName;
-  bool isUnlocked; // Ajoutez une variable pour indiquer si le module est déverrouillé ou non
+  bool isUnlocked; 
   final List<String> courses;
 
   CourseModule({
