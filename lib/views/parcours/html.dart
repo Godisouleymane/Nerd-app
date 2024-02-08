@@ -71,7 +71,7 @@ class _HTMLViewState extends State<HTMLView> {
           });
         },
         icons: const [Icons.arrow_upward, Icons.business_sharp, Icons.school],
-        labels: const ["Progression", "Communaute", "Cours"],
+        labels: const ["Progression", "Communauté", "Cours"],
         selectedColors: const [
           Colors.deepPurple,
           Colors.deepPurple,
