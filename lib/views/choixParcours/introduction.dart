@@ -100,7 +100,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'javaScript',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amber,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) => updateSelectedContainer('javaScript', context),
                           containerIcon: const Icon(
                             DevIcons.javascriptPlain,
                             size: 100,
