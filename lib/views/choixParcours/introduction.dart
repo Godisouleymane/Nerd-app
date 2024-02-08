@@ -205,7 +205,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'mongodb',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.green,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) => updateSelectedContainer('mongodb', context),
                           containerIcon: const Icon(
                             DevIcons.mongodbPlain,
                             size: 100,
