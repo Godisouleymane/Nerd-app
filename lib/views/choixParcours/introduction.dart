@@ -248,34 +248,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
               minimumSize: const Size(double.infinity, 50.0),
               elevation: 10),
           onPressed: () {
-            if (selectedContainerId == null) {
-              showNotification(context,
-                  "Veuillez sellectionner un cours ou un parcours s'il vous plait");
-            } else if (selectedContainerId == 'html') {
-              sendDataForHTML();
-            } else if (selectedContainerId == 'css') {
-              sendDataForCSS();
-            } else if (selectedContainerId == 'javaScript') {
-              sendDataForJAVASCRIPT();
-            } else if (selectedContainerId == 'github') {
-              sendDataForGITHUB();
-            } else if (selectedContainerId == 'kotlin') {
-              sendDataForKOTLIN();
-            } else if (selectedContainerId == 'bootstrap') {
-              sendDataForBOOTSTRAP();
-            } else if (selectedContainerId == 'c') {
-              sendDataForC();
-            } else if (selectedContainerId == 'nodejs') {
-              sendDataForNODEJS();
-            } else if (selectedContainerId == 'python') {
-              sendDataForPYTHON();
-            } else if (selectedContainerId == 'mongodb') {
-              sendDataForMONGODB();
-            } else if (selectedContainerId == 'devFullSctack') {
-              sendDataForFULLSTACK();
-            } else {
-              showNotification(context, "Aucune donnee trouver pour ce cours");
-            }
+           
           },
           child: const Text(
             "Commencer",
