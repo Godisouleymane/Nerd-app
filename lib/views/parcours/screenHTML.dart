@@ -56,8 +56,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                    boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
-                        spreadRadius: 5,
-                        blurRadius: 7,
+                        spreadRadius: 3,
+                        blurRadius: 3,
                         offset: Offset(0, 2), // changes position of shadow
                       ),
                     ],
