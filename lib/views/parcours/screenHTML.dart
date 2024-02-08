@@ -17,19 +17,20 @@ class _ScreenHtmlState extends State<ScreenHtml> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                'Niveau Débutant',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 16),
-              CourseModule(
-                moduleName: 'Module 1: Introduction à HTML',
-                courses: const [
-                  'Comprendre les bases du HTML',
-                  'Structure d\'une page HTML',
-                  'Les éléments et balises HTML les plus courants',
-                  'Syntaxe de base HTML',
-                ],
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.shade400
+                ),
+                child: CourseModule(
+                  moduleName: 'Module 1: Introduction à HTML',
+                  courses: const [
+                    'Comprendre les bases du HTML',
+                    'Structure d\'une page HTML',
+                    'Les éléments et balises HTML les plus courants',
+                    'Syntaxe de base HTML',
+                  ],
+                ),
               ),
               CourseModule(moduleName: 'Module 2: Structure et Sémantique', courses: [],),
               CourseModule(moduleName: 'Module 3: Liens, Images et Médias', courses: [],),

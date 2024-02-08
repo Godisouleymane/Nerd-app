@@ -18,9 +18,9 @@ class _HTMLViewState extends State<HTMLView> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    ScreenHtml(),
-    Communaute(),
-    Cours(),
+    const ScreenHtml(),
+    const Communaute(),
+    const Cours(),
   ];
 
   @override
@@ -28,37 +28,44 @@ class _HTMLViewState extends State<HTMLView> {
     final User? user = Provider.of<User?>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 53, 32, 149),
-        title: Row(
-          children: [
-            const Text(
-              'HTML',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            backgroundColor: const Color.fromARGB(255, 53, 32, 149),
+            title: Row(
+              children: [
+                const Text(
+                  'HTML',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Icon(DevIcons.html5Plain, color: Colors.orange[800],),
+              ],
             ),
-            Icon(
-              DevIcons.html5Plain,
-              color: Colors.orange[900],
-            )
-          ],
-        ),
-        automaticallyImplyLeading: false,
-        actions: [
-          if (user != null && user.photoURL != null)
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: CircleAvatar(
-                backgroundColor: Colors.grey,
-                backgroundImage: NetworkImage(user.photoURL!),
-              ),
-            )
+            floating: true,
+            expandedHeight: 150.0,
+            flexibleSpace: Container(
+              alignment: Alignment.bottomCenter,
+              child: ,
+            ),
+            actions: [
+              if (user != null && user.photoURL != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    backgroundImage: NetworkImage(user.photoURL!),
+                  ),
+                )
+            ],
+          ),
+          SliverFillRemaining(
+            child: _screens[_currentIndex],
+          ),
         ],
       ),
-      body: _screens[
-          _currentIndex], // Utilisation de _currentIndex pour afficher le bon écran
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         screens: _screens, // Passer la liste d'écrans
