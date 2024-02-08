@@ -130,7 +130,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'kotlin',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amber,
-                          onTapCallback: (p0) => u,
+                          onTapCallback: (p0) => updateSelectedContainer('kotlin', context),
                           containerIcon: const Icon(
                             DevIcons.kotlinPlainWordmark,
                             size: 100,
