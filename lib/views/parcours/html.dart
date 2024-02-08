@@ -45,10 +45,17 @@ class _HTMLViewState extends State<HTMLView> {
               ],
             ),
             floating: true,
+            pinned: true,
             expandedHeight: 150.0,
             flexibleSpace: Container(
+              padding: const EdgeInsets.only(bottom: 6.0),
               alignment: Alignment.bottomCenter,
-              child: ,
+              decoration: BoxDecoration(
+               
+              ),
+              child: const Text('Introduction a HTML', style: TextStyle(
+                color: Colors.white
+              ),),
             ),
             actions: [
               if (user != null && user.photoURL != null)
