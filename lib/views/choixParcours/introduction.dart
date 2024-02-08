@@ -1,7 +1,9 @@
+import 'package:code_crafters/provider/cours_model.dart';
 import 'package:code_crafters/views/choixParcours/gestureDetecto/gesture.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class IntroductionPage extends StatefulWidget {
   const IntroductionPage({super.key});
@@ -283,12 +285,10 @@ class _IntroductionPageState extends State<IntroductionPage> {
     );
   }
 
-  void updateSelectedContainer(String id) {
-    setState(() {
-      selectedContainerId = id;
-      print(id);
-    });
-    
+  void updateSelectedContainer(String id, BuildContext context) {
+    Provider.of<ContainerSelectionModel>(context, listen: false)
+        .updateSelectedContainer(id);
+    print(id);
   }
 
   void sendDataForHTML() {
@@ -336,4 +336,3 @@ class _IntroductionPageState extends State<IntroductionPage> {
     print('Données pour le parcours "FULL STACK" envoyées.');
   }
 }
-
