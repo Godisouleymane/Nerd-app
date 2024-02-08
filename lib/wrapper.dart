@@ -14,9 +14,8 @@ class Wrapper extends StatelessWidget {
     final _user = Provider.of<User?>(context);
     String selectedContainerId =
         Provider.of<ContainerSelectionModel>(context).selectedContainerId;
-
     if (_user != null) {
-      return const HTMLView();
+      
     } else {
       return OnBoardingScreen();
     }
