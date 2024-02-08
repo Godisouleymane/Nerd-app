@@ -16,6 +16,12 @@ class HTMLView extends StatefulWidget {
 class _HTMLViewState extends State<HTMLView> {
   int _currentIndex = 0;
 
+  final List<Widget> _screens = [
+    ScreenHtml(),
+    Communaute(),
+    Cours(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final User? user = Provider.of<User?>(context);
@@ -42,14 +48,11 @@ class _HTMLViewState extends State<HTMLView> {
             )
         ],
       ),
-      body: const ScreenHtml(),
+      body: _screens[
+          _currentIndex], // Utilisation de _currentIndex pour afficher le bon écran
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
-        screens: const [
-          ScreenHtml(),
-          Communaute(),
-          Cours(),
-        ],
+        screens: _screens, // Passer la liste d'écrans
         onTap: (int value) {
           setState(() {
             _currentIndex = value;
