@@ -190,7 +190,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'python',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amberAccent,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) => updateSelectedContainer('python', context),
                           containerIcon: const Icon(
                             DevIcons.pythonPlain,
                             size: 100,
