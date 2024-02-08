@@ -2,6 +2,7 @@ import 'package:code_crafters/views/parcours/screenHTML.dart';
 import 'package:code_crafters/views/parcours/shared-ui/bottomNaviagtionBar.dart';
 import 'package:code_crafters/views/parcours/shared-ui/communaute.dart';
 import 'package:code_crafters/views/parcours/shared-ui/cours.dart';
+import 'package:dev_icons/dev_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,12 +30,20 @@ class _HTMLViewState extends State<HTMLView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 53, 32, 149),
-        title: const Text(
-          'HTML',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+        title: Row(
+          children: [
+            const Text(
+              'HTML',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            Icon(
+              DevIcons.html5Plain,
+              color: Colors.orange[900],
+            )
+          ],
         ),
         automaticallyImplyLeading: false,
         actions: [
