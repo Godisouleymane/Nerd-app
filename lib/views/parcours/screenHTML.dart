@@ -71,7 +71,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     );
   }
 
-  void _showModulesBottomSheet(BuildContext context) {
+  
+void _showModulesBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -79,14 +80,24 @@ class _ScreenHtmlState extends State<ScreenHtml> {
           itemCount: _courseModules.length,
           itemBuilder: (BuildContext context, int index) {
             final courseModule = _courseModules[index];
+            final isSelected = courseModule == _selectedModule;
+            final textStyle = TextStyle(
+              color: isSelected ? Colors.white : Colors.black,
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            );
+            final tileColor = isSelected ? Colors.blue : null;
+
             return ListTile(
-              title: Text(courseModule.moduleName),
+              title: Text(
+                courseModule.moduleName,
+                style: textStyle,
+              ),
+              tileColor: tileColor,
               onTap: () {
                 if (courseModule.isUnlocked) {
                   setState(() {
                     _selectedModule = courseModule;
                   });
-                  Navigator.pop(context);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -103,12 +114,12 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       },
     );
   }
+
 }
 
 class CourseModule {
   final String moduleName;
-  bool
-      isUnlocked; // Ajoutez une variable pour indiquer si le module est déverrouillé ou non
+  bool isUnlocked; // Ajoutez une variable pour indiquer si le module est déverrouillé ou non
   final List<String> courses;
 
   CourseModule({
@@ -117,3 +128,4 @@ class CourseModule {
     required this.courses,
   });
 }
+
