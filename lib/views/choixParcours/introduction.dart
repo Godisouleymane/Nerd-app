@@ -2,6 +2,7 @@ import 'package:code_crafters/provider/cours_model.dart';
 import 'package:code_crafters/views/choixParcours/gestureDetecto/gesture.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -255,6 +256,10 @@ class _IntroductionPageState extends State<IntroductionPage> {
               return showNotification(context,
                   "Veuillez selectionner un cours ou un parcours s'il vous plait");
             }
+
+            final user = Provider.of<User?>(context, listen: false);
+
+            
           },
           child: const Text(
             "Commencer",
