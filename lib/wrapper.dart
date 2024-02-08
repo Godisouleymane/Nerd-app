@@ -1,9 +1,9 @@
+import 'package:code_crafters/views/choixParcours/introduction.dart';
 import 'package:code_crafters/views/parcours/html.dart';
 import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 class Wrapper extends StatelessWidget {
   const Wrapper({super.key});
@@ -16,5 +16,6 @@ class Wrapper extends StatelessWidget {
     } else {
       return OnBoardingScreen();
     }
+
   }
 }
