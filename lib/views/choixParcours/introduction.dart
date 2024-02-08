@@ -145,7 +145,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'bootstrap',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.deepPurple,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) => updateSelectedContainer('bootstrap', context),
                           containerIcon: const Icon(
                             DevIcons.bootstrapPlainWordmark,
                             size: 100,
