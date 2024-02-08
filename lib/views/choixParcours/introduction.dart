@@ -4,6 +4,7 @@ import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class IntroductionPage extends StatefulWidget {
   const IntroductionPage({super.key});
@@ -285,55 +286,18 @@ class _IntroductionPageState extends State<IntroductionPage> {
     );
   }
 
- void updateSelectedContainer(String id) {
+  void navigateToSelectedContainerPage(String containerId) {
+    if (containerId == 'html') {
+      print("Donnees pour html envoyer");
+      Navigator.pushNamed(context, '/html');
+    } else if (containerId == 'css') {
+      Navigator.pushNamed(context, '/css');
+    }
+  }
+
+  void updateSelectedContainer(String id) {
     setState(() {
       selectedContainerId = id;
     });
-  }
-
-
-  void sendDataForHTML() {
-    print('Données pour le parcours "HTML" envoyées.');
-    Navigator.pushNamed(context, '/html');
-  }
-
-  void sendDataForCSS() {
-    print('Données pour le parcours "CSS" envoyées.');
-  }
-
-  void sendDataForJAVASCRIPT() {
-    print('Données pour le parcours "JAVASCRIPT" envoyées.');
-  }
-
-  void sendDataForGITHUB() {
-    print('Données pour le parcours "GITHUB" envoyées.');
-  }
-
-  void sendDataForKOTLIN() {
-    print('Données pour le parcours "KOTLIN" envoyées.');
-  }
-
-  void sendDataForBOOTSTRAP() {
-    print('Données pour le parcours "BOOTSTRAP" envoyées.');
-  }
-
-  void sendDataForC() {
-    print('Données pour le parcours "C" envoyées.');
-  }
-
-  void sendDataForNODEJS() {
-    print('Données pour le parcours "NODEJS" envoyées.');
-  }
-
-  void sendDataForPYTHON() {
-    print('Données pour le parcours "PYTHON" envoyées.');
-  }
-
-  void sendDataForMONGODB() {
-    print('Données pour le parcours "MONGODB" envoyées.');
-  }
-
-  void sendDataForFULLSTACK() {
-    print('Données pour le parcours "FULL STACK" envoyées.');
   }
 }
