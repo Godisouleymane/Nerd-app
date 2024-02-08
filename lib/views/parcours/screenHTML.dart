@@ -38,28 +38,34 @@ class _ScreenHtmlState extends State<ScreenHtml> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: GestureDetector(
-            onTap: () {
-              _showModulesBottomSheet(context);
-            },
-            child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
               padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-              child: Text(
-                _selectedModule?.moduleName ?? _courseModules.first.moduleName,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
+              child: GestureDetector(
+                onTap: () {
+                  _showModulesBottomSheet(context);
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.only(),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Text(
+                    _selectedModule?.moduleName ?? _courseModules.first.moduleName,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -67,7 +73,6 @@ class _ScreenHtmlState extends State<ScreenHtml> {
 
   void _showModulesBottomSheet(BuildContext context) {
     showModalBottomSheet(
-      isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
         return ListView.builder(
