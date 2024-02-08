@@ -115,7 +115,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'github',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.black,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) => updateSelectedContainer('github', context),
                           containerIcon: const Icon(
                             DevIcons.githubOriginalWordmark,
                             size: 100,
@@ -130,7 +130,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           containerId: 'kotlin',
                           defaultBorderColor: Colors.transparent,
                           selectedBorderColor: Colors.amber,
-                          onTapCallback: updateSelectedContainer,
+                          onTapCallback: (p0) => u,
                           containerIcon: const Icon(
                             DevIcons.kotlinPlainWordmark,
                             size: 100,
