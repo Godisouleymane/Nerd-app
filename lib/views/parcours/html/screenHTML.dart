@@ -45,7 +45,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     ),
     CourseModule(
       moduleName: 'Module 4: Formulaires',
-      isUnlocked: true,
+      isUnlocked: false,
       courses: [
         "Création de formulaires HTML",
         "Utilisation de différents types de champs de formulaire (texte, e-mail, mot de passe, etc.)",
