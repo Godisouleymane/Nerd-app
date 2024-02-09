@@ -92,16 +92,46 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                   ),
                 ),
               ),
-              if (_selectedModule ==
+             if (_selectedModule ==
                   _courseModules
                       .first) // Display chapters only if module 1 is selected
                 SizedBox(height: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: _selectedModule.courses
-                    .map((course) => Text(course))
-                    .toList(),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: _selectedModule.courses.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final course = _selectedModule.courses[index];
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 5.0),
+                    padding: const EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Row(
+                      children: [
+                        _selectedModule.isUnlocked
+                            ? Icon(Icons.play_arrow, color: Colors.green)
+                            : Icon(Icons.lock, color: Colors.red),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            course,
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              color: _selectedModule.isUnlocked
+                                  ? Colors.black
+                                  : Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
+
             ],
           ),
         ),
