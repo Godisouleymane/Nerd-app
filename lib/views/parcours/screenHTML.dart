@@ -31,6 +31,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
         ' Structure et Sémantique',
         ' Structure et Sémantique'
       ],
+       courseUnlockedStatus: [true, false, false, false],
     ),
     CourseModule(
       moduleName: 'Module 3: Liens, Images et Médias',
