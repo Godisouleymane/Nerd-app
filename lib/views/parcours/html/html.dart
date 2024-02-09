@@ -21,8 +21,9 @@ class _HTMLViewState extends State<HTMLView> {
     const ScreenHtml(),
     const Communaute(),
     const Cours(),
+    
   ];
-
+  int lives = 5;
   @override
   Widget build(BuildContext context) {
     final User? user = Provider.of<User?>(context);
@@ -44,8 +45,26 @@ class _HTMLViewState extends State<HTMLView> {
                 Icon(DevIcons.html5Plain, color: Colors.orange[800],),
               ],
             ),
+           
             floating: true,
             pinned: false,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: List.generate(
+                      lives,
+                      (index) => const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                  // Vous pouvez ajouter d'autres widgets ici si nécessaire
+                ],
+              ),
+            ),
             actions: [
               if (user != null && user.photoURL != null)
                 Padding(

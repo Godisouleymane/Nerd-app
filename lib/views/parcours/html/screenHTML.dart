@@ -156,7 +156,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
 
                     return Column(
                       children: [
-                        SizedBox(height: 40),
+                        const SizedBox(height: 40),
                         Container(
                           margin: const EdgeInsets.symmetric(vertical: 5.0),
                           padding: const EdgeInsets.all(10.0),
@@ -175,9 +175,9 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                           child: Row(
                             children: [
                               isUnlocked
-                                  ? Icon(Icons.play_arrow, color: Colors.green)
-                                  : Icon(Icons.lock, color: Colors.red),
-                              SizedBox(width: 10),
+                                  ? const Icon(Icons.play_arrow, color: Colors.green)
+                                  : const Icon(Icons.lock, color: Colors.red),
+                              const SizedBox(width: 10),
                               Flexible(
                                 child: Text(
                                   course,
