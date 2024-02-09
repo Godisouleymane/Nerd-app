@@ -192,28 +192,31 @@ class _ScreenHtmlState extends State<ScreenHtml> {
             );
             final tileColor = isSelected ? Colors.deepPurple : null;
 
-            return ListTile(
-              title: Text(
-                courseModule.moduleName,
-                style: textStyle,
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: ListTile(
+                title: Text(
+                  courseModule.moduleName,
+                  style: textStyle,
+                ),
+                tileColor: tileColor,
+                onTap: () {
+                  if (courseModule.isUnlocked) {
+                    setState(() {
+                      _selectedModule = courseModule;
+                    });
+                    Navigator.pop(context);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                            'Veuillez terminer le module précédent pour déverrouiller celui-ci.'),
+                      ),
+                    );
+                    Navigator.pop(context);
+                  }
+                },
               ),
-              tileColor: tileColor,
-              onTap: () {
-                if (courseModule.isUnlocked) {
-                  setState(() {
-                    _selectedModule = courseModule;
-                  });
-                  Navigator.pop(context);
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                          'Veuillez terminer le module précédent pour déverrouiller celui-ci.'),
-                    ),
-                  );
-                  Navigator.pop(context);
-                }
-              },
             );
           },
         );
