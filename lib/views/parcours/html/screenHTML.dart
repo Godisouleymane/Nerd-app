@@ -69,7 +69,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       courses: [
         "Réalisation d'un projet pratique pour mettre en pratique les concepts appris dans les modules précédents",
         "Validation HTML et accessibilité",
-        "Exercice fin module"
+        "Exercices de mise en œuvre de compétences HTML"
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
