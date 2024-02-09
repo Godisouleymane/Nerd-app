@@ -57,8 +57,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       moduleName: 'Module 5: Bonnes Pratiques et Normes',
       isUnlocked: false,
       courses: [
+        "Les meilleures pratiques pour le codage HTML",
         "",
-        "Utilisation de différents types de champs de formulaire (texte, e-mail, mot de passe, etc.)",
         "Exercice fin du module"
       ],
       courseUnlockedStatus: [true, false, false, false],
