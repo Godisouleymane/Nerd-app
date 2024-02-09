@@ -63,6 +63,16 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
+    CourseModule(
+      moduleName: 'Module 6: Projet Pratique',
+      isUnlocked: false,
+      courses: [
+        "Les meilleures pratiques pour le codage HTML",
+        "Validation HTML et accessibilité",
+        "Exercice fin module"
+      ],
+      courseUnlockedStatus: [true, false, false, false],
+    ),
   ];
 
   final GlobalKey _containerKey = GlobalKey();
