@@ -25,7 +25,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     ),
     CourseModule(
       moduleName: 'Module 2: Structure et Sémantique',
-      isUnlocked: false,
+      isUnlocked: true,
       courses: [
         ' Structure et Sémantique',
         ' Structure et Sémantique',
