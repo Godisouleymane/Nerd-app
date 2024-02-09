@@ -194,31 +194,39 @@ class _ScreenHtmlState extends State<ScreenHtml> {
 
             return Padding(
               padding: const EdgeInsets.all(20.0),
-              child: ListTile(
+              child: Material(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)
                 ),
-                title: Text(
-                  courseModule.moduleName,
-                  style: textStyle,
+                elevation: 7,
+                shadowColor: Colors.grey,
+                child: ListTile(
+                 
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  title: Text(
+                    courseModule.moduleName,
+                    style: textStyle,
+                  ),
+                  tileColor: tileColor,
+                  onTap: () {
+                    if (courseModule.isUnlocked) {
+                      setState(() {
+                        _selectedModule = courseModule;
+                      });
+                      Navigator.pop(context);
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                              'Veuillez terminer le module précédent pour déverrouiller celui-ci.'),
+                        ),
+                      );
+                      Navigator.pop(context);
+                    }
+                  },
                 ),
-                tileColor: tileColor,
-                onTap: () {
-                  if (courseModule.isUnlocked) {
-                    setState(() {
-                      _selectedModule = courseModule;
-                    });
-                    Navigator.pop(context);
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                            'Veuillez terminer le module précédent pour déverrouiller celui-ci.'),
-                      ),
-                    );
-                    Navigator.pop(context);
-                  }
-                },
               ),
             );
           },
