@@ -222,10 +222,8 @@ class CourseModule {
 
 
 class ChapterDiagramPainter extends CustomPainter {
-  
   final int numberOfChapters;
-  final double verticalSpacing =
-      150.0; // Augmentez cette valeur pour plus d'espace entre les chapitres
+  final double verticalSpacing = 150.0;
 
   ChapterDiagramPainter(this.numberOfChapters);
 
@@ -234,10 +232,13 @@ class ChapterDiagramPainter extends CustomPainter {
     final double startX = size.width / 2;
     final double startY = 20;
     final double endY = size.height - 20;
+
+    // Recalculer l'espace entre les chapitres en fonction de numberOfChapters
     final double totalVerticalSpace = verticalSpacing * (numberOfChapters - 1);
     final double spaceBetweenChapters =
         (endY - startY - totalVerticalSpace) / (numberOfChapters - 1);
     final double stepY = spaceBetweenChapters + verticalSpacing;
+
     final Paint paint = Paint()
       ..color = Colors.black
       ..strokeWidth = 2;
@@ -247,7 +248,7 @@ class ChapterDiagramPainter extends CustomPainter {
     for (int i = 0; i < numberOfChapters; i++) {
       canvas.drawLine(Offset(startX, currentY),
           Offset(startX, currentY + spaceBetweenChapters), paint);
-      currentY += stepY; // Ajuster la position Y pour le prochain chapitre
+      currentY += stepY;
     }
 
     // Dessiner la ligne horizontale
