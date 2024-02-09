@@ -114,10 +114,13 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                   itemCount: _selectedModule.courses.length,
                   itemBuilder: (BuildContext context, int index) {
                     final course = _selectedModule.courses[index];
-                   
+                    final bool isUnlocked = _selectedModule
+                            .courseUnlockedStatus[
+                        index]; // Vérifier l'état de déverrouillage du cours
+
                     return Column(
                       children: [
-                         SizedBox(height: 40,),
+                        SizedBox(height: 40,),
                         Container(
                           margin: const EdgeInsets.symmetric(vertical: 5.0),
                           padding: const EdgeInsets.all(10.0),
@@ -127,7 +130,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                           ),
                           child: Row(
                             children: [
-                              _selectedModule.isUnlocked
+                              isUnlocked
                                   ? Icon(Icons.play_arrow, color: Colors.green)
                                   : Icon(Icons.lock, color: Colors.red),
                               SizedBox(width: 10),
@@ -137,9 +140,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                                   style: TextStyle(
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.bold,
-                                    color: _selectedModule.isUnlocked
-                                        ? Colors.black
-                                        : Colors.grey,
+                                    color: isUnlocked ? Colors.black : Colors.grey,
                                   ),
                                 ),
                               ),
@@ -150,6 +151,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                     );
                   },
                 ),
+
               ),
             ],
           ),
