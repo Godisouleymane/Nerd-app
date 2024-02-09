@@ -36,7 +36,9 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     CourseModule(
       moduleName: 'Module 3: Liens, Images et Médias',
       isUnlocked: false,
-      courses: [],
+      courses: [
+        "Création de liens hypertextes",
+      ],
       courseUnlockedStatus: [true, false, false, false],
     ),
     CourseModule(
