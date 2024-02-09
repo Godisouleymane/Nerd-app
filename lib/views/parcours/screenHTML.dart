@@ -37,6 +37,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       moduleName: 'Module 3: Liens, Images et Médias',
       isUnlocked: false,
       courses: [],
+       courseUnlockedStatus: [true, false, false, false],
     ),
     CourseModule(
       moduleName: 'Module 4: Formulaires',
