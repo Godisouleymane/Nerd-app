@@ -34,6 +34,7 @@ class _HTMLViewState extends State<HTMLView> {
           SliverAppBar(
             backgroundColor: const Color.fromARGB(255, 53, 32, 149),
             title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Text(
                   'HTML',
@@ -45,7 +46,6 @@ class _HTMLViewState extends State<HTMLView> {
                 Icon(DevIcons.html5Plain, color: Colors.orange[800],),
               ],
             ),
-           
             floating: true,
             pinned: false,
             flexibleSpace: FlexibleSpaceBar(
