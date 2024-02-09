@@ -203,13 +203,17 @@ class CourseModule {
   final String moduleName;
   bool isUnlocked;
   final List<String> courses;
+  final List<bool>
+      courseUnlockedStatus; // Liste des états de verrouillage/déverrouillage pour chaque cours
 
   CourseModule({
     required this.moduleName,
     required this.isUnlocked,
     required this.courses,
+    required this.courseUnlockedStatus, // Ajouter la liste des états de verrouillage/déverrouillage
   });
 }
+
 
 class ChapterDiagramPainter extends CustomPainter {
   
