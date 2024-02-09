@@ -8,7 +8,7 @@ class ScreenHtml extends StatefulWidget {
 }
 
 class _ScreenHtmlState extends State<ScreenHtml> {
-  late CourseModule _selectedModule; // Change to late initialization
+  late CourseModule _selectedModule;
 
   final List<CourseModule> _courseModules = [
     CourseModule(
@@ -31,27 +31,28 @@ class _ScreenHtmlState extends State<ScreenHtml> {
         ' Structure et Sémantique',
         ' Structure et Sémantique'
       ],
-       courseUnlockedStatus: [true, false, false, false],
+      courseUnlockedStatus: [true, false, false, false],
     ),
     CourseModule(
       moduleName: 'Module 3: Liens, Images et Médias',
       isUnlocked: false,
       courses: [],
-       courseUnlockedStatus: [true, false, false, false],
+      courseUnlockedStatus: [true, false, false, false],
     ),
     CourseModule(
       moduleName: 'Module 4: Formulaires',
       isUnlocked: false,
       courses: [],
-       courseUnlockedStatus: [true, false, false, false],
+      courseUnlockedStatus: [true, false, false, false],
     ),
   ];
+
+  final GlobalKey _containerKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
-    _selectedModule =
-        _courseModules.first; // Initialize selected module to the first module
+    _selectedModule = _courseModules.first;
   }
 
   @override
@@ -69,6 +70,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                   _showModulesBottomSheet(context);
                 },
                 child: Container(
+                  key: _containerKey,
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
@@ -94,7 +96,6 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                         child: Text(
                           _selectedModule.moduleName,
                           softWrap: true,
-                          
                           style: const TextStyle(
                             color: Color.fromARGB(255, 53, 32, 149),
                             fontSize: 20.0,
@@ -112,20 +113,22 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                 SizedBox(height: 20),
               CustomPaint(
                 size: Size(MediaQuery.of(context).size.width, 300),
-                painter: ChapterDiagramPainter(_selectedModule.courses.length),
+                painter: ChapterDiagramPainter(
+                  _selectedModule.courses.length,
+                  _containerKey,
+                ),
                 child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: _selectedModule.courses.length,
                   itemBuilder: (BuildContext context, int index) {
                     final course = _selectedModule.courses[index];
-                    final bool isUnlocked = _selectedModule
-                            .courseUnlockedStatus[
-                        index]; // Vérifier l'état de déverrouillage du cours
+                    final bool isUnlocked =
+                        _selectedModule.courseUnlockedStatus[index];
 
                     return Column(
                       children: [
-                        SizedBox(height: 40,),
+                        SizedBox(height: 40),
                         Container(
                           margin: const EdgeInsets.symmetric(vertical: 5.0),
                           padding: const EdgeInsets.all(10.0),
@@ -139,13 +142,15 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                                   ? Icon(Icons.play_arrow, color: Colors.green)
                                   : Icon(Icons.lock, color: Colors.red),
                               SizedBox(width: 10),
-                              Expanded(
+                              Flexible(
                                 child: Text(
                                   course,
+                                  softWrap: true,
                                   style: TextStyle(
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.bold,
-                                    color: isUnlocked ? Colors.black : Colors.grey,
+                                    color:
+                                        isUnlocked ? Colors.black : Colors.grey,
                                   ),
                                 ),
                               ),
@@ -156,7 +161,6 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                     );
                   },
                 ),
-
               ),
             ],
           ),
@@ -214,30 +218,34 @@ class CourseModule {
   final String moduleName;
   bool isUnlocked;
   final List<String> courses;
-  final List<bool>
-      courseUnlockedStatus; // Liste des états de verrouillage/déverrouillage pour chaque cours
+  final List<bool> courseUnlockedStatus;
 
   CourseModule({
     required this.moduleName,
     required this.isUnlocked,
     required this.courses,
-    required this.courseUnlockedStatus, // Ajouter la liste des états de verrouillage/déverrouillage
+    required this.courseUnlockedStatus,
   });
 }
 
 class ChapterDiagramPainter extends CustomPainter {
   final int numberOfChapters;
   final double verticalSpacing = 150.0;
+  final GlobalKey containerKey;
 
-  ChapterDiagramPainter(this.numberOfChapters);
+  ChapterDiagramPainter(this.numberOfChapters, this.containerKey);
 
   @override
   void paint(Canvas canvas, Size size) {
+    final RenderBox containerRenderBox =
+        containerKey.currentContext!.findRenderObject() as RenderBox;
+    final Offset containerOffset =
+        containerRenderBox.localToGlobal(Offset.zero);
+
     final double startX = size.width / 2;
-    final double startY = 20;
+    final double startY = containerOffset.dy;
     final double endY = size.height - 20;
 
-    // Recalculer l'espace entre les chapitres en fonction de numberOfChapters
     final double totalVerticalSpace = verticalSpacing * (numberOfChapters - 1);
     final double spaceBetweenChapters =
         (endY - startY - totalVerticalSpace) / (numberOfChapters - 1);
@@ -247,10 +255,8 @@ class ChapterDiagramPainter extends CustomPainter {
       ..color = Colors.black
       ..strokeWidth = 3;
 
-    // Dessiner la ligne verticale
     canvas.drawLine(Offset(startX, startY), Offset(startX, endY), paint);
 
-    // Dessiner les lignes verticales
     double currentY = startY;
     for (int i = 0; i < numberOfChapters; i++) {
       canvas.drawLine(Offset(startX, currentY),
