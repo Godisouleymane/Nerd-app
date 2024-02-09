@@ -23,8 +23,13 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     ),
     CourseModule(
       moduleName: 'Module 2: Structure et Sémantique',
-      isUnlocked: false,
-      courses: [],
+      isUnlocked: true,
+      courses: [
+        ' Structure et Sémantique',
+        ' Structure et Sémantique',
+        ' Structure et Sémantique',
+        ' Structure et Sémantique'
+      ],
     ),
     CourseModule(
       moduleName: 'Module 3: Liens, Images et Médias',
@@ -92,46 +97,56 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                   ),
                 ),
               ),
-             if (_selectedModule ==
+              if (_selectedModule ==
                   _courseModules
                       .first) // Display chapters only if module 1 is selected
                 SizedBox(height: 20),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: _selectedModule.courses.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final course = _selectedModule.courses[index];
-                  return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5.0),
-                    padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Row(
+              CustomPaint(
+                size: Size(MediaQuery.of(context).size.width, 300),
+                painter: ChapterDiagramPainter(_selectedModule.courses.length),
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: _selectedModule.courses.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final course = _selectedModule.courses[index];
+                   
+                    return Column(
                       children: [
-                        _selectedModule.isUnlocked
-                            ? Icon(Icons.play_arrow, color: Colors.green)
-                            : Icon(Icons.lock, color: Colors.red),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            course,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                              color: _selectedModule.isUnlocked
-                                  ? Colors.black
-                                  : Colors.grey,
-                            ),
+                         SizedBox(height: 40,),
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 5.0),
+                          padding: const EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Row(
+                            children: [
+                              _selectedModule.isUnlocked
+                                  ? Icon(Icons.play_arrow, color: Colors.green)
+                                  : Icon(Icons.lock, color: Colors.red),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: Text(
+                                  course,
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: _selectedModule.isUnlocked
+                                        ? Colors.black
+                                        : Colors.grey,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-
             ],
           ),
         ),
@@ -194,4 +209,43 @@ class CourseModule {
     required this.isUnlocked,
     required this.courses,
   });
+}
+
+class ChapterDiagramPainter extends CustomPainter {
+  
+  final int numberOfChapters;
+  final double verticalSpacing =
+      150.0; // Augmentez cette valeur pour plus d'espace entre les chapitres
+
+  ChapterDiagramPainter(this.numberOfChapters);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final double startX = size.width / 2;
+    final double startY = 20;
+    final double endY = size.height - 20;
+    final double totalVerticalSpace = verticalSpacing * (numberOfChapters - 1);
+    final double spaceBetweenChapters =
+        (endY - startY - totalVerticalSpace) / (numberOfChapters - 1);
+    final double stepY = spaceBetweenChapters + verticalSpacing;
+    final Paint paint = Paint()
+      ..color = Colors.black
+      ..strokeWidth = 2;
+
+    // Dessiner les lignes verticales
+    double currentY = startY;
+    for (int i = 0; i < numberOfChapters; i++) {
+      canvas.drawLine(Offset(startX, currentY),
+          Offset(startX, currentY + spaceBetweenChapters), paint);
+      currentY += stepY; // Ajuster la position Y pour le prochain chapitre
+    }
+
+    // Dessiner la ligne horizontale
+    canvas.drawLine(Offset(startX, startY), Offset(startX, endY), paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
 }
