@@ -10,9 +10,6 @@ class Module1View extends StatelessWidget {
     bool chapter4Unlocked = false;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Module 1'),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

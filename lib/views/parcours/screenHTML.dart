@@ -8,10 +8,12 @@ class ScreenHtml extends StatefulWidget {
 }
 
 class _ScreenHtmlState extends State<ScreenHtml> {
+  late CourseModule _selectedModule; // Change to late initialization
+
   final List<CourseModule> _courseModules = [
     CourseModule(
       moduleName: 'Module 1: Introduction à HTML',
-      isUnlocked: true, // Le premier module est déverrouillé par défaut
+      isUnlocked: true,
       courses: const [
         'Comprendre les bases du HTML',
         'Structure d\'une page HTML',
@@ -21,7 +23,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     ),
     CourseModule(
       moduleName: 'Module 2: Structure et Sémantique',
-      isUnlocked: false, // Les autres modules sont verrouillés par défaut
+      isUnlocked: false,
       courses: [],
     ),
     CourseModule(
@@ -36,7 +38,12 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     ),
   ];
 
-  CourseModule? _selectedModule;
+  @override
+  void initState() {
+    super.initState();
+    _selectedModule =
+        _courseModules.first; // Initialize selected module to the first module
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,47 +52,64 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: GestureDetector(
-            onTap: () {
-              _showModulesBottomSheet(context);
-            },
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.white54,
-                borderRadius: BorderRadius.circular(16.0),
-                 boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 5), // changes position of shadow
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  _showModulesBottomSheet(context);
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white54,
+                    borderRadius: BorderRadius.circular(16.0),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 5),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.list, size: 30,),
-                  Text(
-                    _selectedModule?.moduleName ?? _courseModules.first.moduleName,
-                    style: const TextStyle(
-                      color:Color.fromARGB(255, 53, 32, 149),
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.list,
+                        size: 30,
+                      ),
+                      Text(
+                        _selectedModule.moduleName,
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 53, 32, 149),
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+              if (_selectedModule ==
+                  _courseModules
+                      .first) // Display chapters only if module 1 is selected
+                SizedBox(height: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: _selectedModule.courses
+                    .map((course) => Text(course))
+                    .toList(),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
-  
-void _showModulesBottomSheet(BuildContext context) {
+  void _showModulesBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -111,7 +135,7 @@ void _showModulesBottomSheet(BuildContext context) {
                   setState(() {
                     _selectedModule = courseModule;
                   });
-                    Navigator.pop(context);
+                  Navigator.pop(context);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -128,12 +152,11 @@ void _showModulesBottomSheet(BuildContext context) {
       },
     );
   }
-
 }
 
 class CourseModule {
   final String moduleName;
-  bool isUnlocked; 
+  bool isUnlocked;
   final List<String> courses;
 
   CourseModule({
@@ -142,4 +165,3 @@ class CourseModule {
     required this.courses,
   });
 }
-
