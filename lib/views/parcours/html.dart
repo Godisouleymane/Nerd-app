@@ -70,8 +70,8 @@ class _HTMLViewState extends State<HTMLView> {
             _currentIndex = value;
           });
         },
-        icons: const [Icons.arrow_upward, Icons.business_sharp, Icons.school],
-        labels: const ["Progression", "Communauté", "Cours"],
+        icons: const [Icons.note, Icons.business_sharp, Icons.school],
+        labels: const ["Modules", "Communauté", "Cours"],
         selectedColors: const [
           Colors.deepPurple,
           Colors.deepPurple,
