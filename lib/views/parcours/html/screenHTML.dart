@@ -48,6 +48,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       isUnlocked: true,
       courses: [
         "Création de formulaires HTML",
+        "Utilisation de différents types de champs de formulaire (texte, e-mail, mot de passe, etc.)",
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
