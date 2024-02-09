@@ -19,8 +19,9 @@ class _ScreenHtmlState extends State<ScreenHtml> {
         'Structure d\'une page HTML',
         'Les éléments et balises HTML les plus courants',
         'Syntaxe de base HTML',
+        'Exercice fin du module'
       ],
-      courseUnlockedStatus: [true, false, false, false],
+      courseUnlockedStatus: [true, false, false, false, false],
     ),
     CourseModule(
       moduleName: 'Module 2: Structure et Sémantique',
@@ -198,7 +199,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)
                 ),
-                elevation: 7,
+                elevation: 4,
                 shadowColor: Colors.grey,
                 child: ListTile(
                  
@@ -218,7 +219,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                       Navigator.pop(context);
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
                           content: Text(
                               'Veuillez terminer le module précédent pour déverrouiller celui-ci.'),
                         ),
