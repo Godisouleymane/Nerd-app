@@ -38,6 +38,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       isUnlocked: false,
       courses: ["Création de liens hypertextes", 
       "Intégration d'images dans une page HTML",
+      "Utilisation de balises pour l'audio et la vidéo"
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
