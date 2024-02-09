@@ -36,8 +36,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     CourseModule(
       moduleName: 'Module 3: Liens, Images et Médias',
       isUnlocked: false,
-      courses: [
-        "Création de liens hypertextes",
+      courses: ["Création de liens hypertextes", 
+      "Intégration d'images dans une page HTML",
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
