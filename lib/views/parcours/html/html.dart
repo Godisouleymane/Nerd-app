@@ -1,4 +1,4 @@
-import 'package:code_crafters/views/parcours/screenHTML.dart';
+import 'package:code_crafters/views/parcours/html/screenHTML.dart';
 import 'package:code_crafters/views/parcours/shared-ui/bottomNaviagtionBar.dart';
 import 'package:code_crafters/views/parcours/shared-ui/communaute.dart';
 import 'package:code_crafters/views/parcours/shared-ui/cours.dart';

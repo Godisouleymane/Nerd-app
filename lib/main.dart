@@ -1,6 +1,6 @@
 import 'package:code_crafters/firebase_options.dart';
 import 'package:code_crafters/provider/cours_model.dart';
-import 'package:code_crafters/views/parcours/html.dart';
+import 'package:code_crafters/views/parcours/html/html.dart';
 import 'package:code_crafters/wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
