@@ -25,7 +25,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     ),
     CourseModule(
       moduleName: 'Module 2: Structure et Sémantique',
-      isUnlocked: true,
+      isUnlocked: false,
       courses: [
         "Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)",
         "Importance de la sémantique dans le référencement et l'accessibilité",
