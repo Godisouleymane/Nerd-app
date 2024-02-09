@@ -53,6 +53,16 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
+    CourseModule(
+      moduleName: 'Module 5: Bonnes Pratiques et Normes',
+      isUnlocked: false,
+      courses: [
+        "",
+        "Utilisation de différents types de champs de formulaire (texte, e-mail, mot de passe, etc.)",
+        "Exercice fin du module"
+      ],
+      courseUnlockedStatus: [true, false, false, false],
+    ),
   ];
 
   final GlobalKey _containerKey = GlobalKey();
