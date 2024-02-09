@@ -84,17 +84,22 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                     ],
                   ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Icon(
                         Icons.list,
                         size: 30,
                       ),
-                      Text(
-                        _selectedModule.moduleName,
-                        style: const TextStyle(
-                          color: Color.fromARGB(255, 53, 32, 149),
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
+                      Flexible(
+                        child: Text(
+                          _selectedModule.moduleName,
+                          softWrap: true,
+                          
+                          style: const TextStyle(
+                            color: Color.fromARGB(255, 53, 32, 149),
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -240,7 +245,7 @@ class ChapterDiagramPainter extends CustomPainter {
 
     final Paint paint = Paint()
       ..color = Colors.black
-      ..strokeWidth = 2;
+      ..strokeWidth = 3;
 
     // Dessiner la ligne verticale
     canvas.drawLine(Offset(startX, startY), Offset(startX, endY), paint);
