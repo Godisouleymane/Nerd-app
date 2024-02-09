@@ -135,6 +135,14 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                           decoration: BoxDecoration(
                             color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.grey,
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
                           ),
                           child: Row(
                             children: [
@@ -182,7 +190,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
               color: isSelected ? Colors.white : Colors.black,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             );
-            final tileColor = isSelected ? Colors.blue : null;
+            final tileColor = isSelected ? Colors.deepPurple : null;
 
             return ListTile(
               title: Text(
