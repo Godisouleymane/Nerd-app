@@ -67,7 +67,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       moduleName: 'Module 6: Projet Pratique',
       isUnlocked: false,
       courses: [
-        "Les meilleures pratiques pour le codage HTML",
+        "Réalisation d'un projet pratique pour mettre en pratique les concepts appris dans les modules précédents",
         "Validation HTML et accessibilité",
         "Exercice fin module"
       ],
