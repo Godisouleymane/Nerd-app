@@ -220,7 +220,6 @@ class CourseModule {
   });
 }
 
-
 class ChapterDiagramPainter extends CustomPainter {
   final int numberOfChapters;
   final double verticalSpacing = 150.0;
@@ -243,6 +242,9 @@ class ChapterDiagramPainter extends CustomPainter {
       ..color = Colors.black
       ..strokeWidth = 2;
 
+    // Dessiner la ligne verticale
+    canvas.drawLine(Offset(startX, startY), Offset(startX, endY), paint);
+
     // Dessiner les lignes verticales
     double currentY = startY;
     for (int i = 0; i < numberOfChapters; i++) {
@@ -250,9 +252,6 @@ class ChapterDiagramPainter extends CustomPainter {
           Offset(startX, currentY + spaceBetweenChapters), paint);
       currentY += stepY;
     }
-
-    // Dessiner la ligne horizontale
-    canvas.drawLine(Offset(startX, startY), Offset(startX, endY), paint);
   }
 
   @override
