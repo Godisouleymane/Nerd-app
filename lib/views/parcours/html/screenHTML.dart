@@ -27,10 +27,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       moduleName: 'Module 2: Structure et Sémantique',
       isUnlocked: true,
       courses: [
-        ' Structure et Sémantique',
-        ' Structure et Sémantique',
-        ' Structure et Sémantique',
-        ' Structure et Sémantique'
+        "Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)",
+        "Importance de la sémantique dans le référencement et l'accessibilité"
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
@@ -197,15 +195,12 @@ class _ScreenHtmlState extends State<ScreenHtml> {
               padding: const EdgeInsets.all(20.0),
               child: Material(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)
-                ),
+                    borderRadius: BorderRadius.circular(10)),
                 elevation: 4,
                 shadowColor: Colors.grey,
                 child: ListTile(
-                 
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)
-                  ),
+                      borderRadius: BorderRadius.circular(10)),
                   title: Text(
                     courseModule.moduleName,
                     style: textStyle,
