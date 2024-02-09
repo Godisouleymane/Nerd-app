@@ -252,7 +252,7 @@ class ChapterDiagramPainter extends CustomPainter {
     final double stepY = spaceBetweenChapters + verticalSpacing;
 
     final Paint paint = Paint()
-      ..color = Colors.black
+      ..color = Colors.deepPurple
       ..strokeWidth = 3;
 
     canvas.drawLine(Offset(startX, startY), Offset(startX, endY), paint);
