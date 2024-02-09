@@ -58,8 +58,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       isUnlocked: false,
       courses: [
         "Les meilleures pratiques pour le codage HTML",
-        "",
-        "Exercice fin du module"
+        "Validation HTML et accessibilité",
+        "Exercice fin module"
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
