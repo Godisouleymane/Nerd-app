@@ -88,7 +88,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.list,
                         size: 30,
                       ),
@@ -195,6 +195,9 @@ class _ScreenHtmlState extends State<ScreenHtml> {
             return Padding(
               padding: const EdgeInsets.all(20.0),
               child: ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)
+                ),
                 title: Text(
                   courseModule.moduleName,
                   style: textStyle,
