@@ -28,7 +28,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
       isUnlocked: true,
       courses: [
         "Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)",
-        "Importance de la sémantique dans le référencement et l'accessibilité"
+        "Importance de la sémantique dans le référencement et l'accessibilité",
+        "Exercice fin du module",
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
