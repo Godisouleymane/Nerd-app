@@ -20,6 +20,7 @@ class _ScreenHtmlState extends State<ScreenHtml> {
         'Les éléments et balises HTML les plus courants',
         'Syntaxe de base HTML',
       ],
+      courseUnlockedStatus: [true, false, false, false],
     ),
     CourseModule(
       moduleName: 'Module 2: Structure et Sémantique',
