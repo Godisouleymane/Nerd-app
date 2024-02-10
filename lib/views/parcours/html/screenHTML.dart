@@ -1,3 +1,4 @@
+import 'package:code_crafters/lesDonnees/htmlData/chapitre_1.dart';
 import 'package:flutter/material.dart';
 
 class ScreenHtml extends StatefulWidget {
@@ -156,7 +157,31 @@ class _ScreenHtmlState extends State<ScreenHtml> {
 
                     return GestureDetector(
                        onTap: () {
-                    
+                         if (isUnlocked) {
+                          // Récupérer le contenu du cours
+                          final lesson = getCourseContent(course);
+                          // Naviguer vers la page LessonDetailPage avec le cours sélectionné
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LessonDetailPage(
+                                lesson: lesson,
+                                onNextLesson: () {
+                                  // Gérer la navigation à la prochaine leçon si nécessaire
+                                },
+                              ),
+                            ),
+                          );
+                        } else {
+                          // Afficher un message si le cours est verrouillé
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Veuillez terminer le module précédent pour déverrouiller celui-ci.',
+                              ),
+                            ),
+                          );
+                        }
                       },
                       child: Column(
                         children: [
