@@ -155,6 +155,27 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                         _selectedModule.courseUnlockedStatus[index];
 
                     return GestureDetector(
+                       onTap: () {
+                        if (isUnlocked) {
+                          // Naviguer vers la page d'apprentissage du chapitre
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChapterLearningPage(
+                                chapterTitle: course,
+                                // Vous pouvez passer d'autres données pertinentes à cette page ici
+                              ),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                  'Veuillez terminer le chapitre précédent pour déverrouiller celui-ci.'),
+                            ),
+                          );
+                        }
+                      },
                       child: Column(
                         children: [
                           const SizedBox(height: 40),
