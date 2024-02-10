@@ -56,10 +56,6 @@ class LessonDetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(lesson.content),
-            ElevatedButton(
-              onPressed: onNextLesson,
-              child: Text('Next Lesson'),
-            ),
           ],
         ),
       ),
