@@ -27,7 +27,7 @@ final List<Course> courses = [
         title: 'Balises HTML',
         content: 'Contenu de la leçon...',
       ),
-      // Ajouter d'autres leçons ici
+      // d'autres leçons ici
     ],
   ),
   // Ajouter d'autres cours ici
