@@ -154,46 +154,48 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                     final bool isUnlocked =
                         _selectedModule.courseUnlockedStatus[index];
 
-                    return Column(
-                      children: [
-                        const SizedBox(height: 40),
-                        Container(
-                          margin: const EdgeInsets.symmetric(vertical: 5.0),
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            borderRadius: BorderRadius.circular(10.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.grey,
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: Offset(0, 5),
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            children: [
-                              isUnlocked
-                                  ? const Icon(Icons.play_arrow, color: Colors.green)
-                                  : const Icon(Icons.lock, color: Colors.red),
-                              const SizedBox(width: 10),
-                              Flexible(
-                                child: Text(
-                                  course,
-                                  softWrap: true,
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.bold,
-                                    color:
-                                        isUnlocked ? Colors.black : Colors.grey,
+                    return GestureDetector(
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 40),
+                          Container(
+                            margin: const EdgeInsets.symmetric(vertical: 5.0),
+                            padding: const EdgeInsets.all(10.0),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(10.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                isUnlocked
+                                    ? const Icon(Icons.play_arrow, color: Colors.green)
+                                    : const Icon(Icons.lock, color: Colors.red),
+                                const SizedBox(width: 10),
+                                Flexible(
+                                  child: Text(
+                                    course,
+                                    softWrap: true,
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold,
+                                      color:
+                                          isUnlocked ? Colors.black : Colors.grey,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     );
                   },
                 ),
@@ -317,3 +319,4 @@ class ChapterDiagramPainter extends CustomPainter {
     return true;
   }
 }
+
