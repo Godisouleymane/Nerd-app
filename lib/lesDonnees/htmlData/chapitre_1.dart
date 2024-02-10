@@ -59,6 +59,13 @@ class LessonDetailPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 15.0),
+        child:  ElevatedButton(
+              onPressed: onNextLesson,
+              child: Text('Next Lesson'),
+            ),
+        ),
     );
   }
 }
