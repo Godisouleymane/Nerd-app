@@ -9,7 +9,6 @@ class ScreenHtml extends StatefulWidget {
 }
 
 class _ScreenHtmlState extends State<ScreenHtml> {
-  int _currentLessonIndex = 0;
   late CourseModule _selectedModule;
 
   final List<CourseModule> _courseModules = [
@@ -168,13 +167,6 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                             MaterialPageRoute(
                               builder: (context) => LessonDetailPage(
                                 lesson: lesson,
-                                onNextLesson: () {
-                                  // Gérer la navigation à la prochaine leçon si nécessaire
-                                  setState(() {
-                                    // Mettre à jour l'index de la leçon actuelle pour passer à la leçon suivante
-                                    _currentLessonIndex++;
-                                  });
-                                },
                               ),
                             ),
                           );

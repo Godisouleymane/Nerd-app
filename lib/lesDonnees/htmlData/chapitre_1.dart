@@ -29,12 +29,12 @@ final List<Course> courses = [
         content: 'Contenu de la leçon...2',
       ),
       Lesson(
-        title: 'Balises HTML',
+        title: 'hllo3',
         content: 'Contenu de la leçon...3',
       ),
       Lesson(
-        title: 'Balises HTML',
-        content: 'Contenu de la leçon...3',
+        title: 'Balises jvjr',
+        content: 'Contenu de la leçon...4',
       ),
       // Ajouter d'autres leçons ici
     ],
@@ -43,33 +43,69 @@ final List<Course> courses = [
 ];
 
 // Page pour afficher le détail d'une leçon
-class LessonDetailPage extends StatelessWidget {
+class LessonDetailPage extends StatefulWidget {
   final Lesson lesson;
-  final VoidCallback onNextLesson;
 
-  const LessonDetailPage(
-      {Key? key, required this.lesson, required this.onNextLesson})
-      : super(key: key);
+  const LessonDetailPage({Key? key, required this.lesson}) : super(key: key);
+
+  @override
+  _LessonDetailPageState createState() => _LessonDetailPageState();
+}
+
+class _LessonDetailPageState extends State<LessonDetailPage> {
+  int _currentLessonIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final currentLesson = widget.lesson;
     return Scaffold(
       appBar: AppBar(
-        title: Text(lesson.title),
+        title: Text(currentLesson.title),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(lesson.content),
+            Text(currentLesson.content),
           ],
         ),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 15.0),
         child: ElevatedButton(
-          onPressed: onNextLesson,
+          onPressed: () {
+            setState(() {
+              // Vérifier s'il y a une leçon suivante dans la liste des leçons
+              if (_currentLessonIndex < courses.firstWhere((course) => course.lessons.contains(widget.lesson)).lessons.length - 1) {
+                // Incrémenter l'index pour passer à la leçon suivante
+                _currentLessonIndex++;
+                // Récupérer la leçon suivante
+                final nextLesson = courses
+                    .firstWhere(
+                        (course) => course.lessons.contains(widget.lesson))
+                    .lessons[_currentLessonIndex];
+
+                // Naviguer vers la page LessonDetailPage avec la leçon suivante
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LessonDetailPage(
+                      lesson: nextLesson,
+                    ),
+                  ),
+                );
+              } else {
+                // Afficher un message si l'utilisateur a terminé toutes les leçons
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                        'Vous avez terminé toutes les leçons de ce cours.'),
+                  ),
+                );
+              }
+            });
+          },
           child: Text('Next Lesson'),
         ),
       ),
