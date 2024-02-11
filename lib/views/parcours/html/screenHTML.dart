@@ -9,6 +9,7 @@ class ScreenHtml extends StatefulWidget {
 }
 
 class _ScreenHtmlState extends State<ScreenHtml> {
+  int _currentLessonIndex = 0;
   late CourseModule _selectedModule;
 
   final List<CourseModule> _courseModules = [
@@ -37,10 +38,11 @@ class _ScreenHtmlState extends State<ScreenHtml> {
     CourseModule(
       moduleName: 'Module 3: Liens, Images et Médias',
       isUnlocked: false,
-      courses: ["Création de liens hypertextes", 
-      "Intégration d'images dans une page HTML",
-      "Utilisation de balises pour l'audio et la vidéo",
-      "Exercice fin du module"
+      courses: [
+        "Création de liens hypertextes",
+        "Intégration d'images dans une page HTML",
+        "Utilisation de balises pour l'audio et la vidéo",
+        "Exercice fin du module"
       ],
       courseUnlockedStatus: [true, false, false, false],
     ),
@@ -156,8 +158,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                         _selectedModule.courseUnlockedStatus[index];
 
                     return GestureDetector(
-                       onTap: () {
-                         if (isUnlocked) {
+                      onTap: () {
+                        if (isUnlocked) {
                           // Récupérer le contenu du cours
                           final lesson = getCourseContent(course);
                           // Naviguer vers la page LessonDetailPage avec le cours sélectionné
@@ -168,6 +170,10 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                                 lesson: lesson,
                                 onNextLesson: () {
                                   // Gérer la navigation à la prochaine leçon si nécessaire
+                                  setState(() {
+                                    // Mettre à jour l'index de la leçon actuelle pour passer à la leçon suivante
+                                    _currentLessonIndex++;
+                                  });
                                 },
                               ),
                             ),
@@ -175,9 +181,9 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                         } else {
                           // Afficher un message si le cours est verrouillé
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text(
-                                'Veuillez terminer le module précédent pour déverrouiller celui-ci.',
+                                'Veuillez terminer le cours précédent pour déverrouiller celui-ci.',
                               ),
                             ),
                           );
@@ -204,7 +210,8 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                             child: Row(
                               children: [
                                 isUnlocked
-                                    ? const Icon(Icons.play_arrow, color: Colors.green)
+                                    ? const Icon(Icons.play_arrow,
+                                        color: Colors.green)
                                     : const Icon(Icons.lock, color: Colors.red),
                                 const SizedBox(width: 10),
                                 Flexible(
@@ -214,8 +221,9 @@ class _ScreenHtmlState extends State<ScreenHtml> {
                                     style: TextStyle(
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.bold,
-                                      color:
-                                          isUnlocked ? Colors.black : Colors.grey,
+                                      color: isUnlocked
+                                          ? Colors.black
+                                          : Colors.grey,
                                     ),
                                   ),
                                 ),
@@ -347,4 +355,3 @@ class ChapterDiagramPainter extends CustomPainter {
     return true;
   }
 }
-

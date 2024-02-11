@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// Classe pour représenter une leçon
+// Classes pour représenter une leçon et un cours
 class Lesson {
   final String title;
   final String content;
@@ -8,7 +8,6 @@ class Lesson {
   Lesson({required this.title, required this.content});
 }
 
-// Classe pour représenter un cours avec des leçons
 class Course {
   final String title;
   final List<Lesson> lessons;
@@ -27,7 +26,15 @@ final List<Course> courses = [
       ),
       Lesson(
         title: 'Balises HTML',
-        content: 'Contenu de la leçon...',
+        content: 'Contenu de la leçon...2',
+      ),
+      Lesson(
+        title: 'Balises HTML',
+        content: 'Contenu de la leçon...3',
+      ),
+      Lesson(
+        title: 'Balises HTML',
+        content: 'Contenu de la leçon...3',
       ),
       // Ajouter d'autres leçons ici
     ],
@@ -61,16 +68,16 @@ class LessonDetailPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 15.0),
-        child:  ElevatedButton(
-              onPressed: onNextLesson,
-              child: Text('Next Lesson'),
-            ),
+        child: ElevatedButton(
+          onPressed: onNextLesson,
+          child: Text('Next Lesson'),
         ),
+      ),
     );
   }
 }
 
-// Fonction pour récupérer le contenu d'un cours
+// Fonction pour récupérer le contenu d'une leçon
 Lesson getCourseContent(String courseTitle) {
   // Parcourir la liste des cours pour trouver le cours correspondant
   for (final course in courses) {
