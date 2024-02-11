@@ -53,7 +53,17 @@ class LessonDetailPage extends StatefulWidget {
 }
 
 class _LessonDetailPageState extends State<LessonDetailPage> {
-  int _currentLessonIndex = 0;
+  late int _currentLessonIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialiser l'index de la leçon à zéro
+    _currentLessonIndex = courses
+        .expand((course) => course.lessons)
+        .toList()
+        .indexWhere((lesson) => lesson == widget.lesson);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +87,15 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
           onPressed: () {
             setState(() {
               // Vérifier s'il y a une leçon suivante dans la liste des leçons
-              if (_currentLessonIndex < courses.firstWhere((course) => course.lessons.contains(widget.lesson)).lessons.length - 1) {
+              if (_currentLessonIndex <
+                  courses.expand((course) => course.lessons).toList().length -
+                      1) {
                 // Incrémenter l'index pour passer à la leçon suivante
                 _currentLessonIndex++;
                 // Récupérer la leçon suivante
                 final nextLesson = courses
-                    .firstWhere(
-                        (course) => course.lessons.contains(widget.lesson))
-                    .lessons[_currentLessonIndex];
+                    .expand((course) => course.lessons)
+                    .toList()[_currentLessonIndex];
 
                 // Naviguer vers la page LessonDetailPage avec la leçon suivante
                 Navigator.push(
@@ -103,6 +114,7 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                         'Vous avez terminé toutes les leçons de ce cours.'),
                   ),
                 );
+                
               }
             });
           },
