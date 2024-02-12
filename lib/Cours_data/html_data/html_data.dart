@@ -25,7 +25,7 @@ class Module {
     required this.chapters,
   });
 
-   Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'title': title,
       'chapters': chapters.map((chapter) => chapter.toMap()).toList(),
@@ -34,4 +34,13 @@ class Module {
 }
 
 class Chapter {
+  final String title;
+  final List<Lesson> lessons;
+
+  Chapter({
+    required this.title,
+    required this.lessons
+  });
+
+  
 }
