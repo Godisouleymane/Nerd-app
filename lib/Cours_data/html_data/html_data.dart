@@ -56,7 +56,7 @@ class Lesson {
     required this.content,
   });
 
-   Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'title': title,
       'content': content,
@@ -64,3 +64,8 @@ class Lesson {
   }
 }
 
+void addCourseToFireStore() {
+  // creer un object Course pour representer le cours html avec des modules, des chapitres, des lecons
+
+  
+}
