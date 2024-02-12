@@ -9,9 +9,13 @@ class Course {
 
   Map<String, dynamic> toMap() {
     return {
-      
+      'id':id,
+      'title':title,
+      'modules': modules.map((module) => module.toMap()).toList(),
     };
   }
 }
 
-class Modules {}
+class Modules {
+  
+}
