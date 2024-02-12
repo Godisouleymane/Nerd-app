@@ -6,8 +6,12 @@ class Course {
   final List<Modules> modules;
 
   Course({required this.id, required this.modules, required this.title});
-  
+
+  Map<String, dynamic> toMap() {
+    return {
+      
+    };
+  }
 }
 
-class Modules {
-}
+class Modules {}
