@@ -69,7 +69,7 @@ void addCourseToFireStore() {
 
   Course htmlCourse = Course(
     id: 'html',
-    title: 'Introduction à HTMl',
+    title: 'Cours HTML',
     // les modules de ce cours
     modules: [
       Module(
@@ -77,7 +77,7 @@ void addCourseToFireStore() {
         // les chapitres de ce cours;
         chapters: [
           Chapter(
-            title: title, 
+            title: '', 
             lessons: lessons)
         ],
       )
