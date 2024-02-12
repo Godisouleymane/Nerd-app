@@ -67,9 +67,20 @@ class Lesson {
 void addCourseToFireStore() {
   // creer un object Course pour representer le cours html avec des modules, des chapitres, des lecons
 
- Course htmlCourse = Course(
-  id: 'html', 
-  title: 'Introduction à HTMl',
-  modules: modules, 
-  )
+  Course htmlCourse = Course(
+    id: 'html',
+    title: 'Introduction à HTMl',
+    // les modules de ce cours
+    modules: [
+      Module(
+        title: "Comprendre les bases du HTML",
+        // les chapitres de ce cours;
+        chapters: [
+          Chapter(
+            title: title, 
+            lessons: lessons)
+        ],
+      )
+    ],
+  );
 }
