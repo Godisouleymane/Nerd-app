@@ -78,7 +78,13 @@ void addCourseToFireStore() {
         chapters: [
           Chapter(
             title: 'Chapitre 1: Les bases du HTML', 
-            lessons: )
+            lessons:[
+              Lesson(
+                title: 'Leçon 1: Introduction au HTML',
+                content: 'Contenu de la leçon...',
+               )
+            ]
+            )
         ],
       )
     ],
