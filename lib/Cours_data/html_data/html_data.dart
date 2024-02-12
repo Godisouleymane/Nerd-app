@@ -42,5 +42,11 @@ class Chapter {
     required this.lessons
   });
 
-  
+   Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'lessons': lessons.map((lesson) => lesson.toMap()).toList(),
+    };
+  }
+
 }
