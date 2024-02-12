@@ -37,16 +37,30 @@ class Chapter {
   final String title;
   final List<Lesson> lessons;
 
-  Chapter({
-    required this.title,
-    required this.lessons
-  });
+  Chapter({required this.title, required this.lessons});
 
-   Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'title': title,
       'lessons': lessons.map((lesson) => lesson.toMap()).toList(),
     };
   }
-
 }
+
+class Lesson {
+  final String title;
+  final String content;
+
+  Lesson({
+    required this.title,
+    required this.content,
+  });
+
+   Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'content': content,
+    };
+  }
+}
+
