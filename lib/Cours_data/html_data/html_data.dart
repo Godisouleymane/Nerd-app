@@ -73,12 +73,12 @@ void addCourseToFireStore() {
     // les modules de ce cours
     modules: [
       Module(
-        title: "Comprendre les bases du HTML",
+        title: "Introduction à HTML",
         // les chapitres de ce cours;
         chapters: [
           Chapter(
-            title: '', 
-            lessons: lessons)
+            title: 'Chapitre 1: Les bases du HTML', 
+            lessons: )
         ],
       )
     ],
