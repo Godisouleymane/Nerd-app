@@ -97,4 +97,18 @@ void addCourseToFireStore() {
       // Je vais ajouter d'autre modules ici in shaa Allah
     ],
   );
+
+   // Ajouter le cours HTML à Firestore
+  FirebaseFirestore.instance
+      .collection('courses')
+      .doc(htmlCourse.id)
+      .set(htmlCourse.toMap())
+      .then((_) {
+    print('Le cours HTML a été ajouté avec succès à Firestore');
+  }).catchError((error) {
+    print('Erreur lors de l\'ajout du cours HTML à Firestore: $error');
+  });
 }
+
+ 
+
