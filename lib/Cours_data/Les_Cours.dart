@@ -151,7 +151,7 @@ void addCourseToFireStore() {
         // les chapitres de ce cours;
         chapters: [
           Chapter(
-            title: 'Chapitre 1: Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)', 
+            title: 'Chapitre 1: Création de liens hypertextes', 
             lessons:[
               Lesson(
                 title: 'Leçon 1: Introduction au structure et sémantique',
