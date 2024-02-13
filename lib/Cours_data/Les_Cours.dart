@@ -146,6 +146,58 @@ void addCourseToFireStore() {
             // Je vais ajouter  d'autres chapitre ici in shaa Allah
         ],
       ),
+      Module(
+        title: "Liens, Images et Médias",
+        // les chapitres de ce cours;
+        chapters: [
+          Chapter(
+            title: 'Chapitre 1: Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)', 
+            lessons:[
+              Lesson(
+                title: 'Leçon 1: Introduction au structure et sémantique',
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Header',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            ),
+          Chapter(
+            title: "Chapitre 2: Importance de la sémantique dans le référencement et l'accessibilité", 
+            lessons:[
+              Lesson(
+                title: "Leçon 1: Introduction au structure et sémantique",
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Header',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            ),
+          Chapter(
+            title: "Chapitre 3: Importance de la sémantique dans le référencement et l'accessibilité", 
+            lessons:[
+              Lesson(
+                title: "Leçon 1: Introduction au structure et sémantique",
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Header',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            ),
+            // Je vais ajouter  d'autres chapitre ici in shaa Allah
+        ],
+      ),
       // Je vais ajouter d'autre modules ici in shaa Allah
     ],
   );
