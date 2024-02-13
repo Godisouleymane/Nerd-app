@@ -128,6 +128,21 @@ void addCourseToFireStore() {
               // Je vais ajouter d'autre lesson ici in shaa Allah
             ]
             ),
+          Chapter(
+            title: "Chapitre 3: Importance de la sémantique dans le référencement et l'accessibilité", 
+            lessons:[
+              Lesson(
+                title: "Leçon 1: Introduction au structure et sémantique",
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Header',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            ),
             // Je vais ajouter  d'autres chapitre ici in shaa Allah
         ],
       ),
