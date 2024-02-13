@@ -99,7 +99,7 @@ void addCourseToFireStore() {
         // les chapitres de ce cours;
         chapters: [
           Chapter(
-            title: 'Chapitre 1: Les bases du HTML', 
+            title: 'Chapitre 1: Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)', 
             lessons:[
               Lesson(
                 title: 'Leçon 1: Introduction au HTML',
