@@ -199,7 +199,7 @@ void addCourseToFireStore() {
             title: "Chapitre 4: Formulaires", 
             lessons:[
               Lesson(
-                title: "Leçon 1: Introduction au structure et sémantique",
+                title: "Leçon 1: ",
                 content: 'Contenu de la leçon...',
                ),
               Lesson(
