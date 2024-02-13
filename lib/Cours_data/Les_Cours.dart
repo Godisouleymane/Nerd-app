@@ -247,22 +247,6 @@ void addCourseToFireStore() {
               // Je vais ajouter d'autre lesson ici in shaa Allah
             ]
             ),
-        
-          Chapter(
-            title: "Chapitre 4: Formulaires", 
-            lessons:[
-              Lesson(
-                title: "Leçon 1: Création de formulaires HTML",
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            ),
             // Je vais ajouter  d'autres chapitre ici in shaa Allah
         ],
       ),
