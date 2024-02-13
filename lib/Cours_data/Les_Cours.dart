@@ -199,7 +199,7 @@ void addCourseToFireStore() {
             title: "Chapitre 4: Formulaires", 
             lessons:[
               Lesson(
-                title: "Leçon 1: ",
+                title: "Leçon 1: Création de formulaires HTML",
                 content: 'Contenu de la leçon...',
                ),
               Lesson(
