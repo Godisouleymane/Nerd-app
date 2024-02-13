@@ -102,17 +102,17 @@ void addCourseToFireStore() {
             title: 'Chapitre 1: Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)', 
             lessons:[
               Lesson(
-                title: 'Leçon 1: Introduction au HTML',
+                title: 'Leçon 1: Introduction au structure et sémantique',
                 content: 'Contenu de la leçon...',
                ),
               Lesson(
-                title: 'Leçon 2: Structure d\'une page HTML',
+                title: 'Leçon 2: Header',
                 content: 'Contenu de la leçon...',
               ),
 
               // Je vais ajouter d'autre lesson ici in shaa Allah
             ]
-            )
+            ),
             // Je vais ajouter  d'autres chapitre ici in shaa Allah
         ],
       ),
