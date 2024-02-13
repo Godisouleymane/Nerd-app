@@ -233,7 +233,7 @@ void addCourseToFireStore() {
             ]
             ),
           Chapter(
-            title: "Chapitre 2: Intégration d'images dans une page HTML", 
+            title: "Chapitre 2: Validation HTML et accessibilité", 
             lessons:[
               Lesson(
                 title: "Leçon 1: Introduction au structure et sémantique",
