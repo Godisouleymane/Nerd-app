@@ -247,21 +247,7 @@ void addCourseToFireStore() {
               // Je vais ajouter d'autre lesson ici in shaa Allah
             ]
             ),
-          Chapter(
-            title: "Chapitre 3: Utilisation de balises pour l'audio et la vidéo", 
-            lessons:[
-              Lesson(
-                title: "Leçon 1: Introduction au structure et sémantique",
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            ),
+        
           Chapter(
             title: "Chapitre 4: Formulaires", 
             lessons:[
