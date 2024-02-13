@@ -93,7 +93,29 @@ void addCourseToFireStore() {
             )
             // Je vais ajouter  d'autres chapitre ici in shaa Allah
         ],
-      )
+      ),
+      Module(
+        title: "Structure et Sémantique",
+        // les chapitres de ce cours;
+        chapters: [
+          Chapter(
+            title: 'Chapitre 1: Les bases du HTML', 
+            lessons:[
+              Lesson(
+                title: 'Leçon 1: Introduction au HTML',
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Structure d\'une page HTML',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            )
+            // Je vais ajouter  d'autres chapitre ici in shaa Allah
+        ],
+      ),
       // Je vais ajouter d'autre modules ici in shaa Allah
     ],
   );
