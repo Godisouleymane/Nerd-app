@@ -181,7 +181,7 @@ void addCourseToFireStore() {
             ]
             ),
           Chapter(
-            title: "Chapitre 3: Importance de la sémantique dans le référencement et l'accessibilité", 
+            title: "Chapitre 3: Utilisation de balises pour l'audio et la vidéo", 
             lessons:[
               Lesson(
                 title: "Leçon 1: Introduction au structure et sémantique",
