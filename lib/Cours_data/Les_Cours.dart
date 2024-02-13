@@ -166,7 +166,7 @@ void addCourseToFireStore() {
             ]
             ),
           Chapter(
-            title: "Chapitre 2: Importance de la sémantique dans le référencement et l'accessibilité", 
+            title: "Chapitre 2: Intégration d'images dans une page HTML", 
             lessons:[
               Lesson(
                 title: "Leçon 1: Introduction au structure et sémantique",
