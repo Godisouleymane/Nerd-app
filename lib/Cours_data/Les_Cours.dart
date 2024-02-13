@@ -218,7 +218,7 @@ void addCourseToFireStore() {
         // les chapitres de ce cours;
         chapters: [
           Chapter(
-            title: 'Chapitre 1: Création de liens hypertextes', 
+            title: 'Chapitre 1:Les meilleures pratiques pour le codage HTML', 
             lessons:[
               Lesson(
                 title: 'Leçon 1: Introduction au structure et sémantique',
