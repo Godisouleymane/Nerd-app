@@ -213,6 +213,73 @@ void addCourseToFireStore() {
             // Je vais ajouter  d'autres chapitre ici in shaa Allah
         ],
       ),
+      Module(
+        title: "Bonnes Pratiques et Normes",
+        // les chapitres de ce cours;
+        chapters: [
+          Chapter(
+            title: 'Chapitre 1: Création de liens hypertextes', 
+            lessons:[
+              Lesson(
+                title: 'Leçon 1: Introduction au structure et sémantique',
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Header',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            ),
+          Chapter(
+            title: "Chapitre 2: Intégration d'images dans une page HTML", 
+            lessons:[
+              Lesson(
+                title: "Leçon 1: Introduction au structure et sémantique",
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Header',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            ),
+          Chapter(
+            title: "Chapitre 3: Utilisation de balises pour l'audio et la vidéo", 
+            lessons:[
+              Lesson(
+                title: "Leçon 1: Introduction au structure et sémantique",
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Header',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            ),
+          Chapter(
+            title: "Chapitre 4: Formulaires", 
+            lessons:[
+              Lesson(
+                title: "Leçon 1: Création de formulaires HTML",
+                content: 'Contenu de la leçon...',
+               ),
+              Lesson(
+                title: 'Leçon 2: Header',
+                content: 'Contenu de la leçon...',
+              ),
+
+              // Je vais ajouter d'autre lesson ici in shaa Allah
+            ]
+            ),
+            // Je vais ajouter  d'autres chapitre ici in shaa Allah
+        ],
+      ),
       // Je vais ajouter d'autre modules ici in shaa Allah
     ],
   );
