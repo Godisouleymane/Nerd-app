@@ -114,10 +114,10 @@ void addCourseToFireStore() {
             ]
             ),
           Chapter(
-            title: 'Chapitre 2: Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)', 
+            title: "Chapitre 2: Importance de la sémantique dans le référencement et l'accessibilité", 
             lessons:[
               Lesson(
-                title: 'Leçon 1: Introduction au structure et sémantique',
+                title: "Leçon 1: Introduction au structure et sémantique",
                 content: 'Contenu de la leçon...',
                ),
               Lesson(
