@@ -1,106 +1,87 @@
+import 'dart:math';
 import 'package:code_crafters/services/get_courses.dart';
 import 'package:flutter/material.dart';
+class CourseProgressScreen extends StatefulWidget {
+  @override
+  _CourseProgressScreenState createState() => _CourseProgressScreenState();
+}
 
-class MainScreen extends StatelessWidget {
+class _CourseProgressScreenState extends State<CourseProgressScreen> {
+  Course? currentCourse;
+  Module? selectedModule;
+
+  @override
+  void initState() {
+    super.initState();
+    loadCourse();
+  }
+
+  void loadCourse() async {
+    Course? course = await getHtmlCourseFromFirestore();
+    if (course != null && course.modules.isNotEmpty) {
+      setState(() {
+        currentCourse = course;
+        selectedModule = course.modules.first;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cours HTML'),
+        title: Text('Progression du Cours'),
       ),
-      body: FutureBuilder<Course?>(
-        future: getHtmlCourseFromFirestore(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Erreur: ${snapshot.error}'));
-          } else if (!snapshot.hasData) {
-            return Center(child: Text('Aucune donnée trouvée'));
-          } else {
-            Course course = snapshot.data!;
-            return ListView.builder(
-              itemCount: course.modules.length,
-              itemBuilder: (context, index) {
-                Module module = course.modules[index];
-                return ListTile(
-                  title: Text(module.title),
-                  onTap: () {
-                    // Navigation vers ModuleDetailScreen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            ModuleDetailScreen(module: module),
-                      ),
-                    );
-                  },
-                );
+      body: currentCourse == null
+          ? Center(child: CircularProgressIndicator())
+          : Column(
+              children: [
+                GestureDetector(
+                  onTap: () => showModuleSelectionSheet(),
+                  child: Container(
+                    padding: EdgeInsets.all(16),
+                    color: Colors.blue,
+                    width: double.infinity,
+                    child: Text(selectedModule?.title ?? 'Chargement...'),
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: selectedModule?.chapters.length ?? 0,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title:
+                            Text(selectedModule?.chapters[index].title ?? ''),
+                        // Ajoutez ici les onTap et autres interactions pour chaque chapitre
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+    );
+  }
+
+  void showModuleSelectionSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return ListView.builder(
+          itemCount: currentCourse?.modules.length ?? 0,
+          itemBuilder: (context, index) {
+            Module module = currentCourse!.modules[index];
+            return ListTile(
+              title: Text(module.title),
+              onTap: () {
+                Navigator.pop(context); // Ferme le bottom sheet
+                setState(() {
+                  selectedModule = module;
+                });
               },
             );
-          }
-        },
-      ),
-    );
-  }
-}
-
-class ModuleDetailScreen extends StatelessWidget {
-  final Module module;
-
-  ModuleDetailScreen({required this.module});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(module.title),
-      ),
-      body: ListView.builder(
-        itemCount : module.chapters.length,
-        itemBuilder: (context, index) {
-          Chapter chapter = module.chapters[index];
-          return ListTile(
-            title: Text(chapter.title),
-            onTap: () {
-// Navigation vers ChapterDetailScreen
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChapterDetailScreen(chapter: chapter),
-                ),
-              );
-            },
-          );
-        },
-      ),
-    );
-  }
-}
-
-class ChapterDetailScreen extends StatelessWidget {
-  final Chapter chapter;
-
-  ChapterDetailScreen({required this.chapter});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(chapter.title),
-      ),
-      body: ListView.builder(
-        itemCount: chapter.lessons.length,
-        itemBuilder: (context, index) {
-          Lesson lesson = chapter.lessons[index];
-          return ListTile(
-            title: Text(lesson.title),
-            onTap: () {
-              // Afficher le contenu de la leçon, soit dans un nouvel écran, soit dans un modal.
-            },
-          );
-        },
-      ),
+          },
+        );
+      },
     );
   }
 }
