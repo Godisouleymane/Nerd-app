@@ -64,195 +64,142 @@ class Lesson {
   }
 }
 
+
 void addCourseToFireStore() {
   // creer un object Course pour representer le cours html avec des modules, des chapitres, des lecons
 
-  Course htmlCourse = Course(
+ Course htmlCourse = Course(
     id: 'html',
     title: 'Cours HTML',
-    // les modules de ce cours
     modules: [
       Module(
         title: "Introduction à HTML",
-        // les chapitres de ce cours;
         chapters: [
-          Chapter(
-            title: 'Chapitre 1: Les bases du HTML', 
-            lessons:[
-              Lesson(
-                title: 'Leçon 1: Introduction au HTML',
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Structure d\'une page HTML',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            )
-            // Je vais ajouter  d'autres chapitre ici in shaa Allah
+          Chapter(title: 'Chapitre 1: Les bases du HTML',
+           lessons: [
+            Lesson(
+              title: 'Leçon 1: Introduction au HTML',
+              content:
+                  'Présentation du HTML, historique et importance dans le développement web. Vue d\'ensemble de la structure d\'un document HTML.',
+            ),
+            Lesson(
+              title: 'Leçon 2: Les éléments de base',
+              content:
+                  'Explication des balises, attributs et éléments HTML. Distinction entre balises ouvrantes, fermantes et auto-fermantes.',
+            ),
+            Lesson(
+              title: 'Leçon 3: Structurer une page HTML',
+              content:
+                  'Utilisation des balises <html>, <head>, <title>, et <body>. Introduction à la hiérarchie des éléments.',
+            ),
+          ]),
         ],
+       
       ),
       Module(
         title: "Structure et Sémantique",
-        // les chapitres de ce cours;
         chapters: [
           Chapter(
-            title: 'Chapitre 1: Utilisation des éléments sémantiques HTML5 (header, footer, nav, section, article, etc.)', 
-            lessons:[
-              Lesson(
-                title: 'Leçon 1: Introduction au structure et sémantique',
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            ),
+              title: 'Chapitre 1: Utilisation des éléments sémantiques HTML5',
+              lessons: [
+                Lesson(
+                  title: 'Leçon 1: Introduction au structure et sémantique',
+                  content:
+                      'Importance des éléments sémantiques pour l\'accessibilité et le SEO. Vue d\'ensemble et usage de <main>, <aside>, <article>, et <section>.',
+                ),
+                Lesson(
+                  title: 'Leçon 2: Header',
+                  content:
+                      'Structurer une navigation web avec <nav> et listes. Utilisation des liens internes et externes.',
+                ),
+                Lesson(
+                  title: 'Leçon 3: Comprendre les éléments sémantiques',
+                  content:
+                      'Approfondissement sur l\'utilisation des éléments sémantiques et leur impact sur le SEO et l\'accessibilité.',
+                ),
+                Lesson(
+                  title: 'Leçon 4: Navigation',
+                  content:
+                      'Explication détaillée de la balise <nav> et de l\'organisation des liens de navigation dans une page web.',
+                ),
+              ]),
           Chapter(
-            title: "Chapitre 2: Importance de la sémantique dans le référencement et l'accessibilité", 
-            lessons:[
-              Lesson(
-                title: "Leçon 1: Introduction au structure et sémantique",
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            ),
-          Chapter(
-            title: "Chapitre 3: Importance de la sémantique dans le référencement et l'accessibilité", 
-            lessons:[
-              Lesson(
-                title: "Leçon 1: Introduction au structure et sémantique",
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            ),
-            // Je vais ajouter  d'autres chapitre ici in shaa Allah
+              title:
+                  "Chapitre 2: Importance de la sémantique dans le référencement et l'accessibilité",
+              lessons: [
+                Lesson(
+                  title: "Leçon 1: SEO et accessibilité",
+                  content:
+                      'Bonnes pratiques pour améliorer le référencement et l\'accessibilité d\'une page web en utilisant la sémantique HTML.',
+                ),
+              ]),
         ],
+       
       ),
       Module(
         title: "Liens, Images et Médias",
-        // les chapitres de ce cours;
         chapters: [
-          Chapter(
-            title: 'Chapitre 1: Création de liens hypertextes', 
-            lessons:[
-              Lesson(
-                title: 'Leçon 1: Introduction au structure et sémantique',
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
+          Chapter(title: 'Chapitre 1: Création de liens hypertextes', lessons: [
+            Lesson(
+              title: 'Leçon 1: Approfondissement sur les liens',
+              content:
+                  'Utilisation avancée des ancres, liens vers des emails et numéros de téléphone. Gestion des attributs target et rel.',
             ),
-          Chapter(
-            title: "Chapitre 2: Intégration d'images dans une page HTML", 
-            lessons:[
-              Lesson(
-                title: "Leçon 1: Introduction au structure et sémantique",
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
+          ]),
+          Chapter(title: "Chapitre 4: Formulaires", lessons: [
+            Lesson(
+              title: "Leçon 1: Création de formulaires HTML",
+              content:
+                  'Introduction aux types d\'input HTML5 comme date, range, et color. Utilisation de datalist pour les suggestions.',
             ),
-          Chapter(
-            title: "Chapitre 3: Utilisation de balises pour l'audio et la vidéo", 
-            lessons:[
-              Lesson(
-                title: "Leçon 1: Introduction au structure et sémantique",
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
+            Lesson(
+              title: 'Leçon 2: Validation de formulaire côté client',
+              content:
+                  'Utilisation des attributs required, pattern, et min/max pour valider les entrées utilisateur.',
             ),
-          Chapter(
-            title: "Chapitre 4: Formulaires", 
-            lessons:[
-              Lesson(
-                title: "Leçon 1: Création de formulaires HTML",
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            ),
-            // Je vais ajouter  d'autres chapitre ici in shaa Allah
+          ]),
         ],
+        
       ),
       Module(
         title: "Bonnes Pratiques et Normes",
-        // les chapitres de ce cours;
         chapters: [
           Chapter(
-            title: 'Chapitre 1:Les meilleures pratiques pour le codage HTML', 
-            lessons:[
-              Lesson(
-                title: 'Leçon 1: Introduction au structure et sémantique',
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            ),
+              title: 'Chapitre 1: Les meilleures pratiques pour le codage HTML',
+              lessons: [
+                Lesson(
+                  title:
+                      'Leçon 1: Commentaires, indentation et conventions de nommage',
+                  content:
+                      'L\'importance des commentaires, de l\'indentation propre et des conventions de nommage pour améliorer la lisibilité du code.',
+                ),
+                Lesson(
+                  title: 'Leçon 2: Responsive Design',
+                  content:
+                      'Introduction aux médias queries et à l\'importance du design responsive.',
+                ),
+              ]),
           Chapter(
-            title: "Chapitre 2: Validation HTML et accessibilité", 
-            lessons:[
-              Lesson(
-                title: "Leçon 1: Introduction au structure et sémantique",
-                content: 'Contenu de la leçon...',
-               ),
-              Lesson(
-                title: 'Leçon 2: Header',
-                content: 'Contenu de la leçon...',
-              ),
-
-              // Je vais ajouter d'autre lesson ici in shaa Allah
-            ]
-            ),
-            // Je vais ajouter  d'autres chapitre ici in shaa Allah
+              title: "Chapitre 2: Validation HTML et accessibilité",
+              lessons: [
+                Lesson(
+                  title: "Leçon 1: Utiliser les outils de validation HTML",
+                  content:
+                      'Présentation des outils de validation W3C et comment les utiliser pour vérifier la conformité de vos pages HTML.',
+                ),
+                Lesson(
+                  title: 'Leçon 2: Principes de base de l\'accessibilité',
+                  content:
+                      'Introduction à l\'accessibilité web, utilisation des balises ARIA et importance de la navigation au clavier.',
+                ),
+              ]),
         ],
+      
       ),
-      // Je vais ajouter d'autre modules ici in shaa Allah
     ],
   );
+
+
 
    // Ajouter le cours HTML à Firestore
   FirebaseFirestore.instance
