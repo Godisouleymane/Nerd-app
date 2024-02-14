@@ -1,77 +1,50 @@
+import 'package:code_crafters/services/get_courses.dart';
 import 'package:flutter/material.dart';
 
-class HtmlCoursePage extends StatefulWidget {
+class HtmlCourseScreen extends StatefulWidget {
   @override
-  _HtmlCoursePageState createState() => _HtmlCoursePageState();
+  _HtmlCourseScreenState createState() => _HtmlCourseScreenState();
 }
 
-class _HtmlCoursePageState extends State<HtmlCoursePage> {
+class _HtmlCourseScreenState extends State<HtmlCourseScreen> {
+  Course? htmlCourse;
+
   @override
-   void initState() {
+  void initState() {
     super.initState();
+    // Appeler la fonction pour récupérer les données du cours HTML depuis Firestore
+    getHtmlCourseFromFirestore().then((course) {
+      setState(() {
+        htmlCourse = course;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Afficher le titre du module actuel
-            Text(
-              'Module 1: Introduction à HTML', // À remplacer par le titre du module actuel
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 16.0),
-            // Afficher les chapitres du module actuel
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: 5, // À remplacer par le nombre de chapitres du module actuel
+      appBar: AppBar(
+        title: Text('Cours HTML'),
+      ),
+      body: htmlCourse == null
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: htmlCourse!.modules.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text('Chapitre ${index + 1}'), // À remplacer par le titre du chapitre
-                  onTap: () {
-                    // Ajouter la logique pour gérer le tap sur un chapitre
-                    // par exemple, ouvrir la leçon correspondante
-                  },
+                Module module = htmlCourse!.modules[index];
+                return ExpansionTile(
+                  title: Text(module.title),
+                  children: module.chapters.map((chapter) {
+                    return ListTile(
+                      title: Text(chapter.title),
+                      onTap: () {
+                        // Ajouter la logique pour afficher les leçons du chapitre
+                      },
+                    );
+                  }).toList(),
                 );
               },
             ),
-          ],
-        ),
-      ),
     );
   }
 }
-
-
-  void _showModuleSelector(BuildContext context) {
-    // Bottom sheet content
-    Widget bottomSheetContent = Container(
-      child: ListView.builder(
-        itemCount: 6, // Replace with actual module count
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Module ${index + 1}'),
-            onTap: () {
-              // Navigate to selected module
-              // Replace with navigation logic
-              Navigator.pop(context); // Close bottom sheet
-            },
-          );
-        },
-      ),
-    );
-
-    // Show bottom sheet
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => bottomSheetContent,
-    );
-  }
-
