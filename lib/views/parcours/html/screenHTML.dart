@@ -1,45 +1,54 @@
 import 'package:flutter/material.dart';
 
-class HTMLCoursePage extends StatelessWidget {
+class HtmlCoursePage extends StatefulWidget {
+  @override
+  _HtmlCoursePageState createState() => _HtmlCoursePageState();
+}
+
+class _HtmlCoursePageState extends State<HtmlCoursePage> {
+  @override
+   void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Cours HTML'),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Module Selector Button
-          ElevatedButton(
-            onPressed: () {
-              // Show bottom sheet with module selector
-              _showModuleSelector(context);
-            },
-            child: Text('Module actuel: Module 1'),
-          ),
-          // Lesson List
-          Expanded(
-            child: ListView.builder(
-              itemCount: 5, // Replace with actual lesson count
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Afficher le titre du module actuel
+            Text(
+              'Module 1: Introduction à HTML', // À remplacer par le titre du module actuel
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            // Afficher les chapitres du module actuel
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: 5, // À remplacer par le nombre de chapitres du module actuel
               itemBuilder: (context, index) {
-                // Replace with lesson tile widget
                 return ListTile(
-                  title: Text('Leçon ${index + 1}'),
-                  trailing: Icon(
-                      Icons.check_circle_outline), // Mark lesson as completed
+                  title: Text('Chapitre ${index + 1}'), // À remplacer par le titre du chapitre
+                  onTap: () {
+                    // Ajouter la logique pour gérer le tap sur un chapitre
+                    // par exemple, ouvrir la leçon correspondante
+                  },
                 );
               },
             ),
-          ),
-          // Progress Indicator
-          LinearProgressIndicator(
-            value: 0.5, // Replace with actual progress value
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
+}
+
 
   void _showModuleSelector(BuildContext context) {
     // Bottom sheet content
@@ -65,10 +74,4 @@ class HTMLCoursePage extends StatelessWidget {
       builder: (context) => bottomSheetContent,
     );
   }
-}
 
-void main() {
-  runApp(MaterialApp(
-    home: HTMLCoursePage(),
-  ));
-}
