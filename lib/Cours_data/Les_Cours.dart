@@ -140,11 +140,7 @@ void addCourseToFireStore() {
         title: "Liens, Images et Médias",
         chapters: [
           Chapter(title: 'Chapitre 1: Création de liens hypertextes', lessons: [
-            Lesson(
-              title: 'Leçon 1: Approfondissement sur les liens',
-              content:
-                  'Utilisation avancée des ancres, liens vers des emails et numéros de téléphone. Gestion des attributs target et rel.',
-            ),
+          
           ]),
           Chapter(title: "Chapitre 4: Formulaires", lessons: [
             Lesson(
