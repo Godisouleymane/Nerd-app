@@ -112,11 +112,7 @@ void addCourseToFireStore() {
                   content:
                       'Structurer une navigation web avec <nav> et listes. Utilisation des liens internes et externes.',
                 ),
-                Lesson(
-                  title: 'Leçon 3: Comprendre les éléments sémantiques',
-                  content:
-                      'Approfondissement sur l\'utilisation des éléments sémantiques et leur impact sur le SEO et l\'accessibilité.',
-                ),
+               
                 Lesson(
                   title: 'Leçon 4: Navigation',
                   content:
