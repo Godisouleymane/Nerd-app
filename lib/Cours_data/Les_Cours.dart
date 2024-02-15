@@ -107,11 +107,7 @@ void addCourseToFireStore() {
                   content:
                       'Importance des éléments sémantiques pour l\'accessibilité et le SEO. Vue d\'ensemble et usage de <main>, <aside>, <article>, et <section>.',
                 ),
-                Lesson(
-                  title: 'Leçon 2: Header',
-                  content:
-                      'Structurer une navigation web avec <nav> et listes. Utilisation des liens internes et externes.',
-                ),
+              
                 Lesson(
                   title: 'Leçon 3: Comprendre les éléments sémantiques',
                   content:
