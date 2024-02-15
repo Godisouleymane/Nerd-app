@@ -77,7 +77,11 @@ void addCourseToFireStore() {
         chapters: [
           Chapter(title: 'Chapitre 1: Les bases du HTML',
            lessons: [
-          
+            Lesson(
+              title: 'Leçon 1: Introduction au HTML',
+              content:
+                  'Présentation du HTML, historique et importance dans le développement web. Vue d\'ensemble de la structure d\'un document HTML.',
+            ),
             Lesson(
               title: 'Leçon 2: Les éléments de base',
               content:
