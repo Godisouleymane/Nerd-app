@@ -82,7 +82,11 @@ void addCourseToFireStore() {
               content:
                   'Présentation du HTML, historique et importance dans le développement web. Vue d\'ensemble de la structure d\'un document HTML.',
             ),
-           
+            Lesson(
+              title: 'Leçon 2: Les éléments de base',
+              content:
+                  'Explication des balises, attributs et éléments HTML. Distinction entre balises ouvrantes, fermantes et auto-fermantes.',
+            ),
             Lesson(
               title: 'Leçon 3: Structurer une page HTML',
               content:
