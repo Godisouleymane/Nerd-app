@@ -117,7 +117,11 @@ void addCourseToFireStore() {
                   content:
                       'Approfondissement sur l\'utilisation des éléments sémantiques et leur impact sur le SEO et l\'accessibilité.',
                 ),
-               
+                Lesson(
+                  title: 'Leçon 4: Navigation',
+                  content:
+                      'Explication détaillée de la balise <nav> et de l\'organisation des liens de navigation dans une page web.',
+                ),
               ]),
           Chapter(
               title:
