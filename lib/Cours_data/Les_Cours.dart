@@ -127,11 +127,7 @@ void addCourseToFireStore() {
               title:
                   "Chapitre 2: Importance de la sémantique dans le référencement et l'accessibilité",
               lessons: [
-                Lesson(
-                  title: "Leçon 1: SEO et accessibilité",
-                  content:
-                      'Bonnes pratiques pour améliorer le référencement et l\'accessibilité d\'une page web en utilisant la sémantique HTML.',
-                ),
+              
               ]),
         ],
        
