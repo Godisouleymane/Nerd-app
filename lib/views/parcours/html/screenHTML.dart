@@ -64,7 +64,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
       for (var chapter in selectedModule!.chapters) {
         chapterWidgets.add(
           Container(
-            margin: EdgeInsets.all(
+            margin: const EdgeInsets.all(
                 8.0), // Ajoute un peu d'espace autour de chaque chapitre
             padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
@@ -73,7 +73,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
             ),
             child: Text(
               chapter.title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.blueGrey, // Couleur du texte
                 fontWeight: FontWeight.bold, // Gras
               ),
