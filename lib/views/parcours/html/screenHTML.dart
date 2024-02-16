@@ -59,6 +59,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                         ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Icon(
                               Icons.list,
@@ -66,7 +67,8 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                             ),
                             Flexible(
                               child: Text(
-                               selectedModule?.title ?? 'Chargement...',
+                                'Module : ${selectedModule?.title}' ??
+                                    'Chargement...',
                                 softWrap: true,
                                 style: const TextStyle(
                                   color: Color.fromARGB(255, 53, 32, 149),
@@ -158,3 +160,4 @@ class NodeWidget extends StatelessWidget {
     );
   }
 }
+
