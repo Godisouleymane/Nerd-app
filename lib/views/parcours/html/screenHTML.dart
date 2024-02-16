@@ -33,53 +33,60 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
       backgroundColor: Colors.grey.shade300,
       body: currentCourse == null
           ? Center(child: CircularProgressIndicator())
-          : Column(
-            children: [
-              GestureDetector(
-                onTap: () => showModuleSelectionSheet(),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white54,
-                      borderRadius: BorderRadius.circular(16.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: Offset(0, 5),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(Icons.list, size: 30,),
-                         Flexible(
-                          child: 
-                          Text(selectedModule?.title ?? 'Chargement...', 
-                          softWrap: true,
-                           style: const TextStyle(
-                              color: Color.fromARGB(255, 53, 32, 149),
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
+          : SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        showModuleSelectionSheet();
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white54,
+                          borderRadius: BorderRadius.circular(16.0),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 5),
                             ),
-                          )
-                          ),
-                      ],
-                    )
-                  ),
+                          ],
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Icon(
+                              Icons.list,
+                              size: 30,
+                            ),
+                            Flexible(
+                              child: Text(
+                               selectedModule?.title ?? 'Chargement...',
+                                softWrap: true,
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 53, 32, 149),
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // Correction: Utiliser une Column pour disposer verticalement les chapitres
+                    Column(
+                      children: buildChapterWidgets(),
+                    ),
+                  ],
                 ),
               ),
-              // Correction: Utiliser une Column pour disposer verticalement les chapitres
-              Column(
-                children: buildChapterWidgets(),
-              ),
-            ],
-          ),
+            ),
     );
   }
 
