@@ -41,11 +41,13 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                 children: [
                   GestureDetector(
                     onTap: () => showModuleSelectionSheet(),
-                    child: Container(
-                      padding: EdgeInsets.all(16),
-                      color: Colors.blue,
-                      width: double.infinity,
-                      child: Text(selectedModule?.title ?? 'Chargement...'),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        color: Colors.blue,
+                        width: ,
+                        child: Text(selectedModule?.title ?? 'Chargement...'),
+                      ),
                     ),
                   ),
                   // Correction: Utiliser une Column pour disposer verticalement les chapitres
