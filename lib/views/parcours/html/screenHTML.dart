@@ -42,11 +42,28 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                   GestureDetector(
                     onTap: () => showModuleSelectionSheet(),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: Container(
-                        color: Colors.blue,
-                        width: ,
-                        child: Text(selectedModule?.title ?? 'Chargement...'),
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.white54,
+                          borderRadius: BorderRadius.circular(16.0),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(Icons.list, size: 30,),
+                             Text(selectedModule?.title ?? 'Chargement...',),
+                          ],
+                        )
                       ),
                     ),
                   ),
