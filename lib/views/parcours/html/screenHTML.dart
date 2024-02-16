@@ -100,12 +100,20 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
           Column(
             children: [
               Container(
-              margin: const EdgeInsets.all(
-                  8.0), // Ajoute un peu d'espace autour de chaque chapitre
-              padding: EdgeInsets.all(16.0),
+              width: MediaQuery.of(context).,
+             margin: const EdgeInsets.symmetric(vertical: 5.0),
+              padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-                color: Colors.lightBlue[100], // Couleur de fond du container
-                borderRadius: BorderRadius.circular(10), // Bordures arrondies
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(10.0),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.grey,
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 5),
+                  ),
+                ],
               ),
               child: Text(
                 chapter.title,
@@ -156,10 +164,19 @@ class NodeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(10),
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.grey,
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 5),
+          ),
+        ],
       ),
       child: Text(title, style: TextStyle(color: Colors.white)),
     );
