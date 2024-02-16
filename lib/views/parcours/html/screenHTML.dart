@@ -47,7 +47,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: Colors.white54,
-                          borderRadius: BorderRadius.circular(16.0),
+                          borderRadius: BorderRadius.circular(12.0),
                           boxShadow: const [
                             BoxShadow(
                               color: Colors.grey,
@@ -116,12 +116,24 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                   ),
                 ],
               ),
-              child: Text(
-                chapter.title,
-                style: const TextStyle(
-                  color: Colors.blueGrey, // Couleur du texte
-                  fontWeight: FontWeight.bold, // Gras
-                ),
+              child:  Row(
+                children: [
+                  isUnlocked
+                      ? const Icon(Icons.play_arrow, color: Colors.green)
+                      : const Icon(Icons.lock, color: Colors.red),
+                  const SizedBox(width: 10),
+                  Flexible(
+                    child: Text(
+                      course,
+                      softWrap: true,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             ArrowWidget()
