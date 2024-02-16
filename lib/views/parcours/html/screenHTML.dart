@@ -124,7 +124,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                   const SizedBox(width: 10),
                   Flexible(
                     child: Text(
-                      course,
+                      chapter.title,
                       softWrap: true,
                       style: TextStyle(
                         fontSize: 16.0,
