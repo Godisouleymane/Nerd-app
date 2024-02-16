@@ -81,6 +81,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 40,),
                     // Correction: Utiliser une Column pour disposer verticalement les chapitres
                     Column(
                       children: buildChapterWidgets(),
@@ -100,7 +101,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
           Column(
             children: [
               Container(
-              width: MediaQuery.of(context).,
+              width: MediaQuery.of(context).size.width,
              margin: const EdgeInsets.symmetric(vertical: 5.0),
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
