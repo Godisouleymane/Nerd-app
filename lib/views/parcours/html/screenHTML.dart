@@ -118,15 +118,13 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
               ),
               child:  Row(
                 children: [
-                  isUnlocked
-                      ? const Icon(Icons.play_arrow, color: Colors.green)
-                      : const Icon(Icons.lock, color: Colors.red),
+               const Icon(Icons.play_arrow, color: Colors.green),
                   const SizedBox(width: 10),
                   Flexible(
                     child: Text(
                       chapter.title,
                       softWrap: true,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
