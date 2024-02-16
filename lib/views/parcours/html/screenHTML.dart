@@ -97,22 +97,27 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
     if (selectedModule != null) {
       for (var chapter in selectedModule!.chapters) {
         chapterWidgets.add(
-          Container(
-            margin: const EdgeInsets.all(
-                8.0), // Ajoute un peu d'espace autour de chaque chapitre
-            padding: EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: Colors.lightBlue[100], // Couleur de fond du container
-              borderRadius: BorderRadius.circular(10), // Bordures arrondies
-            ),
-            child: Text(
-              chapter.title,
-              style: const TextStyle(
-                color: Colors.blueGrey, // Couleur du texte
-                fontWeight: FontWeight.bold, // Gras
+          Column(
+            children: [
+              Container(
+              margin: const EdgeInsets.all(
+                  8.0), // Ajoute un peu d'espace autour de chaque chapitre
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.lightBlue[100], // Couleur de fond du container
+                borderRadius: BorderRadius.circular(10), // Bordures arrondies
+              ),
+              child: Text(
+                chapter.title,
+                style: const TextStyle(
+                  color: Colors.blueGrey, // Couleur du texte
+                  fontWeight: FontWeight.bold, // Gras
+                ),
               ),
             ),
-          ),
+            ArrowWidget()
+            ],
+          )
         );
       }
     }
@@ -161,3 +166,13 @@ class NodeWidget extends StatelessWidget {
   }
 }
 
+class ArrowWidget extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context){
+     return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.0),
+      child: Center(child: Icon(Icons.arrow_downward,)),
+    );
+  }
+}
