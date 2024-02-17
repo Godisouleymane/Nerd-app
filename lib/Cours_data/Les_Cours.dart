@@ -147,7 +147,11 @@ void addCourseToFireStore() {
             ),
           ]),
           Chapter(title: "Chapitre 4: Formulaires", lessons: [
-           
+            Lesson(
+              title: "Leçon 1: Création de formulaires HTML",
+              content:
+                  'Introduction aux types d\'input HTML5 comme date, range, et color. Utilisation de datalist pour les suggestions.',
+            ),
             Lesson(
               title: 'Leçon 2: Validation de formulaire côté client',
               content:
