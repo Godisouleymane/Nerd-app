@@ -82,7 +82,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                       ),
                     ),
                     SizedBox(height: 40,),
-                    // Correction: Utiliser une Column pour disposer verticalement les chapitres
+                   
                     Column(
                       children: buildChapterWidgets(),
                     ),
