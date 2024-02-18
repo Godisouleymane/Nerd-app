@@ -182,11 +182,7 @@ void addCourseToFireStore() {
           Chapter(
               title: "Chapitre 2: Validation HTML et accessibilité",
               lessons: [
-                Lesson(
-                  title: "Leçon 1: Utiliser les outils de validation HTML",
-                  content:
-                      'Présentation des outils de validation W3C et comment les utiliser pour vérifier la conformité de vos pages HTML.',
-                ),
+               
                 Lesson(
                   title: 'Leçon 2: Principes de base de l\'accessibilité',
                   content:
