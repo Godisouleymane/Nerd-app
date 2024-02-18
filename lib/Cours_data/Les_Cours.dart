@@ -167,12 +167,7 @@ void addCourseToFireStore() {
           Chapter(
               title: 'Chapitre 1: Les meilleures pratiques pour le codage HTML',
               lessons: [
-                Lesson(
-                  title:
-                      'Leçon 1: Commentaires, indentation et conventions de nommage',
-                  content:
-                      'L\'importance des commentaires, de l\'indentation propre et des conventions de nommage pour améliorer la lisibilité du code.',
-                ),
+               
                 Lesson(
                   title: 'Leçon 2: Responsive Design',
                   content:
