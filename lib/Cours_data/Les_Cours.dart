@@ -173,7 +173,11 @@ void addCourseToFireStore() {
                   content:
                       'L\'importance des commentaires, de l\'indentation propre et des conventions de nommage pour améliorer la lisibilité du code.',
                 ),
-               
+                Lesson(
+                  title: 'Leçon 2: Responsive Design',
+                  content:
+                      'Introduction aux médias queries et à l\'importance du design responsive.',
+                ),
               ]),
           Chapter(
               title: "Chapitre 2: Validation HTML et accessibilité",
