@@ -266,7 +266,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   .collection('coursEnCours')
                   .doc(selectedContainerId)
                   .set({
-                    
+                    'progression': 0,
                   });
             } else {}
           },
