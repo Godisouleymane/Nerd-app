@@ -259,11 +259,16 @@ class _IntroductionPageState extends State<IntroductionPage> {
 
             final user = Provider.of<User?>(context, listen: false);
 
-           if (user != null) {
-             FirebaseFirestore.instance.collection('users').doc(user.uid).collection('coursEnCours')
-           } else {
-             
-           }
+            if (user != null) {
+              FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(user.uid)
+                  .collection('coursEnCours')
+                  .doc(selectedContainerId)
+                  .set({
+                    
+                  });
+            } else {}
           },
           child: const Text(
             "Commencer",
