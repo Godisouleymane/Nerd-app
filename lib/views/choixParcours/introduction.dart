@@ -259,20 +259,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
 
             final user = Provider.of<User?>(context, listen: false);
 
-            if (user != null) {
-              // Enregistrer l'ID du container selectionner dans le fireStore
-              FirebaseFirestore.instance
-                  .collection('users')
-                  .doc(user.uid)
-                  .set({'selectedContainerId': selectedContainerId}).then((_) {
-                // Enregistrement réussi, naviguer vers la page appropriée
-                navigateToSelectedContainerPage(selectedContainerId);
-              }).catchError((error) {
-                // Gérer les erreurs lors de l'enregistrement dans Firestore
-                print(
-                    'Erreur lors de l\'enregistrement dans Firestore: $error');
-              });
-            }
+           
           },
           child: const Text(
             "Commencer",
