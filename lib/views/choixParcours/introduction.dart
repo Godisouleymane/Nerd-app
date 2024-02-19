@@ -271,8 +271,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
               }).then((_) {
                 // Enregistrement reussi, Naviguer vers la page appropriée,
                 navigateToSelectedContainerPage(selectedContainerId);
+              }).catchError((error) {
+                  // Gérer les erreurs lors de l'enregistrement dans Firestore
+                print(
+                  'Erreur lors de l\'enregistrement dans Firestore: $error');
               });
-            } else {}
+            }
           },
           child: const Text(
             "Commencer",
