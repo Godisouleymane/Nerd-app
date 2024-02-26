@@ -23,6 +23,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.deepPurple,
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40))
               ),
+              child: Center(
+                child: Text(_user!.displayName!,style: TextStyle(
+                  color: Colors.white
+                ),),
+              ),
             ),
             Positioned(
              bottom: 0,
