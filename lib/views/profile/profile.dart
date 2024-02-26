@@ -18,14 +18,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Stack(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.40,
+              height: MediaQuery.of(context).size.height * 0.30,
               decoration: const BoxDecoration(
                 color: Colors.deepPurple,
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40))
               ),
             ),
-            Positioned(child: CircleAvatar(
-              backgroundImage: NetworkImage(_user!.photoURL!),
-            ))
+            Positioned(
+             bottom: 0,
+             right: 0,
+             left: 0,
+              child: Center(
+                child: CircleAvatar(
+                backgroundColor: Colors.grey,
+                backgroundImage: NetworkImage(_user!.photoURL!),
+                            ),
+              ))
           ],
         ),
       ),
