@@ -30,7 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
              left: 0,
               child: Center(
                 child: CircleAvatar(
-                radius: 30,
+                radius: 40,
                 backgroundColor: Colors.grey,
                 backgroundImage: NetworkImage(_user!.photoURL!),
                             ),
