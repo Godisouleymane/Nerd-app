@@ -200,7 +200,6 @@ void addCourseToFireStore() {
   );
 
 
-
    // Ajouter le cours HTML à Firestore
   FirebaseFirestore.instance
       .collection('courses')

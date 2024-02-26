@@ -268,6 +268,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   .set({
                 'progression': 0, // commencer la lesson a 0%
                 'derniereLesson': '', // Aucune lesson commencee
+               
               }).then((_) {
                 // Enregistrement reussi, Naviguer vers la page appropriée,
                 navigateToSelectedContainerPage(selectedContainerId);

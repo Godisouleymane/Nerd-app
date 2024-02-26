@@ -69,11 +69,14 @@ class _HTMLViewState extends State<HTMLView> {
             ),
             actions: [
               if (user != null && user.photoURL != null)
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.grey,
-                    backgroundImage: NetworkImage(user.photoURL!),
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, '/profile'),
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      backgroundImage: NetworkImage(user.photoURL!),
+                    ),
                   ),
                 )
             ],
