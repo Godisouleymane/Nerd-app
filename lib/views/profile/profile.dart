@@ -23,6 +23,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               fontWeight: FontWeight.bold,
             )),
         centerTitle: true,
+        iconTheme: IconThemeData(
+         color: Colors.white,
+        ),
       ),
       backgroundColor: Colors.grey.shade300,
       body: SingleChildScrollView(
