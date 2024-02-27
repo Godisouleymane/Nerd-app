@@ -1,9 +1,10 @@
-import 'dart:math';
 import 'package:code_crafters/services/get_courses.dart';
 import 'package:flutter/material.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 class CourseProgressScreen extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _CourseProgressScreenState createState() => _CourseProgressScreenState();
 }
 
@@ -31,63 +32,16 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
-      body: currentCourse == null
-          ? Center(child: CircularProgressIndicator())
+      body: currentCourse == null ?
+      const Center(child: CircularProgressIndicator())
           : SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Column(
+                child: ListView(
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        showModuleSelectionSheet();
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: const EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white54,
-                          borderRadius: BorderRadius.circular(12.0),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Icon(
-                              Icons.list,
-                              size: 30,
-                            ),
-                            Flexible(
-                              child: Text(
-                                'Module : ${selectedModule?.title}' ??
-                                    'Chargement...',
-                                softWrap: true,
-                                style: const TextStyle(
-                                  color: Color.fromARGB(255, 53, 32, 149),
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 40,),
-                   
-                    Column(
-                      children: buildChapterWidgets(),
-                    ),
+                   TimelineTile()
                   ],
-                ),
+                )
               ),
             ),
     );
@@ -134,7 +88,7 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                 ],
               ),
             ),
-            ArrowWidget()
+           
             ],
           )
         );

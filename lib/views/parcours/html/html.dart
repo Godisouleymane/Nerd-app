@@ -58,8 +58,7 @@ class _HTMLViewState extends State<HTMLView> {
                     children: List.generate(
                       lives,
                       (index) => const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
+                      null
                       ),
                     ),
                   ),
