@@ -23,7 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               fontWeight: FontWeight.bold,
             )),
         centerTitle: true,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
          color: Colors.white,
         ),
       ),
@@ -33,12 +33,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                height: MediaQuery.of(context).size.height * 0.27,
+                height: MediaQuery.of(context).size.height * 0.20,
                 decoration: const BoxDecoration(
                     color: Colors.deepPurple,
                     borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30))),
+                        bottomLeft: Radius.circular(23),
+                        bottomRight: Radius.circular(23))),
                 child: Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         radius: 40,
                         backgroundColor: Colors.grey,
                         backgroundImage: NetworkImage(_user!.photoURL!)),
-                    Gap(5),
+                    const Gap(5),
                     Text(
                       _user.displayName!,
                       style: const TextStyle(
