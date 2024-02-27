@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -29,9 +30,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                       CircleAvatar(
+                        radius: 40,
                         backgroundColor: Colors.grey,
                         backgroundImage: NetworkImage(_user!.photoURL!)
                       ),
+                      Gap(5),
                       Text(_user.displayName!, style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold
