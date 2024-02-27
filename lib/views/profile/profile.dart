@@ -15,6 +15,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final _user = Provider.of<User?>(context);
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
