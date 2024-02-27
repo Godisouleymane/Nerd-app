@@ -24,25 +24,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.deepPurple,
                     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: CircleAvatar(
-                          radius: 40,
-                          backgroundImage: NetworkImage(_user!.photoURL!),
-                        ),
+                  child: Center(
+                    child: Column(children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        backgroundImage: NetworkImage(_user!.photoURL!)
                       ),
-                      const SizedBox(height: 10,),
-                      Center(
-                        child: Text(_user.displayName!,style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold
-                          
-                        ),),
-                      ),
-                    ],
-                  ),
+                      Text(_user.displayName!, style: TextStyle(
+                        color: Colors.white,
+                        
+                      ),),
+                    ],)
+                  )
                 ),  
             const Padding(
               padding: EdgeInsets.all(8.0),
