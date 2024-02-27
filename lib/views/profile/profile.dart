@@ -34,7 +34,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Colors.white,
                         fontWeight: FontWeight.bold
                       ),),
-                      const Text('0 peers')
+                      const Text('0 peers', style: TextStyle(
+                        color: Colors.white,
+                        
+                      ),)
                     ],)
                   )
                 ),  
