@@ -39,7 +39,11 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: ListView(
                   children: [
-                   TimelineTile()
+                   TimelineTile(
+                    endChild: Container(
+                      child: Text(selectedModule!.title),
+                    ),
+                   )
                   ],
                 )
               ),
@@ -143,7 +147,7 @@ class NodeWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Text(title, style: TextStyle(color: Colors.white)),
+      child: Text(title, style: const TextStyle(color: Colors.white)),
     );
   }
 }
