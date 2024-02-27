@@ -30,10 +30,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         backgroundColor: Colors.grey,
                         backgroundImage: NetworkImage(_user!.photoURL!)
                       ),
-                      Text(_user.displayName!, style: TextStyle(
+                      Text(_user.displayName!, style: const TextStyle(
                         color: Colors.white,
-                        
+                        fontWeight: FontWeight.bold
                       ),),
+                      const Text('0 peers')
                     ],)
                   )
                 ),  
