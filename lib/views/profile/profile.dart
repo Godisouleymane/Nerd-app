@@ -25,7 +25,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
                   ),
                   child: Center(
-                    child: Column(children: [
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                       CircleAvatar(
                         backgroundColor: Colors.grey,
                         backgroundImage: NetworkImage(_user!.photoURL!)
