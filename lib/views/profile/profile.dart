@@ -33,11 +33,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           backgroundImage: NetworkImage(_user!.photoURL!),
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Center(
-                        child: Text(_user!.displayName!,style: const TextStyle(
+                        child: Text(_user.displayName!,style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold
+                          
                         ),),
                       ),
                     ],
