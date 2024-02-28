@@ -70,11 +70,7 @@ void addCourseToFireStore() {
         content:
             'Explication des balises, attributs et éléments HTML. Distinction entre balises ouvrantes, fermantes et auto-fermantes.',
       ),
-      Lesson(
-        title: 'Leçon 3: Structurer une page HTML',
-        content:
-            'Utilisation des balises <html>, <head>, <title>, et <body>. Introduction à la hiérarchie des éléments.',
-      ),
+     
     ]),
     Module(title: "Structure et Sémantique",
     isUnlocked: false,
