@@ -76,7 +76,9 @@ void addCourseToFireStore() {
             'Utilisation des balises <html>, <head>, <title>, et <body>. Introduction à la hiérarchie des éléments.',
       ),
     ]),
-    Module(title: "Structure et Sémantique", lesson: [
+    Module(title: "Structure et Sémantique",
+    isUnlocked: false,
+     lesson: [
       Lesson(
         title: 'Leçon 1: Introduction au structure et sémantique',
         content:
