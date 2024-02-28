@@ -19,16 +19,19 @@ class Course {
 class Module {
   final String title;
   final List<Lesson> lesson;
+  final bool isUnlocked;
 
   Module({
     required this.title,
     required this.lesson,
+    this.isUnlocked = false,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'title': title,
       'lesson': lesson.map((lesson) => lesson.toMap()).toList(),
+      'isUnlocked': isUnlocked,
     };
   }
 }
@@ -54,7 +57,9 @@ void addCourseToFireStore() {
   // creer un object Course pour representer le cours html avec des modules, des chapitres, des lecons
 
   Course htmlCourse = Course(id: 'html', title: 'Cours HTML', modules: [
-    Module(title: "Introduction à HTML", lesson: [
+    Module(title: "Introduction à HTML",
+    isUnlocked: true,
+     lesson: [
       Lesson(
         title: 'Leçon 1: Introduction au HTML',
         content:
