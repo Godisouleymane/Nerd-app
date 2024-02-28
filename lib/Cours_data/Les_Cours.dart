@@ -113,11 +113,7 @@ void addCourseToFireStore() {
         content:
             'Utilisation avancée des ancres, liens vers des emails et numéros de téléphone. Gestion des attributs target et rel.',
       ),
-      Lesson(
-        title: "Leçon 1: Création de formulaires HTML",
-        content:
-            'Introduction aux types d\'input HTML5 comme date, range, et color. Utilisation de datalist pour les suggestions.',
-      ),
+     
       Lesson(
         title: 'Leçon 2: Validation de formulaire côté client',
         content:
