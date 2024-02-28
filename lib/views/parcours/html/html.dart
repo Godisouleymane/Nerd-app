@@ -21,7 +21,7 @@ class _HTMLViewState extends State<HTMLView> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    
+    HtmlVieww(),
     const Communaute(),
     const Cours(),
     

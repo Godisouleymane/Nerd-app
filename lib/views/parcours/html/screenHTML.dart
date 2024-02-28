@@ -1,23 +1,19 @@
 import 'package:code_crafters/services/get_courses.dart';
 import 'package:flutter/material.dart';
-import 'package:timeline_tile/timeline_tile.dart'; 
-import 'package:code_crafters/services/get_courses.dart';
-import 'package:code_crafters/Cours_data/Les_Cours.dart'
-    as Cours; // Utilisation de l'alias Cours
+import 'package:timeline_tile/timeline_tile.dart';
 
-class HtmlView extends StatefulWidget {
+class HtmlVieww extends StatefulWidget {
   @override
-  _HtmlViewState createState() => _HtmlViewState();
+  _HtmlViewwState createState() => _HtmlViewwState();
 }
 
-class _HtmlViewState extends State<HtmlView> {
-  Future<Cours.Course?>? courseFuture; // Utilisation de l'alias pour Course
+class _HtmlViewwState extends State<HtmlVieww> {
+  Future<Map<String, dynamic>?>? courseFuture;
 
   @override
   void initState() {
     super.initState();
-    courseFuture =
-        getHtmlCourseFromFirestore() as Future<Cours.Course?>?; // Assurez-vous que cette fonction retourne Future<Cours.Course?>
+    courseFuture = getHtmlCourseFromFirestore();
   }
 
   @override
@@ -26,39 +22,42 @@ class _HtmlViewState extends State<HtmlView> {
       appBar: AppBar(
         title: Text('Cours HTML'),
       ),
-      body: FutureBuilder<Cours.Course?>(
+      body: FutureBuilder<Map<String, dynamic>?>(
         future: courseFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
-              final course = snapshot.data!;
+              final courseData = snapshot.data!;
+              final modules = courseData['modules'] as List<dynamic>;
               return ListView.builder(
-                itemCount: course.modules.length,
+                itemCount: modules.length,
                 itemBuilder: (context, index) {
-                  Cours.Module module = course
-                      .modules[index]; // Utilisation de l'alias pour Module
+                  final module = modules[index] as Map<String, dynamic>;
+                  final lessons = module['lessons'] as List<dynamic>;
                   return TimelineTile(
                     alignment: TimelineAlign.manual,
                     lineXY: 0.3,
                     isFirst: index == 0,
-                    isLast: index == course.modules.length - 1,
+                    isLast: index == modules.length - 1,
                     indicatorStyle: IndicatorStyle(
                       width: 40,
-                      color: module.isUnlocked ? Colors.green : Colors.grey,
+                      color: module['isUnlocked'] ? Colors.green : Colors.grey,
                       iconStyle: IconStyle(
-                        iconData:
-                            module.isUnlocked ? Icons.play_arrow : Icons.lock,
+                        iconData: module['isUnlocked']
+                            ? Icons.play_arrow
+                            : Icons.lock,
                         color: Colors.white,
                       ),
                     ),
                     endChild: ExpansionTile(
-                      title: Text(module.title),
-                      children: module.lessons
-                          .map((lesson) => ListTile(
-                                title: Text(lesson.title),
-                                subtitle: Text(lesson.content),
-                              ))
-                          .toList(),
+                      title: Text(module['title']),
+                      children: lessons.map((lesson) {
+                        final lessonData = lesson as Map<String, dynamic>;
+                        return ListTile(
+                          title: Text(lessonData['title']),
+                          subtitle: Text(lessonData['content']),
+                        );
+                      }).toList(),
                     ),
                   );
                 },
