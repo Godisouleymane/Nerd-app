@@ -266,9 +266,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   .collection('coursEnCours')
                   .doc(selectedContainerId)
                   .set({
-                'progression': 0, // commencer la lesson a 0%
-                'derniereLesson': '', // Aucune lesson commencee
-               
               }).then((_) {
                 // Enregistrement reussi, Naviguer vers la page appropriée,
                 navigateToSelectedContainerPage(selectedContainerId);
