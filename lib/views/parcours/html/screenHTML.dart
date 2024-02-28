@@ -39,11 +39,15 @@ class _CourseProgressScreenState extends State<CourseProgressScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: ListView(
                   children: [
-                   TimelineTile(
-                    endChild: Container(
-                      child: Text(selectedModule!.title),
-                    ),
-                   )
+                    SizedBox(height: 30,),
+                    Column(
+                      children: [
+                        TimelineTile(),
+                        TimelineTile(),
+                        TimelineTile(),
+                        TimelineTile(),
+                      ],
+                    )
                   ],
                 )
               ),

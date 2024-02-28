@@ -18,11 +18,11 @@ class Course {
 
 class Module {
   final String title;
-  final List<Chapter> chapters;
+  final List<Lesson> lesson;
 
   Module({
     required this.title,
-    required this.chapters,
+    required this.lesson,
   });
 
   Map<String, dynamic> toMap() {
