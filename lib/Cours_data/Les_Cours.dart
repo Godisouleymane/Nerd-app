@@ -99,7 +99,11 @@ void addCourseToFireStore() {
         content:
             'Explication détaillée de la balise <nav> et de l\'organisation des liens de navigation dans une page web.',
       ),
-   
+      Lesson(
+        title: "Leçon 1: SEO et accessibilité",
+        content:
+            'Bonnes pratiques pour améliorer le référencement et l\'accessibilité d\'une page web en utilisant la sémantique HTML.',
+      ),
     ]),
     Module(title: "Liens, Images et Médias", 
     isUnlocked: false,
