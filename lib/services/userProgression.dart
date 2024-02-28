@@ -1,11 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-// Fonction pour initialiser la progression de l'utilisateur
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 // Fonction pour initialiser la progression de l'utilisateur dans le cours HTML
 void initializeHTMLCourseProgressForUser() async {
   // Obtenir l'UID de l'utilisateur authentifié

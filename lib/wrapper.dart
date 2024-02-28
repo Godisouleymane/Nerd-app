@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Wrapper extends StatelessWidget {
+class Wrapper extends StatelessWidget { 
   const Wrapper({Key? key}) : super(key: key);
 
   @override
@@ -31,9 +31,9 @@ class Wrapper extends StatelessWidget {
             if (selectedContainerId == null) {
               return const IntroductionPage();
             } else if (selectedContainerId == 'html') {
-              return HTMLView();
+              return const HTMLView();
             } else {
-              return Placeholder(); // Remplacez-le par le widget souhaité
+              return const Placeholder(); 
             }
           }
         },

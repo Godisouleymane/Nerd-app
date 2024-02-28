@@ -16,7 +16,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final _user = Provider.of<User?>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 53, 32, 149),
+        backgroundColor: const Color.fromARGB(255, 53, 32, 149),
         title: const Text('Profile',
             style: TextStyle(
               color: Colors.white,

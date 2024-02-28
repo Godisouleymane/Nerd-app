@@ -10,7 +10,7 @@ class Communaute extends StatefulWidget {
 class _CommunauteState extends State<Communaute> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text('Communaute'),
       ),
