@@ -105,7 +105,9 @@ void addCourseToFireStore() {
             'Bonnes pratiques pour améliorer le référencement et l\'accessibilité d\'une page web en utilisant la sémantique HTML.',
       ),
     ]),
-    Module(title: "Liens, Images et Médias", lesson: [
+    Module(title: "Liens, Images et Médias", 
+    isUnlocked: false,
+    lesson: [
       Lesson(
         title: 'Leçon 1: Approfondissement sur les liens',
         content:
@@ -122,7 +124,9 @@ void addCourseToFireStore() {
             'Utilisation des attributs required, pattern, et min/max pour valider les entrées utilisateur.',
       ),
     ]),
-    Module(title: "Bonnes Pratiques et Normes", lesson: [
+    Module(title: "Bonnes Pratiques et Normes", 
+    isUnlocked: false,
+    lesson: [
       Lesson(
         title: 'Leçon 1: Commentaires, indentation et conventions de nommage',
         content:
