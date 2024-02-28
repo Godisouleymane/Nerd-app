@@ -45,33 +45,16 @@ class Course {
 
 class Module {
   final String title;
-  final List<Chapter> chapters;
-
-  Module({required this.title, required this.chapters});
-
-  factory Module.fromMap(Map<String, dynamic> map) {
-    List<dynamic> chaptersData = map['chapters'];
-    List<Chapter> chapters = chaptersData
-        .map((chapterData) => Chapter.fromMap(chapterData))
-        .toList();
-    return Module(
-      title: map['title'],
-      chapters: chapters,
-    );
-  }
-}
-
-class Chapter {
-  final String title;
   final List<Lesson> lessons;
 
-  Chapter({required this.title, required this.lessons});
+  Module({required this.title, required this.lessons,});
 
-  factory Chapter.fromMap(Map<String, dynamic> map) {
+  factory Module.fromMap(Map<String, dynamic> map) {
     List<dynamic> lessonsData = map['lessons'];
-    List<Lesson> lessons =
-        lessonsData.map((lessonData) => Lesson.fromMap(lessonData)).toList();
-    return Chapter(
+    List<Lesson> lessons = lessonsData
+        .map((lessonsData) => Lesson.fromMap(lessonsData))
+        .toList();
+    return Module(
       title: map['title'],
       lessons: lessons,
     );

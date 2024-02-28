@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class CourseProgressScreen extends StatefulWidget {
+  const CourseProgressScreen({super.key});
+
   @override
   // ignore: library_private_types_in_public_api
   _CourseProgressScreenState createState() => _CourseProgressScreenState();
