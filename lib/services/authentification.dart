@@ -28,6 +28,13 @@ class AuthService {
   // L'etat de l'utilisateur en temps reel
 
   Stream<User?> get user => _auth.authStateChanges();
+
+  // deconnexion
+
+  Future<void> signOut() async {
+    await _googleSignIn.signOut();
+    await _auth.signOut();
+  }
 }
 
 

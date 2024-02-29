@@ -1,3 +1,4 @@
+import 'package:code_crafters/services/authentification.dart';
 import 'package:code_crafters/views/profile/heatMap.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -152,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   )),
               ),
-               Padding(
+              Padding(
               padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0, bottom: 20),
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -161,7 +162,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
                       minimumSize: Size(MediaQuery.of(context).size.width, 55)),
-                  onPressed: () {},
+                  onPressed: () => signOut(context),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -181,5 +182,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+  signOut(BuildContext context) {
+    Navigator.of(context).pop();
+    AuthService().signOut();
   }
 }
