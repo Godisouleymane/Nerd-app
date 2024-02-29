@@ -105,17 +105,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ListTile(
                       dense: true,
                       title: Text('Feedback'),
-                      trailing: Icon(Icons.feedback),
+                      trailing: Icon(Icons.feedback, color: Colors.green,),
                     ),
                     ListTile(
                       dense: true,
                       title: Text('Nous suivres'),
-                      trailing: Icon(Icons.favorite),
+                      trailing: Icon(Icons.favorite, color: Colors.red,),
                     ),
                     ListTile(
                       dense: true,
                       title: Text('Inviter un peer'),
-                      trailing: Icon(Icons.family_restroom),
+                      trailing: Icon(Icons.family_restroom,),
                     ),
                   ],
                 )
