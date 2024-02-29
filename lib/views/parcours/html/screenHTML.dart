@@ -62,19 +62,23 @@ class _HtmlViewwState extends State<HtmlVieww> {
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           height: 200,
                           child: TimelineTile(
+
                             isFirst: index == 0,
                             isLast: index == lessons.length - 1,
                             alignment: TimelineAlign.start,
                             lineXY: 0.1,
                             indicatorStyle: IndicatorStyle(
-                              width: 20,
+                              width: 40,
                               color: Colors.green,
                               iconStyle: IconStyle(
                                   iconData: Icons.check, color: Colors.white),
                             ),
                             endChild: Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: Text(lessons[index]['title']),
+                              child: Card(
+                                child: Text(
+                                lessons[index]['title'],
+                              )),
                             ),
                           ),
                         );
