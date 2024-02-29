@@ -20,6 +20,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: FutureBuilder<Map<String, dynamic>?>(
         future: courseFuture,
         builder: (context, snapshot) {
@@ -62,23 +63,30 @@ class _HtmlViewwState extends State<HtmlVieww> {
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           height: 200,
                           child: TimelineTile(
-
                             isFirst: index == 0,
                             isLast: index == lessons.length - 1,
                             alignment: TimelineAlign.start,
                             lineXY: 0.1,
+                            beforeLineStyle: const LineStyle(
+                              thickness: 4,
+                              color: Colors.deepPurple
+                            ),
                             indicatorStyle: IndicatorStyle(
-                              width: 30,
-                              color: Colors.green,
+                              width: 35,
+                              color: Colors.grey,
                               iconStyle: IconStyle(
-                                  iconData: Icons.check, color: Colors.white),
+                                  iconData: Icons.lock, color: Colors.white),
                             ),
                             endChild: Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: Card(
-                                child: Text(
-                                lessons[index]['title'],
-                              )),
+                              child:Container(
+                                decoration: BoxDecoration(
+                                  
+                                ),
+                                child:  Text(
+                                    lessons[index]['title'],
+                                  ),
+                              )
                             ),
                           ),
                         );
