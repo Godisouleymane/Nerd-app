@@ -6,31 +6,30 @@ class MyHeatMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HeatMapCalendar(
-      defaultColor: Colors.white,
-      flexible: true,
-      colorMode: ColorMode.color,
+    return HeatMap(
       datasets: {
-        DateTime(2021, 1, 6): 3,
-        DateTime(2021, 1, 7): 7,
-        DateTime(2021, 1, 8): 10,
-        DateTime(2021, 1, 9): 13,
-        DateTime(2021, 1, 13): 6,
+        DateTime(2024, 3, 23): 3,
+        DateTime(2024, 3, 25): 10,
+        DateTime(2024, 3, 29): 13,
       },
+      startDate: DateTime.now(),
+      endDate: DateTime.now().add(Duration(days: 40)),
+      size: 40,
+      colorMode: ColorMode.opacity,
+      showText: false,
+      scrollable: true,
       colorsets: const {
-        1: Colors.red,
-        3: Colors.orange,
-        5: Colors.yellow,
-        7: Colors.green,
-        9: Colors.blue,
-        11: Colors.indigo,
-        13: Colors.purple,
-      },
-      onClick: (value) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(value.toString())));
+        1: Color.fromARGB(20, 2, 179, 8),
+        2: Color.fromARGB(40, 2, 179, 8),
+        3: Color.fromARGB(60, 2, 179, 8),
+        4: Color.fromARGB(80, 2, 179, 8),
+        5: Color.fromARGB(100, 2, 179, 8),
+        6: Color.fromARGB(120, 2, 179, 8),
+        7: Color.fromARGB(150, 2, 179, 8),
+        8: Color.fromARGB(180, 2, 179, 8),
+        9: Color.fromARGB(220, 2, 179, 8),
+        10: Color.fromARGB(255, 2, 179, 8),
       },
     );
-    
   }
 }

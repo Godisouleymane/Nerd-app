@@ -66,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
-                'Activités',
+                'Learning Contribution',
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
