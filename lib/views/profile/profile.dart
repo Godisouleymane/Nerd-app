@@ -87,8 +87,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 )
                 ),
               ),
-              Container(
-                
+              const Card(
+                margin: EdgeInsets.only(bottom: 10),
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    ListTile(
+                      dense: true,
+                      title: Text('Langue de l\'application'),
+                      trailing: Icon(Icons.flag_circle, color: Colors.blue,),
+                    ),
+                    ListTile(
+                      dense: true,
+                      title: Text('Theme de l\'application'),
+                      trailing: Icon(Icons.sunny, color: Colors.amber,),
+                    ),
+                    ListTile(
+                      dense: true,
+                      title: Text('Feedback'),
+                      trailing: Icon(Icons.feedback),
+                    ),
+                    ListTile(
+                      dense: true,
+                      title: Text('Nous suivres'),
+                      trailing: Icon(Icons.favorite),
+                    ),
+                    ListTile(
+                      dense: true,
+                      title: Text('Inviter un peer'),
+                      trailing: Icon(Icons.family_restroom),
+                    ),
+                  ],
+                )
               )
           ],
         ),
