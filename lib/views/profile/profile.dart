@@ -64,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ))),
                 const Gap(25),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              padding: EdgeInsets.symmetric(horizontal: 12.0),
               child: Text(
                 'Learning Contribution',
                 style: TextStyle(
@@ -80,56 +80,73 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const Gap(20),
               const Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
                 child: Text("Parametre de l'app", style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 17
                 )
                 ),
               ),
-              const Card(
-                margin: EdgeInsets.only(bottom: 10),
-                color: Colors.white,
-                child: Column(
-                  children: [
-                    ListTile(
-                      dense: true,
-                      title: Text('Langue de l\'application', style: TextStyle(fontSize: 14),),
-                      trailing: Icon(Icons.flag_circle, color: Colors.blue,),
-                    ),
-                    ListTile(
-                      dense: true,
-                      title: Text('Theme de l\'application',style: TextStyle(fontSize: 14 )),
-                      trailing: Icon(Icons.sunny, color: Colors.amber,),
-                    ),
-                    ListTile(
-                      dense: true,
-                      title: Text('Feedback', style: TextStyle(fontSize: 14)),
-                      trailing: Icon(Icons.feedback, color: Colors.green,),
-                    ),
-                    ListTile(
-                      dense: true,
-                      title: Text('Nous suivres', style: TextStyle(fontSize: 14)),
-                      trailing: Icon(Icons.favorite, color: Colors.red,),
-                    ),
-                    ListTile(
-                      dense: true,
-                      title: Text('Inviter un peer', style: TextStyle(fontSize: 14)),
-                      trailing: Icon(Icons.family_restroom,),
-                    ),
-                  ],
-                )
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Card(
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      ListTile(
+                        dense: true,
+                        title: Text('Langue de l\'application', style: TextStyle(fontSize: 14),),
+                        trailing: Icon(Icons.flag_circle, color: Colors.blue,),
+                      ),
+                      ListTile(
+                        dense: true,
+                        title: Text('Theme de l\'application',style: TextStyle(fontSize: 14 )),
+                        trailing: Icon(Icons.sunny, color: Colors.amber,),
+                      ),
+                      ListTile(
+                        dense: true,
+                        title: Text('Feedback', style: TextStyle(fontSize: 14)),
+                        trailing: Icon(Icons.feedback, color: Colors.green,),
+                      ),
+                      ListTile(
+                        dense: true,
+                        title: Text('Nous suivres', style: TextStyle(fontSize: 14)),
+                        trailing: Icon(Icons.favorite, color: Colors.red,),
+                      ),
+                      ListTile(
+                        dense: true,
+                        title: Text('Inviter un peer', style: TextStyle(fontSize: 14)),
+                        trailing: Icon(Icons.family_restroom,),
+                      ),
+                    ],
+                  )
+                ),
               ),
-              Gap(40),
-              Text('Zone Risquée', style: TextStyle(fontSize:17, color:Colors.red)),
+              const Gap(40),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text('Zone Risquée', style: TextStyle(fontSize:17, color:Colors.red, fontWeight: FontWeight.bold)),
+              ),
 
-              ElevatedButton(
-                onPressed: (){}, 
-                child: const Row(
-                  children: [
-                    
-                  ],
-                ))
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.grey.shade300,
+                    side: const BorderSide(
+                      color: Colors.blue,
+                      width: 3.0
+                    )
+                  ),
+                  onPressed: (){}, 
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Se deconnecter', style: TextStyle(color: Colors.blue),),
+                      Icon(Icons.login, color: Colors.blue,)
+                    ],
+                  )),
+              )
           ],
         ),
       ),
