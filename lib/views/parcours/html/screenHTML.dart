@@ -40,15 +40,13 @@ class _HtmlViewwState extends State<HtmlVieww> {
                       children: [
                         Icon(Icons.book_online_outlined),
                         Container(
-                          decoration: const BoxDecoration(
-                          
-                          ),
+                          decoration: const BoxDecoration(),
                           padding: EdgeInsets.all(20),
                           child: Flexible(
                             child: Text(
                               'Module: ${selectedModule['title']}',
                               style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
+                                  fontWeight: FontWeight.bold, fontSize: 18),
                             ),
                           ),
                         ),
@@ -68,9 +66,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
                             alignment: TimelineAlign.start,
                             lineXY: 0.1,
                             beforeLineStyle: const LineStyle(
-                              thickness: 4,
-                              color: Colors.deepPurple
-                            ),
+                                thickness: 4, color: Colors.deepPurple),
                             indicatorStyle: IndicatorStyle(
                               width: 35,
                               color: Colors.grey,
@@ -78,16 +74,18 @@ class _HtmlViewwState extends State<HtmlVieww> {
                                   iconData: Icons.lock, color: Colors.white),
                             ),
                             endChild: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child:Container(
-                                decoration: BoxDecoration(
-                                  
-                                ),
-                                child:  Text(
+                                padding: EdgeInsets.all(8.0),
+                                child: Container(
+                                  padding: EdgeInsets.all(40),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                   borderRadius: BorderRadius.circular(10),
+                                   box
+                                  ),
+                                  child: Text(
                                     lessons[index]['title'],
                                   ),
-                              )
-                            ),
+                                )),
                           ),
                         );
                       },
