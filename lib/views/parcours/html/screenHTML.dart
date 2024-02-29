@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:code_crafters/services/get_courses.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
