@@ -137,6 +137,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
 
   void showModulesBottomSheet(BuildContext context, List<dynamic> modules) {
     showModalBottomSheet(
+      backgroundColor: Colors.grey.shade300,
       context: context,
       builder: (BuildContext context) {
         return ListView.builder(
