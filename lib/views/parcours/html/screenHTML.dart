@@ -38,7 +38,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.book_online_outlined),
+                        const Icon(Icons.book_online_outlined),
                         Container(
                           decoration: const BoxDecoration(),
                           padding: EdgeInsets.all(20),
@@ -66,7 +66,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
                             alignment: TimelineAlign.start,
                             lineXY: 0.1,
                             beforeLineStyle: const LineStyle(
-                                thickness: 4, color: Colors.deepPurple),
+                                thickness: 4, color: Colors.black),
                             indicatorStyle: IndicatorStyle(
                               width: 35,
                               color: Colors.grey,
@@ -80,7 +80,12 @@ class _HtmlViewwState extends State<HtmlVieww> {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                    borderRadius: BorderRadius.circular(10),
-                                   box
+                                   boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 2,
+                                      offset: Offset.zero
+                                    )
+                                   ]
                                   ),
                                   child: Text(
                                     lessons[index]['title'],
@@ -94,12 +99,12 @@ class _HtmlViewwState extends State<HtmlVieww> {
                 ],
               );
             } else {
-              return Center(child: Text('Aucune donnée de cours disponible.'));
+              return const Center(child: Text('Aucune donnée de cours disponible.'));
             }
           } else if (snapshot.hasError) {
-            return Center(child: Text('Erreur lors du chargement des données'));
+            return const Center(child: Text('Erreur lors du chargement des données'));
           }
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );
