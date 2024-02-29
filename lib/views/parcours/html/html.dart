@@ -8,7 +8,6 @@ import 'package:dev_icons/dev_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:code_crafters/views/parcours/html/screenHTML.dart';
 
 class HTMLView extends StatefulWidget {
   const HTMLView({Key? key}) : super(key: key);

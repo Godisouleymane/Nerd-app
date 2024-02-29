@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+// ignore: camel_case_types
 class introPage1 extends StatelessWidget {
   const introPage1({super.key});
 

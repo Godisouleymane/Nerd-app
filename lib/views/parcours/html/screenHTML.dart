@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:code_crafters/services/get_courses.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
@@ -5,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class HtmlVieww extends StatefulWidget {
+  const HtmlVieww({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HtmlViewwState createState() => _HtmlViewwState();
 }
 
@@ -36,24 +40,27 @@ class _HtmlViewwState extends State<HtmlVieww> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () => showModulesBottomSheet(context, modules),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.book_online_outlined),
-                        Container(
-                          decoration: const BoxDecoration(),
-                          padding: const EdgeInsets.all(20),
-                          child: Flexible(
-                            child: Text(
-                              'Module: ${selectedModule['title']}',
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
+                  Card(
+                    elevation: 8,
+                    child: GestureDetector(
+                      onTap: () => showModulesBottomSheet(context, modules),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.book_online_outlined),
+                          Container(
+                            decoration: const BoxDecoration(),
+                            padding: const EdgeInsets.all(20),
+                            child: Flexible(
+                              child: Text(
+                                'Module: ${selectedModule['title']}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 18),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   Expanded(
@@ -137,14 +144,31 @@ class _HtmlViewwState extends State<HtmlVieww> {
 
   void showModulesBottomSheet(BuildContext context, List<dynamic> modules) {
     showModalBottomSheet(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Colors.white,
       context: context,
       builder: (BuildContext context) {
         return ListView.builder(
           itemCount: modules.length,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              title: Text(modules[index]['title']),
+              title: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: Colors.grey.shade300,
+                     boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        spreadRadius: 2,
+                        blurRadius: 0,
+                        offset: Offset(0, 2),
+                      )
+                    ]
+                  ),
+                  child: Text(modules[index]['title'],textAlign: TextAlign.center,)),
+              ),
               onTap: () {
                 setState(() {
                   selectedModuleIndex = index;

@@ -9,7 +9,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final List<Color> selectedColors;
   final List<Color> unselectedColors;
 
-  CustomBottomNavigationBar({
+  const CustomBottomNavigationBar({
     required this.currentIndex,
     required this.screens,
     required this.onTap,

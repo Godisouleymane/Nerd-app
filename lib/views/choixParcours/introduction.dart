@@ -1,4 +1,3 @@
-import 'package:code_crafters/provider/cours_model.dart';
 import 'package:code_crafters/views/choixParcours/gestureDetecto/gesture.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
@@ -34,7 +33,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               child: Column(
                 children: [
                   const Padding(
@@ -63,7 +62,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: 300,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
@@ -252,7 +251,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
             // verifier si l'id du container est null
             if (selectedContainerId.isEmpty) {
               // si aucun cours n'est selectionner
-              print("Aucun cours selectionner");
               return showNotification(context,
                   "Veuillez selectionner un cours ou un parcours s'il vous plait");
             }
@@ -287,7 +285,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
 
   void navigateToSelectedContainerPage(String containerId) {
     if (containerId == 'html') {
-      print("Donnees pour html envoyer");
       Navigator.pushNamed(context, '/html');
     } else if (containerId == 'css') {
       Navigator.pushNamed(context, '/css');
