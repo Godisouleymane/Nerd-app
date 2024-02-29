@@ -26,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             )),
         centerTitle: true,
         iconTheme: const IconThemeData(
-         color: Colors.white,
+          color: Colors.white,
         ),
       ),
       backgroundColor: Colors.grey.shade300,
@@ -37,7 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Container(
                 height: MediaQuery.of(context).size.height * 0.20,
                 decoration: const BoxDecoration(
-                    color:  Color.fromARGB(255, 53, 32, 149),
+                    color: Color.fromARGB(255, 53, 32, 149),
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(23),
                         bottomRight: Radius.circular(23))),
@@ -63,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )
                   ],
                 ))),
-                const Gap(25),
+            const Gap(25),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.0),
               child: Text(
@@ -71,94 +71,90 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
-                  ),
+                ),
               ),
             ),
             const Gap(10),
-              const Padding(
-                padding: EdgeInsets.all(10.0),
-                child: MyHeatMap(),
-              ),
-              const Gap(20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text("Parametre de l'app", style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17
-                )
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Card(
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: MyHeatMap(),
+            ),
+            const Gap(20),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text("Parametre de l'app",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Card(
                   color: Colors.white,
                   child: Column(
                     children: [
                       ListTile(
                         dense: true,
-                        title: Text('Langue de l\'application', style: TextStyle(fontSize: 14),),
-                        trailing: Icon(Icons.flag_circle, color: Colors.blue,),
+                        title: Text(
+                          'Langue de l\'application',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        trailing: Icon(
+                          Icons.flag_circle,
+                          color: Colors.blue,
+                        ),
                       ),
                       ListTile(
                         dense: true,
-                        title: Text('Theme de l\'application',style: TextStyle(fontSize: 14 )),
-                        trailing: Icon(Icons.sunny, color: Colors.amber,),
+                        title: Text('Theme de l\'application',
+                            style: TextStyle(fontSize: 14)),
+                        trailing: Icon(
+                          Icons.sunny,
+                          color: Colors.amber,
+                        ),
                       ),
                       ListTile(
                         dense: true,
                         title: Text('Feedback', style: TextStyle(fontSize: 14)),
-                        trailing: Icon(Icons.feedback, color: Colors.green,),
+                        trailing: Icon(
+                          Icons.feedback,
+                          color: Colors.green,
+                        ),
                       ),
                       ListTile(
                         dense: true,
-                        title: Text('Nous suivres', style: TextStyle(fontSize: 14)),
-                        trailing: Icon(Icons.favorite, color: Colors.red,),
+                        title: Text('Nous suivres',
+                            style: TextStyle(fontSize: 14)),
+                        trailing: Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        ),
                       ),
                       ListTile(
                         dense: true,
-                        title: Text('Inviter un peer', style: TextStyle(fontSize: 14)),
-                        trailing: Icon(Icons.family_restroom,),
+                        title: Text('Inviter un peer',
+                            style: TextStyle(fontSize: 14)),
+                        trailing: Icon(
+                          Icons.family_restroom,
+                        ),
                       ),
-                    ],
-                  )
-                ),
-              ),
-              const Gap(40),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text('Zone Risquée', style: TextStyle(fontSize:17, color:Colors.red, fontWeight: FontWeight.bold)),
-              ),
-              Gap(10),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    side: const BorderSide(
-                      color: Colors.blue,
-                      width: 3.0
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)
-                    ),
-                    minimumSize: Size(MediaQuery.of(context).size.width, 55)
-                  ),
-                  onPressed: (){}, 
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Se deconnecter', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),),
-                      Gap(4),
-                      Icon(Icons.logout, color: Colors.blue,)
                     ],
                   )),
-              ),
-              Padding(
-              padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0, bottom: 20),
+            ),
+            const Gap(40),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text('Zone Risquée',
+                  style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold)),
+            ),
+            Gap(10),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      side: const BorderSide(color: Colors.red, width: 3.0),
+                      backgroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.blue, width: 3.0),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
                       minimumSize: Size(MediaQuery.of(context).size.width, 55)),
@@ -167,8 +163,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
+                        'Se deconnecter',
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
+                      Gap(4),
+                      Icon(
+                        Icons.logout,
+                        color: Colors.blue,
+                      )
+                    ],
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 8.0, right: 8.0, left: 8.0, bottom: 20),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      side: const BorderSide(color: Colors.red, width: 3.0),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      minimumSize: Size(MediaQuery.of(context).size.width, 55)),
+                  onPressed: () {},
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
                         'Supprimer mon compte',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                       Gap(4),
                       Icon(
@@ -183,8 +207,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
+
   signOut(BuildContext context) {
-    Navigator.of(context).pop();
+    Navigator.pushNamed(context, '/onBoading_screen');
     AuthService().signOut();
   }
 }

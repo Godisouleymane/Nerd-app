@@ -3,6 +3,7 @@ import 'package:code_crafters/firebase_options.dart';
 import 'package:code_crafters/provider/cours_model.dart';
 import 'package:code_crafters/views/parcours/html/html.dart';
 import 'package:code_crafters/views/profile/profile.dart';
+import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
 import 'package:code_crafters/wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const Wrapper(),
         '/html': (context) => const HTMLView(),
         '/profile':(context) => const ProfileScreen(),
+        '/onBoading_screen':(context) => const OnBoardingScreen(),
       },
     );
   }

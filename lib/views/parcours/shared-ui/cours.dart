@@ -10,8 +10,9 @@ class Cours extends StatefulWidget {
 class _CoursState extends State<Cours> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      backgroundColor: Colors.grey.shade300,
+      body: const Center(
         child: Text('Cours', style: TextStyle(color: Colors.black),),
       ),
     );

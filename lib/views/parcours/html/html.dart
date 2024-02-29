@@ -23,7 +23,6 @@ class _HTMLViewState extends State<HTMLView> {
     const HtmlVieww(),
     const Communaute(),
     const Cours(),
-    
   ];
   int lives = 5;
   @override
@@ -34,6 +33,7 @@ class _HTMLViewState extends State<HTMLView> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: const Color.fromARGB(255, 53, 32, 149),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -77,7 +77,7 @@ class _HTMLViewState extends State<HTMLView> {
                       backgroundImage: NetworkImage(user.photoURL!),
                     ),
                   ),
-                )
+                ),
             ],
           ),
           SliverFillRemaining(
