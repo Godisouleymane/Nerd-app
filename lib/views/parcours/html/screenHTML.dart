@@ -91,19 +91,22 @@ class _HtmlViewwState extends State<HtmlVieww> {
                                           )
                                         ]),
                                     child: ListTile(
-                                      leading: Icon(DevIcons.html5Plain,
+                                      leading: const Icon(DevIcons.html5Plain,
                                           color: Colors.orange),
-                                      trailing: Icon(
+                                      trailing: const Icon(
                                         Icons.book_rounded,
                                         color: Colors.deepPurple,
                                       ),
                                       title: Text(
                                         lessons[index]['title'],
                                       ),
-                                      titleTextStyle: TextStyle(
+                                      titleTextStyle: const TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                       ),
+                                      subtitle: const Text('Cliquer pour commencer', style: TextStyle(
+                                        
+                                      ),),
                                     ))),
                           ),
                         );
