@@ -68,7 +68,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
                             alignment: TimelineAlign.start,
                             lineXY: 0.1,
                             indicatorStyle: IndicatorStyle(
-                              width: 40,
+                              width: 30,
                               color: Colors.green,
                               iconStyle: IconStyle(
                                   iconData: Icons.check, color: Colors.white),
