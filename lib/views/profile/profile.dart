@@ -1,3 +1,4 @@
+import 'package:code_crafters/views/profile/heatMap.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -73,10 +74,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             const Gap(10),
-            const Align(
-              alignment: Alignment.center,
-              child: Text('Coming soon', style: TextStyle(fontSize:20,),
-              textAlign: TextAlign.center,)),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: const MyHeatMap(),
+                ),
+              ),
               const Gap(20),
               const Padding(
                 padding: EdgeInsets.all(8.0),

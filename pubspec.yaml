@@ -46,6 +46,7 @@ dependencies:
   cloud_firestore: ^4.15.4
   gap: ^3.0.1
   timeline_tile: ^2.0.0
+  flutter_heatmap_calendar: ^1.0.5
   
 dev_dependencies:
   flutter_test:
