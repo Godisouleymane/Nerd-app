@@ -127,26 +127,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 12.0),
                 child: Text('Zone Risquée', style: TextStyle(fontSize:17, color:Colors.red, fontWeight: FontWeight.bold)),
               ),
-
+              Gap(10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.grey.shade300,
+                    backgroundColor: Colors.white,
                     side: const BorderSide(
                       color: Colors.blue,
                       width: 3.0
-                    )
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    minimumSize: Size(MediaQuery.of(context).size.width, 55)
                   ),
                   onPressed: (){}, 
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Se deconnecter', style: TextStyle(color: Colors.blue),),
-                      Icon(Icons.login, color: Colors.blue,)
+                      Text('Se deconnecter', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),),
+                      Gap(4),
+                      Icon(Icons.logout, color: Colors.blue,)
                     ],
                   )),
-              )
+              ),
+               Padding(
+              padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0, bottom: 20),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      side: const BorderSide(color: Colors.red, width: 3.0),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      minimumSize: Size(MediaQuery.of(context).size.width, 55)),
+                  onPressed: () {},
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Supprimer mon compte',
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      Gap(4),
+                      Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                      )
+                    ],
+                  )),
+            )
           ],
         ),
       ),
