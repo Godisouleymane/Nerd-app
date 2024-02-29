@@ -77,8 +77,6 @@ class _HtmlViewwState extends State<HtmlVieww> {
                             endChild: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.11,
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(10),
@@ -91,6 +89,9 @@ class _HtmlViewwState extends State<HtmlVieww> {
                                           )
                                         ]),
                                     child: ListTile(
+                                      contentPadding: EdgeInsets.all(10),
+                                      isThreeLine: true,
+                                      dense: true,
                                       leading: const Icon(DevIcons.html5Plain,
                                           color: Colors.orange),
                                       trailing: const Icon(
@@ -105,7 +106,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                       subtitle: const Text('Cliquer pour commencer', style: TextStyle(
-                                        
+
                                       ),),
                                     ))),
                           ),
