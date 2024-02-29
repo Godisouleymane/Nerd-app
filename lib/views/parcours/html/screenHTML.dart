@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:code_crafters/services/get_courses.dart';
+import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -33,6 +36,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
               final lessons = selectedModule['lesson'] as List<dynamic>? ?? [];
 
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GestureDetector(
                     onTap: () => showModulesBottomSheet(context, modules),
@@ -42,7 +46,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
                         const Icon(Icons.book_online_outlined),
                         Container(
                           decoration: const BoxDecoration(),
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           child: Flexible(
                             child: Text(
                               'Module: ${selectedModule['title']}',
@@ -89,11 +93,9 @@ class _HtmlViewwState extends State<HtmlVieww> {
                                           )
                                         ]),
                                     child: ListTile(
-                                      contentPadding: EdgeInsets.all(10),
-                                      isThreeLine: true,
                                       dense: true,
-                                      leading: const Icon(DevIcons.html5Plain,
-                                          color: Colors.orange),
+                                      leading: Icon(DevIcons.html5PlainWordmark,
+                                          color: Colors.orange[800]),
                                       trailing: const Icon(
                                         Icons.book_rounded,
                                         color: Colors.deepPurple,
@@ -105,9 +107,14 @@ class _HtmlViewwState extends State<HtmlVieww> {
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                      subtitle: const Text('Cliquer pour commencer', style: TextStyle(
-
-                                      ),),
+                                      subtitle: const Padding(
+                                        padding: EdgeInsets.only(top: 8.0),
+                                        child: Text('Cliquer pour commencer'),
+                                      ),
+                                      onTap: () {
+                                        showNotification(context,
+                                            'La leçon n\'est pas encore disponible');
+                                      },
                                     ))),
                           ),
                         );
