@@ -62,9 +62,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )
                   ],
                 ))),
-                const Gap(10),
+                const Gap(25),
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
                 'Activités',
                 style: TextStyle(
@@ -74,11 +74,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             const Gap(10),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: const MyHeatMap(),
-                ),
+              const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: MyHeatMap(),
               ),
               const Gap(20),
               const Padding(

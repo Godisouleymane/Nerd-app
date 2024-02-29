@@ -6,7 +6,10 @@ class MyHeatMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HeatMap(
+    return HeatMapCalendar(
+      defaultColor: Colors.white,
+      flexible: true,
+      colorMode: ColorMode.color,
       datasets: {
         DateTime(2021, 1, 6): 3,
         DateTime(2021, 1, 7): 7,
@@ -14,9 +17,6 @@ class MyHeatMap extends StatelessWidget {
         DateTime(2021, 1, 9): 13,
         DateTime(2021, 1, 13): 6,
       },
-      colorMode: ColorMode.opacity,
-      showText: false,
-      scrollable: true,
       colorsets: const {
         1: Colors.red,
         3: Colors.orange,
@@ -31,6 +31,6 @@ class MyHeatMap extends StatelessWidget {
             .showSnackBar(SnackBar(content: Text(value.toString())));
       },
     );
-    ;
+    
   }
 }
