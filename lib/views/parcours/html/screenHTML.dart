@@ -14,8 +14,7 @@ class _HtmlViewwState extends State<HtmlVieww> {
   @override
   void initState() {
     super.initState();
-    courseFuture =
-        getHtmlCourseFromFirestore(); 
+    courseFuture = getHtmlCourseFromFirestore();
   }
 
   @override
@@ -36,12 +35,21 @@ class _HtmlViewwState extends State<HtmlVieww> {
                   GestureDetector(
                     onTap: () => showModulesBottomSheet(context, modules),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.book_online_outlined),
                         Container(
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(
+                          
+                          ),
                           padding: EdgeInsets.all(20),
-                          child: Text(selectedModule['title']),
+                          child: Flexible(
+                            child: Text(
+                              'Module: ${selectedModule['title']}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -50,18 +58,24 @@ class _HtmlViewwState extends State<HtmlVieww> {
                     child: ListView.builder(
                       itemCount: lessons.length,
                       itemBuilder: (context, index) {
-                        return TimelineTile(
-                          alignment: TimelineAlign.manual,
-                          lineXY: 0.1,
-                          indicatorStyle: IndicatorStyle(
-                            width: 20,
-                            color: Colors.green,
-                            iconStyle: IconStyle(
-                                iconData: Icons.check, color: Colors.white),
-                          ),
-                          endChild: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(lessons[index]['title']),
+                        return Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          height: 200,
+                          child: TimelineTile(
+                            isFirst: index == 0,
+                            isLast: index == lessons.length - 1,
+                            alignment: TimelineAlign.start,
+                            lineXY: 0.1,
+                            indicatorStyle: IndicatorStyle(
+                              width: 20,
+                              color: Colors.green,
+                              iconStyle: IconStyle(
+                                  iconData: Icons.check, color: Colors.white),
+                            ),
+                            endChild: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(lessons[index]['title']),
+                            ),
                           ),
                         );
                       },
@@ -103,5 +117,3 @@ class _HtmlViewwState extends State<HtmlVieww> {
     );
   }
 }
-
-
