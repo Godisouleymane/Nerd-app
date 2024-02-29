@@ -35,10 +35,15 @@ class _HtmlViewwState extends State<HtmlVieww> {
                 children: [
                   GestureDetector(
                     onTap: () => showModulesBottomSheet(context, modules),
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      color: Colors.blueAccent,
-                      child: Text(selectedModule['title']),
+                    child: Row(
+                      children: [
+                        Icon(Icons.book_online_outlined),
+                        Container(
+                          decoration: BoxDecoration(),
+                          padding: EdgeInsets.all(20),
+                          child: Text(selectedModule['title']),
+                        ),
+                      ],
                     ),
                   ),
                   Expanded(
