@@ -11,13 +11,13 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _user = Provider.of<User?>(context);
+    final user = Provider.of<User?>(context);
 
-    if (_user != null) {
+    if (user != null) {
       return StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
             .collection('users')
-            .doc(_user.uid)
+            .doc(user.uid)
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -39,7 +39,7 @@ class Wrapper extends StatelessWidget {
         },
       );
     } else {
-      return OnBoardingScreen();
+      return const OnBoardingScreen();
     }
   }
 }

@@ -37,7 +37,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ],
         ),
         Container(
-          alignment: Alignment(0, 0.80),
+          alignment: const Alignment(0, 0.80),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -50,7 +50,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      color: const Color.fromARGB(255, 53, 32, 149)),
+                      color: Color.fromARGB(255, 53, 32, 149)),
                 ),
               ),
               SmoothPageIndicator(
@@ -61,7 +61,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   count: 3),
               onLastPage
                   ? inLoginProcess
-                      ? Container(child: CircularProgressIndicator())
+                      ? Container(child: const CircularProgressIndicator())
                       : ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(255, 53, 32, 149),
@@ -74,7 +74,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   : GestureDetector(
                       onTap: () {
                         _controller.nextPage(
-                            duration: Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.easeIn);
                       },
                       child: const Text(
@@ -82,7 +82,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
-                            color: const Color.fromARGB(255, 53, 32, 149)),
+                            color: Color.fromARGB(255, 53, 32, 149)),
                       )),
             ],
           ),

@@ -13,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    final _user = Provider.of<User?>(context);
+    final user = Provider.of<User?>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 53, 32, 149),
@@ -46,10 +46,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     CircleAvatar(
                         radius: 40,
                         backgroundColor: Colors.grey,
-                        backgroundImage: NetworkImage(_user!.photoURL!)),
+                        backgroundImage: NetworkImage(user!.photoURL!)),
                     const Gap(5),
                     Text(
-                      _user.displayName!,
+                      user.displayName!,
                       style: const TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),
