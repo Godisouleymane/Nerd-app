@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                     const Text(
-                      '12 peers',
+                      '0 peers',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -68,7 +68,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Text(
                 'Learning Contribution',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                   ),
               ),
@@ -83,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.all(8.0),
                 child: Text("Parametre de l'app", style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 15
+                  fontSize: 17
                 )
                 ),
               ),
@@ -94,32 +94,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     ListTile(
                       dense: true,
-                      title: Text('Langue de l\'application'),
+                      title: Text('Langue de l\'application', style: TextStyle(fontSize: 14),),
                       trailing: Icon(Icons.flag_circle, color: Colors.blue,),
                     ),
                     ListTile(
                       dense: true,
-                      title: Text('Theme de l\'application'),
+                      title: Text('Theme de l\'application',style: TextStyle(fontSize: 14 )),
                       trailing: Icon(Icons.sunny, color: Colors.amber,),
                     ),
                     ListTile(
                       dense: true,
-                      title: Text('Feedback'),
+                      title: Text('Feedback', style: TextStyle(fontSize: 14)),
                       trailing: Icon(Icons.feedback, color: Colors.green,),
                     ),
                     ListTile(
                       dense: true,
-                      title: Text('Nous suivres'),
+                      title: Text('Nous suivres', style: TextStyle(fontSize: 14)),
                       trailing: Icon(Icons.favorite, color: Colors.red,),
                     ),
                     ListTile(
                       dense: true,
-                      title: Text('Inviter un peer'),
+                      title: Text('Inviter un peer', style: TextStyle(fontSize: 14)),
                       trailing: Icon(Icons.family_restroom,),
                     ),
                   ],
                 )
-              )
+              ),
+              Gap(40),
+              Text('Zone Risquée', style: TextStyle(fontSize:17, color:Colors.red)),
+
+              ElevatedButton(
+                onPressed: (){}, 
+                child: const Row(
+                  children: [
+                    
+                  ],
+                ))
           ],
         ),
       ),
