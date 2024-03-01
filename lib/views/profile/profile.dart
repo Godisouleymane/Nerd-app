@@ -39,8 +39,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 53, 32, 149),
                     borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(23),
-                        bottomRight: Radius.circular(23))),
+                        bottomLeft: Radius.circular(26),
+                        bottomRight: Radius.circular(26))),
                 child: Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         radius: 40,
                         backgroundColor: Colors.grey,
                         backgroundImage: NetworkImage(user!.photoURL!)),
-                    const Gap(5),
+                    const Gap(10),
                     Text(
                       user.displayName!,
                       style: const TextStyle(
@@ -136,6 +136,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Icons.family_restroom,
                         ),
                       ),
+                      ListTile(
+                        dense: true,
+                        title: Text('Partager mon profile',
+                            style: TextStyle(fontSize: 14)),
+                        trailing: Icon(
+                          Icons.share, color: Colors.grey,
+                        ),
+                      ),
                     ],
                   )),
             ),
@@ -148,7 +156,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: Colors.red,
                       fontWeight: FontWeight.bold)),
             ),
-            Gap(10),
+            const Gap(10),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(

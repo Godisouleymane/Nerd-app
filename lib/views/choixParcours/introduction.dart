@@ -1,3 +1,4 @@
+import 'package:code_crafters/services/userProgression.dart';
 import 'package:code_crafters/views/choixParcours/gestureDetecto/gesture.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
@@ -263,14 +264,14 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   .doc(user.uid)
                   .collection('coursEnCours')
                   .doc(selectedContainerId)
-                  .set({
-              }).then((_) {
+                  .set({}).then((_) {
                 // Enregistrement reussi, Naviguer vers la page appropriée,
                 navigateToSelectedContainerPage(selectedContainerId);
+                initializeHTMLCourseProgressForUser();
               }).catchError((error) {
-                  // Gérer les erreurs lors de l'enregistrement dans Firestore
+                // Gérer les erreurs lors de l'enregistrement dans Firestore
                 print(
-                  'Erreur lors de l\'enregistrement dans Firestore: $error');
+                    'Erreur lors de l\'enregistrement dans Firestore: $error');
               });
             }
           },

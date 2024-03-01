@@ -8,13 +8,15 @@ class MyHeatMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return HeatMap(
       datasets: {
-        DateTime(2024, 3, 23): 3,
+        DateTime(2023, 1, 13): 5,
+        DateTime(2023, 1, 29): 9,
+        DateTime(2023, 2, 20): 16,
         DateTime(2024, 3, 25): 10,
         DateTime(2024, 3, 29): 13,
       },
-      startDate: DateTime.now(),
+      startDate: DateTime(2023),
       endDate: DateTime.now().add(Duration(days: 40)),
-      size: 40,
+      size: 30,
       colorMode: ColorMode.opacity,
       showText: false,
       scrollable: true,

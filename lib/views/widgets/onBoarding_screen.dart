@@ -1,5 +1,4 @@
 import 'package:code_crafters/services/authentification.dart';
-import 'package:code_crafters/services/userProgression.dart';
 import 'package:code_crafters/views/widgets/intro_screen/page1.dart';
 import 'package:code_crafters/views/widgets/intro_screen/page2.dart';
 import 'package:code_crafters/views/widgets/intro_screen/page3.dart';
@@ -100,13 +99,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
     try {
       await AuthService().signInWithGoogle();
-      // Une fois la connexion réussie, naviguer vers la page suivante ou la page d'accueil
       // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const IntroductionPage()),
       );
-      initializeHTMLCourseProgressForUser();
+      
     } catch (e) {
       // Gérer les erreurs ici
       print("Erreur lors de la connexion avec Google : $e");
