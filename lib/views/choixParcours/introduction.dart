@@ -271,7 +271,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
               }).catchError((error) {
                 // Gérer les erreurs lors de l'enregistrement dans Firestore
                 print(
-                    'Erreur lors de l\'enregistrement dans Firestore: $error');
+                  'Erreur lors de l\'enregistrement dans Firestore: $error');
               });
             }
           },
