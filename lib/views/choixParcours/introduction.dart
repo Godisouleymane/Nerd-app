@@ -259,19 +259,16 @@ class _IntroductionPageState extends State<IntroductionPage> {
             final user = Provider.of<User?>(context, listen: false);
 
             if (user != null) {
-              FirebaseFirestore.instance
-                  .collection('users')
-                  .doc(user.uid)
-                  .collection('coursEnCours')
-                  .doc(selectedContainerId)
-                  .set({}).then((_) {
+              FirebaseFirestore.instance.collection('users').doc(user.uid).set(
+                  {'selectedContainerId': selectedContainerId},
+                  SetOptions(merge: true)).then((_) {
                 // Enregistrement reussi, Naviguer vers la page appropriée,
                 navigateToSelectedContainerPage(selectedContainerId);
                 initializeHTMLCourseProgressForUser();
               }).catchError((error) {
                 // Gérer les erreurs lors de l'enregistrement dans Firestore
                 print(
-                  'Erreur lors de l\'enregistrement dans Firestore: $error');
+                    'Erreur lors de l\'enregistrement dans Firestore: $error');
               });
             }
           },
@@ -288,7 +285,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
     if (containerId == 'html') {
       Navigator.pushNamed(context, '/html');
     } else if (containerId == 'css') {
-      Navigator.pushNamed(context, '/css');
+      showNotification(context, 'Aucunes donees disponible');
     }
   }
 

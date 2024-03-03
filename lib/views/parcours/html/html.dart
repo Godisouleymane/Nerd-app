@@ -7,6 +7,7 @@ import 'package:code_crafters/views/parcours/shared-ui/cours.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
 class HTMLView extends StatefulWidget {
@@ -67,6 +68,8 @@ class _HTMLViewState extends State<HTMLView> {
               ),
             ),
             actions: [
+              const Icon(Icons.notifications, color: Colors.white, size:25),
+              Gap(8),
               if (user != null && user.photoURL != null)
                 GestureDetector(
                   onTap: () => Navigator.pushNamed(context, '/profile'),
@@ -78,6 +81,7 @@ class _HTMLViewState extends State<HTMLView> {
                     ),
                   ),
                 ),
+               
             ],
           ),
           SliverFillRemaining(
