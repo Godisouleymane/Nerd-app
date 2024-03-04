@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const LoginPqge(),
+        '/': (context) => const LoginPage(),
         '/html': (context) => const HTMLView(),
         '/profile':(context) => const ProfileScreen(),
         '/onBoading_screen':(context) => const OnBoardingScreen(),
