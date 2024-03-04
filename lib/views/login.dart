@@ -5,6 +5,16 @@ class LoginPqge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
