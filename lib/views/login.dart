@@ -6,15 +6,27 @@ class LoginPqge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
+      backgroundColor: Colors.black,
+      body: Stack(children: [
+        Column(
           children: [
             Container(
-              decoration: BoxDecoration(),
-            )
+              height: MediaQuery.of(context).size.height * 0.35,
+              decoration: const BoxDecoration(
+                  color: Colors.teal,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30))),
+            ),
+            Expanded(
+              child: Container(
+                    color: Colors.white,
+                    height: MediaQuery.of(context).size.height * 0.60),
+              )
           ],
         ),
-      ),
+       
+      ], ),
     );
   }
 }

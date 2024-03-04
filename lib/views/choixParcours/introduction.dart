@@ -264,7 +264,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   SetOptions(merge: true)).then((_) {
                 // Enregistrement reussi, Naviguer vers la page appropriée,
                 navigateToSelectedContainerPage(selectedContainerId);
-                initializeHTMLCourseProgressForUser();
               }).catchError((error) {
                 // Gérer les erreurs lors de l'enregistrement dans Firestore
                 print(
