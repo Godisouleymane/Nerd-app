@@ -1,12 +1,4 @@
 
-
-
-  const CustomGestureDetector({
-    required this.containerId,
-    required this.defaultBorderColor,
-    required this.selectedBorderColor,
-    required this.onTapCallback,
-    this.containerIcon,
     required this.autreInformation,
     required this.autreVariable,
     this.isSelected = false, // Initialisation de la variable isSelected
