@@ -1,4 +1,3 @@
-import 'package:code_crafters/services/userProgression.dart';
 import 'package:code_crafters/views/choixParcours/gestureDetecto/gesture.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
@@ -23,11 +22,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "CodeCrafters",
+          "Nerd",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 53, 32, 149),
+        backgroundColor: Colors.teal,
       ),
       backgroundColor: Colors.white,
       body: Column(
@@ -243,7 +242,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
         padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 15.0),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 53, 32, 149),
+              backgroundColor: Colors.teal,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               minimumSize: const Size(double.infinity, 50.0),

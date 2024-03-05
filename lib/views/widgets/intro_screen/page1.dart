@@ -18,7 +18,6 @@ class introPage1 extends StatelessWidget {
             height: 300,
             ),
           ),
-        
           const Align(
             alignment: Alignment.centerLeft,
             child: Text("Bienvenue sur Nerd.", style:TextStyle(
