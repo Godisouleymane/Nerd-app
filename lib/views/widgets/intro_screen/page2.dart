@@ -12,7 +12,7 @@ class introPage2 extends StatelessWidget {
         children: [
           Container(
             child: Image.asset(
-              "assets/machine-animation.gif",
+              "assets/Hand coding.gif",
               width: 300,
               height: 300,
             ),
