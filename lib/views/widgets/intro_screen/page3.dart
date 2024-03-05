@@ -11,8 +11,8 @@ class introPage3 extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            child: SvgPicture.asset(
-              "assets/Achievement-amico.svg",
+            child: Image.asset(
+              "assets/Achievement.gif",
               width: 300,
               height: 300,
             ),
