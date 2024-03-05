@@ -1,9 +1,5 @@
 
-  fina
-  final bool isSelected; // Ajout de la variable isSelected
-  final double width;
-  final BoxDecoration? decoration;
-  final bool hasImage;
+
 
   const CustomGestureDetector({
     required this.containerId,
