@@ -1,8 +1,5 @@
 
-  final Function(String) onTapCallback;
-  final Icon? containerIcon;
-  final String autreInformation;
-  final String autreVariable;
+  fina
   final bool isSelected; // Ajout de la variable isSelected
   final double width;
   final BoxDecoration? decoration;
