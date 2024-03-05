@@ -1,11 +1,4 @@
 
-    
-  _CustomGestureDetectorState createState() => _CustomGestureDetectorState();
-}
-
-class _CustomGestureDetectorState extends State<CustomGestureDetector> {
-  bool isSelected = false;
- 
   @override
   Widget build(BuildContext context) {
     return Padding(
