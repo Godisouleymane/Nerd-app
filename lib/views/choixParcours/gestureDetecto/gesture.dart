@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class CustomGestureDetector extends StatefulWidget {
-  final String containerId;
-  final Color defaultBorderColor;
-  final Color selectedBorderColor;
   final Function(String) onTapCallback;
   final Icon? containerIcon;
   final String autreInformation;
