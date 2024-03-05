@@ -58,13 +58,14 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
                           'Authentifiez-vous pour sauvegarder et recuperer votre progression.',
                           style: TextStyle(
-                              fontSize: 26, fontWeight: FontWeight.bold),
+                              fontSize: 15, color: Colors.black,
+                              ),textAlign: TextAlign.center,
                         ),
                       ),
                     ),
