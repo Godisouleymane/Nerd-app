@@ -40,16 +40,22 @@ class LoginPage extends StatelessWidget {
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30)),
               ),
-              child: const Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text('Authentification', style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
-                  ),),
-                ),
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text('Authentification', style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold
+                      ),),
+                    ),
+                  ),
+                  
+                ],
               ),
+              
             ),
           ),
         ],
