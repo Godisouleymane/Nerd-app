@@ -1,16 +1,5 @@
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: GestureDetector(
-        onTap: () {
-          widget.onTapCallback(widget.containerId);
-        },
-        child: Container(
-          width: widget.width,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(137, 255, 255, 255),
+  , 255, 255),
             border: Border.all(
               color: widget.isSelected
                   ? widget.selectedBorderColor
