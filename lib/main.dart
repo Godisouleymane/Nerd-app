@@ -18,7 +18,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  addCourseToFireStore();
   runApp(
     MultiProvider(
       providers: [
