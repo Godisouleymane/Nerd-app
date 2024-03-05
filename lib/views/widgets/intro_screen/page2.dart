@@ -13,8 +13,8 @@ class introPage2 extends StatelessWidget {
           Container(
             child: Image.asset(
               "assets/machine-animation.gif",
-              width: 400,
-              height: 400,
+              width: 300,
+              height: 300,
             ),
           ),
           const Align(

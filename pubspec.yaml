@@ -74,7 +74,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/Achievement-amico.svg
-    - assets/machine-animation.gif
+    - assets/Hand coding.gif
     - assets/Programmer.gif
     - assets/fullStack.svg
     - assets/logo.webp
