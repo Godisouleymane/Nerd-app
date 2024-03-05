@@ -1,4 +1,3 @@
-import 'package:code_crafters/Cours_data/Les_Cours.dart';
 import 'package:code_crafters/firebase_options.dart';
 import 'package:code_crafters/provider/cours_model.dart';
 import 'package:code_crafters/views/choixParcours/introduction.dart';
