@@ -1,13 +1,5 @@
 
-    required this.autreInformation,
-    required this.autreVariable,
-    this.isSelected = false, // Initialisation de la variable isSelected
-    this.width = 250,
-    this.decoration,
-    this.hasImage = false,
-    Key? key,
-  }) : super(key: key);
-  @override
+    
   _CustomGestureDetectorState createState() => _CustomGestureDetectorState();
 }
 
