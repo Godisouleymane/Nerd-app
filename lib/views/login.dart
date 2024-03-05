@@ -12,12 +12,18 @@ class LoginPage extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.55,
+                height: MediaQuery.of(context).size.height * 0.50,
                 decoration: const BoxDecoration(
                     color: Colors.teal,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30))),
+                        child: const Center(
+                          child: CircleAvatar(
+                            backgroundImage: AssetImage('assets/logo.webp'),
+                            radius: 70,
+                            )
+                        ),
               ),
             ],
           ),
@@ -33,6 +39,16 @@ class LoginPage extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30)),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text('Authentification', style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold
+                  ),),
+                ),
               ),
             ),
           ),
