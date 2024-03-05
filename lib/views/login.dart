@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                          blurRadius: 5, color: Colors.black, spreadRadius: 3)
+                          blurRadius: 3, color: Colors.black, spreadRadius: 3)
                     ],
                   ),
                   child: const CircleAvatar(
@@ -38,11 +38,11 @@ class LoginPage extends StatelessWidget {
             ],
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.4, // Ajustement
+            top: MediaQuery.of(context).size.height * 0.4, 
             left: 0,
             right: 0,
             child: Container(
-              height: MediaQuery.of(context).size.height, // Hauteur ajustée
+              height: MediaQuery.of(context).size.height, 
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
                 borderRadius: const BorderRadius.only(

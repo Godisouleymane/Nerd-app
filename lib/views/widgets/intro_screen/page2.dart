@@ -11,10 +11,10 @@ class introPage2 extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            child: SvgPicture.asset(
-              "assets/Hand coding-amico.svg",
-              width: 300,
-              height: 300,
+            child: Image.asset(
+              "assets/machine-animation.gif",
+              width: 400,
+              height: 400,
             ),
           ),
           const Align(

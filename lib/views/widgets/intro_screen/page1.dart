@@ -12,8 +12,8 @@ class introPage1 extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            child: SvgPicture.asset(
-            "assets/programmer-animate.svg",
+            child: Image.asset(
+            "assets/Programmer.gif",
             width: 300,
             height: 300,
             ),
@@ -21,7 +21,7 @@ class introPage1 extends StatelessWidget {
         
           const Align(
             alignment: Alignment.centerLeft,
-            child: Text("Bienvenue sur codeCrafters.", style:TextStyle(
+            child: Text("Bienvenue sur Nerd.", style:TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
               color: Colors.black
