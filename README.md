@@ -1,4 +1,4 @@
-# code_crafters
+# Nerd-app
 
 A new Flutter project.
 
