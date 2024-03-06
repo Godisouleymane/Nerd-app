@@ -1,5 +1,4 @@
 import 'package:code_crafters/firebase_options.dart';
-import 'package:code_crafters/provider/cours_model.dart';
 import 'package:code_crafters/views/choixParcours/introduction.dart';
 import 'package:code_crafters/views/login.dart';
 import 'package:code_crafters/views/parcours/html/html.dart';
@@ -20,9 +19,6 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => ContainerSelectionModel(),
-        ),
         StreamProvider<User?>.value(
           value: FirebaseAuth.instance.authStateChanges(),
           initialData: null,
@@ -49,7 +45,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const IntroductionPage(),
+        '/': (context) => const OnBoardingScreen(),
         '/html': (context) => const HTMLView(),
         '/profile':(context) => const ProfileScreen(),
         '/onBoading_screen':(context) => const OnBoardingScreen(),

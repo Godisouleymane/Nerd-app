@@ -1,5 +1,4 @@
 // ignore: file_names
-import 'package:code_crafters/services/get_courses.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +15,6 @@ class HtmlVieww extends StatefulWidget {
 class _HtmlViewwState extends State<HtmlVieww> {
   int selectedModuleIndex = 0; // Index du module sélectionné, 0 par défaut
   Future<Map<String, dynamic>?>? courseFuture;
-
-  @override
-  void initState() {
-    super.initState();
-    courseFuture = getHtmlCourseFromFirestore();
-  }
 
   @override
   Widget build(BuildContext context) {
