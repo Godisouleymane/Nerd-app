@@ -49,8 +49,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                       children: <Widget>[
                         SvgPicture.network(
                           data['imageUrl'],
-                          width: 80,
-                          height: 80,
+                          width: 70,
+                          height: 70,
                           fit: BoxFit.cover,
                           // Vous pouvez utiliser des bibliothèques comme flutter_cache_manager pour mettre en cache les images
                         ),
@@ -62,7 +62,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                               children: <Widget>[
                                 Text(
                                   data['titre'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -70,7 +70,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                                 ),
                                 Text(
                                   data['description'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 14,
                                   ),
                                   overflow: TextOverflow.ellipsis,
