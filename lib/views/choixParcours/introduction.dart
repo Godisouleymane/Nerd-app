@@ -157,7 +157,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
   void sauvergarderProgression() {
     final User? user = FirebaseAuth.instance.currentUser;
     if (user != null && selectedCourseId != null) {
-      
+      FirebaseFirestore.instance
+          .collection('progressionUtilisateurs')
+          .doc(user.uid)
+          .set({
+            
+          });
     }
   }
 }
