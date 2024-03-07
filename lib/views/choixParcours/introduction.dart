@@ -1,7 +1,7 @@
-import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 // Assurez-vous d'ajouter fluttertoast à votre pubspec.yaml
 
 class IntroductionPage extends StatefulWidget {
@@ -110,7 +110,24 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   borderRadius: BorderRadius.circular(10)),
               minimumSize: const Size(double.infinity, 50.0),
               elevation: 10),
-          onPressed: () {},
+         onPressed: () {
+            if (selectedCourseId != null) {
+              // Exemple : Affichez un toast indiquant le cours sélectionné
+              Fluttertoast.showToast(
+                msg: "Cours sélectionné : $selectedCourseId",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+              );
+              // Ajoutez ici votre logique pour naviguer vers la page du cours
+            } else {
+              // Si aucun cours n'est sélectionné, affichez un message
+              Fluttertoast.showToast(
+                msg: "Veuillez sélectionner un cours.",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+              );
+            }
+          },
           child: const Text(
             "Commencer",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
