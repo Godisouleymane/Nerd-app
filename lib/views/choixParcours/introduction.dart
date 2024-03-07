@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +17,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 217, 217, 217),
       appBar: AppBar(
         title: const Text(
           "Nerd",
@@ -24,7 +26,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
-      backgroundColor: Colors.white,
       body: StreamBuilder<QuerySnapshot>(
         stream:
             FirebaseFirestore.instance.collection('selectedCours').snapshots(),
@@ -36,13 +37,13 @@ class _IntroductionPageState extends State<IntroductionPage> {
             return const Center(
                 child: CircularProgressIndicator(color: Colors.teal));
           }
-
           // Widget En-tête
-          Widget header = Padding(
-            padding: const EdgeInsets.all(10.0),
+          Widget header = const Padding(
+            padding: EdgeInsets.all(10.0),
             child: Text(
-              "Bienvenue dans votre sélection de cours",
+              "Choisissez ce que vous voulez apprendre",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
           );
 
@@ -151,5 +152,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
         ),
       ),
     );
+  }
+
+  void sauvergarderProgression() {
+    final User? user = FirebaseAuth.instance.currentUser;
+    if (user != null && selectedCourseId != null) {
+      
+    }
   }
 }
