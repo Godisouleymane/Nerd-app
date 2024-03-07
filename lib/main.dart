@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'CodeCrafters',
+      title: 'Nerd',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const OnBoardingScreen(),
+        '/': (context) => const IntroductionPage(),
         '/html': (context) => const HTMLView(),
         '/profile':(context) => const ProfileScreen(),
         '/onBoading_screen':(context) => const OnBoardingScreen(),
