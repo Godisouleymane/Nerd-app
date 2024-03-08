@@ -164,14 +164,30 @@ class _IntroductionPageState extends State<IntroductionPage> {
         'coursId': selectedCourseId,
         'progression': 0,
       }).then((_) {
+        print('Sauvegarder avec succes');
         // Afficher une confirmation.
         Fluttertoast.showToast(
-          msg: 'Bon apprentissage a vous.',
+            msg: 'Bon apprentissage a vous.',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM);
+        // Renvoyer l'ecran du cours choisi a l'utilisateur.
+      }).catchError((error) {
+        print(
+            'Erreur lors de la sauvegarde de la progression ${error.message}');
+        // Gestion d'erreur
+        Fluttertoast.showToast(
+          msg: "Erreur lors de la sauvegarde de la progression.",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+        );
+      });
+    } else {
+      print('Aucun cours selectionner');
+      // Afficher un message si aucun utilisateur n'est connecté ou aucun cours n'est sélectionné
+      Fluttertoast.showToast(
+          msg: "Aucun cours sélectionné ou utilisateur non connecté.",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER);
-          // Renvoyer l'ecran du cours choisi a l'utilisateur.
-          
-      });
     }
   }
 }
