@@ -51,6 +51,7 @@ dependencies:
   material_design_icons_flutter: ^7.0.7296
   fluttertoast: ^8.2.4
   lottie: ^3.1.0
+  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:

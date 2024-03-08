@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
-  final List<Widget> screens;
   final ValueChanged<int> onTap;
   final List<IconData> icons;
   final List<String> labels;
-  final List<Color> selectedColors;
-  final List<Color> unselectedColors;
+  final List<Color>
+      selectedColors; 
+  final List<Color>
+      unselectedColors; 
 
-  const CustomBottomNavigationBar({super.key, 
+  const CustomBottomNavigationBar({
+    super.key,
     required this.currentIndex,
-    required this.screens,
     required this.onTap,
     required this.icons,
     required this.labels,
@@ -28,20 +30,18 @@ class CustomBottomNavigationBar extends StatelessWidget {
       'The number of icons, labels, selectedColors, and unselectedColors must be the same.',
     );
 
-    return BottomNavigationBar(
+    List<Widget> navBarItems = List.generate(icons.length, (index) {
+      return Icon(icons[index],
+          color: currentIndex == index
+              ? selectedColors[index]
+              : unselectedColors[index]);
+    });
+
+    return CurvedNavigationBar(
       backgroundColor: Colors.grey.shade300,
-      currentIndex: currentIndex,
+      items: navBarItems,
+      index: currentIndex,
       onTap: onTap,
-      items: List.generate(
-        icons.length,
-        (index) => BottomNavigationBarItem(
-          icon: Icon(icons[index]),
-          label: labels[index],
-          backgroundColor: Colors.transparent,
-        ),
-      ),
-      selectedItemColor: selectedColors[currentIndex],
-      unselectedItemColor: unselectedColors[currentIndex],
     );
   }
 }

@@ -1,3 +1,5 @@
+// ignore: file_names
+import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -11,15 +13,12 @@ class HtmlVieww extends StatefulWidget {
 }
 
 class _HtmlViewwState extends State<HtmlVieww> {
+  int selectedModuleIndex = 0; // Index du module sélectionné, 0 par défaut
+  Future<Map<String, dynamic>?>? courseFuture;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.teal,
-        
-      ),
-      backgroundColor: Colors.grey.shade300,
-
+    return const Scaffold(
+     
     );
   }
 }
