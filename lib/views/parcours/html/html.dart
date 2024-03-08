@@ -2,6 +2,7 @@ import 'package:code_crafters/views/parcours/html/screenHTML.dart';
 import 'package:code_crafters/views/parcours/shared-ui/bottomNaviagtionBar.dart';
 import 'package:code_crafters/views/parcours/shared-ui/communaute.dart';
 import 'package:code_crafters/views/parcours/shared-ui/cours.dart';
+import 'package:code_crafters/views/parcours/shared-ui/progressionScreen.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class _HTMLViewState extends State<HTMLView> {
     const HtmlVieww(),
     const Communaute(),
     const Cours(),
+    const ProgressionScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -51,20 +53,6 @@ class _HTMLViewState extends State<HTMLView> {
             ),
             floating: true,
             pinned: false,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: List.generate(
-                      lives,
-                      (index) => const Icon(null),
-                    ),
-                  ),
-                  // Vous pouvez ajouter d'autres widgets ici si nécessaire
-                ],
-              ),
-            ),
             actions: [
               const Icon(Icons.notifications, color: Colors.white, size: 25),
               Gap(8),
@@ -88,25 +76,37 @@ class _HTMLViewState extends State<HTMLView> {
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
-        screens: _screens, // Passer la liste d'écrans
         onTap: (int value) {
           setState(() {
             _currentIndex = value;
           });
         },
-        icons: const [Icons.note, Icons.business_sharp, Icons.school],
-        labels: const ["Modules", "Communauté", "Cours"],
+        icons: const [
+          Icons.note, // Modules
+          Icons.business_sharp, // Communauté
+          Icons.school, // Cours
+          Icons.account_circle, // Ajoutez l'icône pour le 4e écran ici
+        ],
+        labels: const [
+          "Modules",
+          "Communauté",
+          "Cours",
+          "Progression"
+        ],
         selectedColors: const [
-          Colors.deepPurple,
-          Colors.deepPurple,
-          Colors.deepPurple,
+          Colors.white, // Modules
+          Colors.white,
+          Colors.white,
+          Colors.white,
         ],
         unselectedColors: [
-          Colors.grey.shade500,
-          Colors.grey.shade500,
-          Colors.grey.shade500,
+          Colors.grey.shade500, // Modules
+          Colors.grey.shade500, // Communauté
+          Colors.grey.shade500, // Cours
+          Colors.grey.shade500, // 4e écran
         ],
       ),
+
     );
   }
 }
