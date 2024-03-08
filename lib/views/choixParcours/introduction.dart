@@ -14,7 +14,6 @@ class IntroductionPage extends StatefulWidget {
 
 class _IntroductionPageState extends State<IntroductionPage> {
   String? selectedCourseId;
-  bool isAnimating = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +58,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
               onTap: () {
                 setState(() {
                   selectedCourseId = data['id'];
-                  isAnimating = true;
                 });
               },
               child: Padding(
@@ -133,13 +131,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
           ),
           onPressed: () {
             if (selectedCourseId != null) {
-              // Fluttertoast.showToast(
-              //   msg: "Cours sélectionné : $selectedCourseId",
-              //   toastLength: Toast.LENGTH_SHORT,
-              //   gravity: ToastGravity.BOTTOM,
-              // );
               montrerChargementEtSauvegarder();
-              // Naviguer vers la page du cours ou une autre action ici
             } else {
               Fluttertoast.showToast(
                 msg: "Veuillez sélectionner un cours.",
@@ -165,24 +157,22 @@ class _IntroductionPageState extends State<IntroductionPage> {
           false, // L'utilisateur ne peut pas fermer le dialogue lui-même
       builder: (BuildContext context) {
         return const Dialog(
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          insetPadding: EdgeInsets.all(0.0),
-          child:
-              LoadingAnimation(),
-        );
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+            insetPadding: EdgeInsets.all(0.0),
+            child: LoadingAnimation());
       },
     );
 
     // Attendre quelques secondes avant de fermer l'animation et sauvegarder
     Future.delayed(Duration(seconds: 4), () {
       Navigator.of(context).pop(); // Fermer l'animation de chargement
-      // sauvegarderProgression(); // Appeler votre fonction sauvegarderProgression
-      print('Felicitation pour cette animation');
+      sauvegarderProgression(); // Appeler votre fonction sauvegarderProgression
+      print('Progression sauvegarder');
     });
   }
 
-  void sauvergarderProgression() {
+  void sauvegarderProgression() {
     final User? user = FirebaseAuth.instance.currentUser;
     if (user != null && selectedCourseId != null) {
       FirebaseFirestore.instance
@@ -192,16 +182,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
         'coursId': selectedCourseId,
         'progression': 0,
       }).then((_) {
+        Navigator.pushNamed(context, 'html');
         print('Sauvegarder avec succes');
-        // Afficher une confirmation.
-        Fluttertoast.showToast(
-            msg: 'Bon apprentissage a vous.',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM);
-        // Renvoyer l'ecran du cours choisi a l'utilisateur.
       }).catchError((error) {
         print(
-            'Erreur lors de la sauvegarde de la progression ${error.message}');
+          'Erreur lors de la sauvegarde de la progression ${error.message}');
         // Gestion d'erreur
         Fluttertoast.showToast(
           msg: "Erreur lors de la sauvegarde de la progression.",
