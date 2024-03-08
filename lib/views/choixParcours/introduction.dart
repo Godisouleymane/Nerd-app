@@ -165,7 +165,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
     );
 
     // Attendre quelques secondes avant de fermer l'animation et sauvegarder
-    Future.delayed(Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context).pop(); // Fermer l'animation de chargement
       sauvegarderProgression(); // Appeler votre fonction sauvegarderProgression
       print('Progression sauvegarder');
@@ -186,7 +186,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
         print('Sauvegarder avec succes');
       }).catchError((error) {
         print(
-          'Erreur lors de la sauvegarde de la progression ${error.message}');
+            'Erreur lors de la sauvegarde de la progression ${error.message}');
         // Gestion d'erreur
         Fluttertoast.showToast(
           msg: "Erreur lors de la sauvegarde de la progression.",
