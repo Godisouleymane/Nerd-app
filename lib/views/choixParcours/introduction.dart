@@ -161,8 +161,17 @@ class _IntroductionPageState extends State<IntroductionPage> {
           .collection('progressionUtilisateurs')
           .doc(user.uid)
           .set({
-            
-          });
+        'coursId': selectedCourseId,
+        'progression': 0,
+      }).then((_) {
+        // Afficher une confirmation.
+        Fluttertoast.showToast(
+          msg: 'Bon apprentissage a vous.',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER);
+          // Renvoyer l'ecran du cours choisi a l'utilisateur.
+          
+      });
     }
   }
 }
