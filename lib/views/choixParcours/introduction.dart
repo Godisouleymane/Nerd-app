@@ -7,7 +7,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class IntroductionPage extends StatefulWidget {
   const IntroductionPage({Key? key}) : super(key: key);
-
   @override
   State<IntroductionPage> createState() => _IntroductionPageState();
 }
