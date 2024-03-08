@@ -82,6 +82,7 @@ flutter:
     - assets/logo.webp
     - assets/google.svg
     - assets/nerd.webp
+    - assets/Loading.json
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
