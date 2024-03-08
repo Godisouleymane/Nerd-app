@@ -38,7 +38,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     });
 
     return CurvedNavigationBar(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Colors.teal,
       items: navBarItems,
       index: currentIndex,
       onTap: onTap,
