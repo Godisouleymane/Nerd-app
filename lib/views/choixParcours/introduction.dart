@@ -13,7 +13,7 @@ class IntroductionPage extends StatefulWidget {
 
 class _IntroductionPageState extends State<IntroductionPage> {
   String? selectedCourseId;
-
+  bool isAnimating = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +58,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
               onTap: () {
                 setState(() {
                   selectedCourseId = data['id'];
+                  isAnimating = true;
                 });
               },
               child: Padding(
@@ -121,40 +122,53 @@ class _IntroductionPageState extends State<IntroductionPage> {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 15.0),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.teal,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            minimumSize: const Size(double.infinity, 50.0),
-            elevation: 10,
-          ),
-          onPressed: () {
-            if (selectedCourseId != null) {
-              Fluttertoast.showToast(
-                msg: "Cours sélectionné : $selectedCourseId",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-              );
-              // Naviguer vers la page du cours ou une autre action ici
-            } else {
-              Fluttertoast.showToast(
-                msg: "Veuillez sélectionner un cours.",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-              );
-            }
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              isAnimating = true;
+            });
+
+            // Retarder la navigation pour permettre à l'utilisateur de voir l'animation
+            Future.delayed(const Duration(milliseconds: 500), () {
+              if (selectedCourseId != null) {
+                print('hello');
+              } else {
+                Fluttertoast.showToast(
+                  msg: "Veuillez sélectionner un cours.",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                );
+                // Réinitialiser l'état d'animation
+                setState(() {
+                  isAnimating = false;
+                });
+              }
+            });
           },
-          child: const Text(
-            "Commencer",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            width: double.infinity,
+            height: 50.0,
+            decoration: BoxDecoration(
+              color: isAnimating ? Colors.green : Colors.teal,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: isAnimating
+                  ? const CircularProgressIndicator(color: Colors.white)
+                  : const Text(
+                      "Commencer",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+            ),
           ),
         ),
       ),
     );
   }
 
-  void sauvergarderProgression() {
+  void sauvegarderProgression() {
     final User? user = FirebaseAuth.instance.currentUser;
     if (user != null && selectedCourseId != null) {
       FirebaseFirestore.instance
