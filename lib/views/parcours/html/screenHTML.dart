@@ -15,7 +15,7 @@ class HtmlVieww extends StatefulWidget {
 class _HtmlViewwState extends State<HtmlVieww> {
   int selectedModuleIndex = 0; // Index du module sélectionné, 0 par défaut
   Future<Map<String, dynamic>?>? courseFuture;
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
