@@ -1,5 +1,3 @@
-
-
 import 'package:code_crafters/views/parcours/html/screenHTML.dart';
 import 'package:code_crafters/views/parcours/shared-ui/bottomNaviagtionBar.dart';
 import 'package:code_crafters/views/parcours/shared-ui/communaute.dart';
@@ -25,7 +23,6 @@ class _HTMLViewState extends State<HTMLView> {
     const Communaute(),
     const Cours(),
   ];
-  int lives = 5;
   @override
   Widget build(BuildContext context) {
     final User? user = Provider.of<User?>(context);
@@ -35,7 +32,7 @@ class _HTMLViewState extends State<HTMLView> {
         slivers: <Widget>[
           SliverAppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: const Color.fromARGB(255, 53, 32, 149),
+            backgroundColor: Colors.teal,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -46,7 +43,10 @@ class _HTMLViewState extends State<HTMLView> {
                     color: Colors.white,
                   ),
                 ),
-                Icon(DevIcons.html5Plain, color: Colors.orange[800],),
+                Icon(
+                  DevIcons.html5Plain,
+                  color: Colors.orange[800],
+                ),
               ],
             ),
             floating: true,
@@ -58,9 +58,7 @@ class _HTMLViewState extends State<HTMLView> {
                   Row(
                     children: List.generate(
                       lives,
-                      (index) => const Icon(
-                      null
-                      ),
+                      (index) => const Icon(null),
                     ),
                   ),
                   // Vous pouvez ajouter d'autres widgets ici si nécessaire
@@ -68,7 +66,7 @@ class _HTMLViewState extends State<HTMLView> {
               ),
             ),
             actions: [
-              const Icon(Icons.notifications, color: Colors.white, size:25),
+              const Icon(Icons.notifications, color: Colors.white, size: 25),
               Gap(8),
               if (user != null && user.photoURL != null)
                 GestureDetector(
@@ -81,7 +79,6 @@ class _HTMLViewState extends State<HTMLView> {
                     ),
                   ),
                 ),
-               
             ],
           ),
           SliverFillRemaining(
