@@ -1,3 +1,4 @@
+import 'package:code_crafters/views/choixParcours/loadingAnimation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -122,53 +123,66 @@ class _IntroductionPageState extends State<IntroductionPage> {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 15.0),
-        child: GestureDetector(
-          onTap: () {
-            setState(() {
-              isAnimating = true;
-            });
-
-            // Retarder la navigation pour permettre à l'utilisateur de voir l'animation
-            Future.delayed(const Duration(milliseconds: 500), () {
-              if (selectedCourseId != null) {
-                print('hello');
-              } else {
-                Fluttertoast.showToast(
-                  msg: "Veuillez sélectionner un cours.",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                );
-                // Réinitialiser l'état d'animation
-                setState(() {
-                  isAnimating = false;
-                });
-              }
-            });
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.teal,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            minimumSize: const Size(double.infinity, 50.0),
+            elevation: 10,
+          ),
+          onPressed: () {
+            if (selectedCourseId != null) {
+              // Fluttertoast.showToast(
+              //   msg: "Cours sélectionné : $selectedCourseId",
+              //   toastLength: Toast.LENGTH_SHORT,
+              //   gravity: ToastGravity.BOTTOM,
+              // );
+              montrerChargementEtSauvegarder();
+              // Naviguer vers la page du cours ou une autre action ici
+            } else {
+              Fluttertoast.showToast(
+                msg: "Veuillez sélectionner un cours.",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+              );
+            }
           },
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            width: double.infinity,
-            height: 50.0,
-            decoration: BoxDecoration(
-              color: isAnimating ? Colors.green : Colors.teal,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: isAnimating
-                  ? const CircularProgressIndicator(color: Colors.white)
-                  : const Text(
-                      "Commencer",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-            ),
+          child: const Text(
+            "Commencer",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ),
       ),
     );
   }
 
-  void sauvegarderProgression() {
+  void montrerChargementEtSauvegarder() {
+    // Afficher l'animation de chargement
+    showDialog(
+      context: context,
+      barrierDismissible:
+          false, // L'utilisateur ne peut pas fermer le dialogue lui-même
+      builder: (BuildContext context) {
+        return const Dialog(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          insetPadding: EdgeInsets.all(0.0),
+          child:
+              LoadingAnimation(),
+        );
+      },
+    );
+
+    // Attendre quelques secondes avant de fermer l'animation et sauvegarder
+    Future.delayed(Duration(seconds: 4), () {
+      Navigator.of(context).pop(); // Fermer l'animation de chargement
+      // sauvegarderProgression(); // Appeler votre fonction sauvegarderProgression
+      print('Felicitation pour cette animation');
+    });
+  }
+
+  void sauvergarderProgression() {
     final User? user = FirebaseAuth.instance.currentUser;
     if (user != null && selectedCourseId != null) {
       FirebaseFirestore.instance
