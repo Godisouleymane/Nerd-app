@@ -44,8 +44,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const IntroductionPage(),
-        '/html': (context) => const HTMLView(),
+        '/': (context) => const HTMLView(),
         '/profile':(context) => const ProfileScreen(),
         '/onBoading_screen':(context) => const OnBoardingScreen(),
       },

@@ -130,7 +130,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
           ),
           onPressed: () {
             if (selectedCourseId != null) {
-              montrerChargementEtSauvegarder();
+              if (selectedCourseId == 'html') {
+                montrerChargementEtSauvegarder();
+              }
             } else {
               Fluttertoast.showToast(
                 msg: "Veuillez sélectionner un cours.",
@@ -167,7 +169,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context).pop(); // Fermer l'animation de chargement
       sauvegarderProgression(); // Appeler votre fonction sauvegarderProgression
-      print('Progression sauvegarder');
     });
   }
 
@@ -178,10 +179,10 @@ class _IntroductionPageState extends State<IntroductionPage> {
           .collection('progressionUtilisateurs')
           .doc(user.uid)
           .set({
-        'coursId': selectedCourseId,
-        'progression': 0,
+          'coursId': selectedCourseId,
+          'progression': 0,
       }).then((_) {
-        Navigator.pushNamed(context, 'html');
+        Navigator.pushNamed(context, '/html');
         print('Sauvegarder avec succes');
       }).catchError((error) {
         print(

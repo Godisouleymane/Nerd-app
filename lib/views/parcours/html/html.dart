@@ -85,7 +85,7 @@ class _HTMLViewState extends State<HTMLView> {
           Icons.note, // Modules
           Icons.business_sharp, // Communauté
           Icons.school, // Cours
-          Icons.account_circle, // Ajoutez l'icône pour le 4e écran ici
+          Icons.trending_up, // Ajoutez l'icône pour le 4e écran ici
         ],
         labels: const [
           "Modules",
@@ -99,11 +99,11 @@ class _HTMLViewState extends State<HTMLView> {
           Colors.white,
           Colors.white,
         ],
-        unselectedColors: [
-          Colors.grey.shade500, // Modules
-          Colors.grey.shade500, // Communauté
-          Colors.grey.shade500, // Cours
-          Colors.grey.shade500, // 4e écran
+        unselectedColors: const [
+         Colors.white, // Modules
+         Colors.white, // Modules
+         Colors.white, // Modules
+         Colors.white, // Modules
         ],
       ),
 
