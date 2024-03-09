@@ -82,10 +82,10 @@ class _HTMLViewState extends State<HTMLView> {
           });
         },
         icons: const [
-          Icons.note, // Modules
-          Icons.business_sharp, // Communauté
-          Icons.school, // Cours
-          Icons.trending_up, // Ajoutez l'icône pour le 4e écran ici
+          Icons.note,
+          Icons.business_sharp,
+          Icons.school, 
+          Icons.trending_up, 
         ],
         labels: const [
           "Modules",
@@ -94,19 +94,18 @@ class _HTMLViewState extends State<HTMLView> {
           "Progression"
         ],
         selectedColors: const [
-          Colors.white, // Modules
+          Colors.white,
           Colors.white,
           Colors.white,
           Colors.white,
         ],
         unselectedColors: const [
-         Colors.white, // Modules
-         Colors.white, // Modules
-         Colors.white, // Modules
-         Colors.white, // Modules
+         Colors.white,
+         Colors.white, 
+         Colors.white, 
+         Colors.white, 
         ],
       ),
-
     );
   }
 }
