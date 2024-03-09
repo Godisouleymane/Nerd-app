@@ -1,4 +1,4 @@
-import 'package:code_crafters/views/parcours/html/screenHTML.dart';
+import 'package:code_crafters/views/parcours/html/Cours_Screen.dart';
 import 'package:code_crafters/views/parcours/shared-ui/bottomNaviagtionBar.dart';
 import 'package:code_crafters/views/parcours/shared-ui/communaute.dart';
 import 'package:code_crafters/views/parcours/shared-ui/cours.dart';
@@ -20,7 +20,7 @@ class _HTMLViewState extends State<HTMLView> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    const HtmlVieww(),
+    const CourseScreen(),
     const Communaute(),
     const Cours(),
     const ProgressionScreen()
