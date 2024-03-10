@@ -37,7 +37,7 @@ class AuthWrapper extends StatelessWidget {
               // Progression trouvee, retourner l'ecran du cours.
               var data = snapshot.data!.data() as Map<String, dynamic>;
               String lastCourseId = data['coursId'];
-              return CourseScreen();
+              return CourseModulesScreen(courseId: lastCourseId);
             }
           });
     }
