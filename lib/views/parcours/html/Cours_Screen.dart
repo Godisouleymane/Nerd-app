@@ -17,7 +17,7 @@ class CourseModulesScreen extends StatelessWidget {
             .orderBy('ordre')
             .snapshots(),
         builder: (context, snapshot) {
-          if (!snapshot.hasData) return const CircularProgressIndicator(color: Colors.teal,);
+          if (!snapshot.hasData) return const Center(child: CircularProgressIndicator(color: Colors.teal,));
 
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {

@@ -1,9 +1,17 @@
+import 'package:code_crafters/services/authentification.dart';
+import 'package:code_crafters/views/choixParcours/introduction.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool inLoginProcess = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +117,8 @@ class LoginPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: ElevatedButton(
+                      child: inLoginProcess ? const CircularProgressIndicator(color: Colors.red,) :
+                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             elevation: 8.0,
@@ -117,7 +126,7 @@ class LoginPage extends StatelessWidget {
                                 Size(MediaQuery.of(context).size.width, 50),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15))),
-                        onPressed: () {},
+                        onPressed:() => signIn(),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -200,5 +209,28 @@ class LoginPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  signIn() async {
+    setState(() {
+      inLoginProcess = true;
+    });
+
+    try {
+      await AuthService().signInWithGoogle();
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const IntroductionPage()),
+      );
+    } catch (e) {
+      // Gérer les erreurs ici
+      print("Erreur lors de la connexion avec Google : $e");
+      // Affichez un message à l'utilisateur pour l'informer de l'erreur, si nécessaire
+    } finally {
+      setState(() {
+        inLoginProcess = false;
+      });
+    }
   }
 }
