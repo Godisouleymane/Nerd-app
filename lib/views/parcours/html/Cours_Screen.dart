@@ -9,10 +9,6 @@ class CourseModulesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Modules du Cours HTML"),
-        backgroundColor: Colors.teal,
-      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('cours')
@@ -21,18 +17,17 @@ class CourseModulesScreen extends StatelessWidget {
             .orderBy('ordre')
             .snapshots(),
         builder: (context, snapshot) {
-          if (!snapshot.hasData) return CircularProgressIndicator();
+          if (!snapshot.hasData) return const CircularProgressIndicator(color: Colors.teal,);
 
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> module =
                   document.data() as Map<String, dynamic>;
-
               return Card(
                 child: ListTile(
-                  leading: Image.network("URL_de_l'image_du_module",
-                      width: 100,
-                      height: 100), // Remplacez par l'URL de votre image
+                  leading: Image.asset("assets/vector.png",
+                      width: MediaQuery.of(context).size.width,
+                      height: 200), // Remplacez par l'URL de votre image
                   title: Text(module['titre']),
                   trailing: Icon(
                     module['estDebloquer'] ? Icons.play_arrow : Icons.lock,
