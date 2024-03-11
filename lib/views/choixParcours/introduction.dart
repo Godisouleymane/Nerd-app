@@ -1,4 +1,6 @@
 import 'package:code_crafters/views/choixParcours/loadingAnimation.dart';
+import 'package:code_crafters/views/login.dart';
+import 'package:code_crafters/views/parcours/html/Cours_Screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -168,39 +170,45 @@ class _IntroductionPageState extends State<IntroductionPage> {
     // Attendre quelques secondes avant de fermer l'animation et sauvegarder
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context).pop(); // Fermer l'animation de chargement
-      sauvegarderProgression(); // Appeler votre fonction sauvegarderProgression
+      sauvegarderProgression();
     });
   }
 
-  void sauvegarderProgression() {
-    final User? user = FirebaseAuth.instance.currentUser;
+  void sauvegarderProgression() async {
+    final user = FirebaseAuth.instance.currentUser;
     if (user != null && selectedCourseId != null) {
-      FirebaseFirestore.instance
-          .collection('progressionUtilisateurs')
-          .doc(user.uid)
-          .set({
-          'coursId': selectedCourseId,
-          'progression': 0,
-      }).then((_) {
-        Navigator.pushNamed(context, '/html');
-        print('Sauvegarder avec succes');
-      }).catchError((error) {
-        print(
-            'Erreur lors de la sauvegarde de la progression ${error.message}');
-        // Gestion d'erreur
+      try {
+        final docRef = FirebaseFirestore.instance
+            .collection('progressionUtilisateurs')
+            .doc(user.uid)
+            .collection('coursProgression')
+            .doc(selectedCourseId);
+
+        await docRef.set({'coursId': selectedCourseId, 'progression': 0});
+
+        if (!mounted)
+          return; // Ajoutez cette vérification avant de modifier l'état ou de naviguer
+
+        // Insérez ici votre logique de navigation ou de mise à jour de l'interface utilisateur
+        Navigator.pushNamed(context, '/html'); // Exemple de navigation
+      } catch (e) {
+        if (!mounted) return; // Ajoutez également cette vérification ici
+
+        print('Erreur lors de la sauvegarde de la progression : $e');
         Fluttertoast.showToast(
           msg: "Erreur lors de la sauvegarde de la progression.",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
         );
-      });
+      }
     } else {
-      print('Aucun cours selectionner');
-      // Afficher un message si aucun utilisateur n'est connecté ou aucun cours n'est sélectionné
+      if (!mounted) return; // Et ici
+
       Fluttertoast.showToast(
-          msg: "Aucun cours sélectionné ou utilisateur non connecté.",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER);
+        msg: "Aucun cours sélectionné ou utilisateur non connecté.",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+      );
     }
   }
 }

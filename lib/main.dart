@@ -17,13 +17,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    MultiProvider(
-      providers: [
-        StreamProvider<User?>.value(
-          value: FirebaseAuth.instance.authStateChanges(),
-          initialData: null,
-        ),
-      ],
+    StreamProvider<User?>.value(
+      value: FirebaseAuth.instance.authStateChanges(),
+      initialData: null,
       child: const MyApp(),
     ),
   );
@@ -48,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/html':(context) => HTMLView(),
         '/profile':(context) => const ProfileScreen(),
         '/onBoading_screen':(context) => const OnBoardingScreen(),
+        '/login':(context) => LoginPage(),
       },
     );
   }
