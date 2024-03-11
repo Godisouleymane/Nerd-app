@@ -18,7 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final user = Provider.of<User?>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 53, 32, 149),
+        backgroundColor: Colors.teal,
         title: const Text('Profile',
             style: TextStyle(
               color: Colors.white,
@@ -37,7 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Container(
                 height: MediaQuery.of(context).size.height * 0.20,
                 decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 53, 32, 149),
+                    color: Colors.teal,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(26),
                         bottomRight: Radius.circular(26))),
