@@ -170,45 +170,63 @@ class _IntroductionPageState extends State<IntroductionPage> {
     // Attendre quelques secondes avant de fermer l'animation et sauvegarder
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context).pop(); // Fermer l'animation de chargement
-      sauvegarderProgression();
+      // sauvegarderProgression();
     });
   }
 
-  void sauvegarderProgression() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null && selectedCourseId != null) {
-      try {
-        final docRef = FirebaseFirestore.instance
-            .collection('progressionUtilisateurs')
-            .doc(user.uid)
-            .collection('coursProgression')
-            .doc(selectedCourseId);
+//  void sauvegarderProgression() async {
+//     final user = FirebaseAuth.instance.currentUser;
+//     if (user != null && selectedCourseId != null) {
+//       try {
+//         final docRef = FirebaseFirestore.instance
+//             .collection('progressionUtilisateurs')
+//             .doc(user.uid)
+//             .collection(
+//                 'cours') // Ajouter une sous-collection pour organiser les cours
+//             .doc(selectedCourseId);
 
-        await docRef.set({'coursId': selectedCourseId, 'progression': 0});
+//         await docRef.set(
+//             {
+//               'coursId': selectedCourseId,
+//               'progression': 0, // Initialiser la progression à 0
+//               'dernièreLeçon':
+//                   1, // Supposons que l'utilisateur commence à la leçon 1
+//               'dernièreMiseÀJour': FieldValue
+//                   .serverTimestamp(), // Stocker la date de la dernière mise à jour
+//             },
+//             SetOptions(
+//                 merge:
+//                     true)); // Utiliser merge pour ne pas écraser d'autres champs
 
-        if (!mounted)
-          return; // Ajoutez cette vérification avant de modifier l'état ou de naviguer
+//         // Navigation dynamique basée sur le cours sélectionné
+//         // ignore: use_build_context_synchronously
+//         Navigator.push(context, MaterialPageRoute(builder: (context) {
+//           switch (selectedCourseId) {
+//             case 'html':
+//               return CourseModulesScreen(courseId: 'html_cours');
+//             // Ajouter d'autres cas pour différents cours
+//             default:
+//               return const IntroductionPage(); // Retourner à la page d'introduction si l'ID du cours n'est pas géré
+//           }
+//         }));
+//       } catch (e) {
+//         if (!mounted) return;
 
-        // Insérez ici votre logique de navigation ou de mise à jour de l'interface utilisateur
-        Navigator.pushNamed(context, '/html'); // Exemple de navigation
-      } catch (e) {
-        if (!mounted) return; // Ajoutez également cette vérification ici
+//         Fluttertoast.showToast(
+//           msg: "Erreur lors de la sauvegarde de la progression : $e",
+//           toastLength: Toast.LENGTH_SHORT,
+//           gravity: ToastGravity.BOTTOM,
+//         );
+//       }
+//     } else {
+//       if (!mounted) return;
 
-        print('Erreur lors de la sauvegarde de la progression : $e');
-        Fluttertoast.showToast(
-          msg: "Erreur lors de la sauvegarde de la progression.",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-        );
-      }
-    } else {
-      if (!mounted) return; // Et ici
+//       Fluttertoast.showToast(
+//         msg: "Aucun cours sélectionné ou utilisateur non connecté.",
+//         toastLength: Toast.LENGTH_SHORT,
+//         gravity: ToastGravity.CENTER,
+//       );
+//     }
+//   }
 
-      Fluttertoast.showToast(
-        msg: "Aucun cours sélectionné ou utilisateur non connecté.",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-      );
-    }
-  }
 }

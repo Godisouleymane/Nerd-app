@@ -20,7 +20,7 @@ class _HTMLViewState extends State<HTMLView> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    CourseModulesScreen(courseId: 'html_cours',),
+    const CourseScreen(),
     const Communaute(),
     const Cours(),
     const ProgressionScreen()
@@ -55,7 +55,7 @@ class _HTMLViewState extends State<HTMLView> {
             pinned: false,
             actions: [
               const Icon(Icons.notifications, color: Colors.white, size: 25),
-              Gap(8),
+              const Gap(8),
               if (user != null && user.photoURL != null)
                 GestureDetector(
                   onTap: () => Navigator.pushNamed(context, '/profile'),
