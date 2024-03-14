@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: Colors.white,
         ),
       ),
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   borderRadius: BorderRadius.circular(7),
                   boxShadow: [
                     BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: Colors.grey.withOpacity(0.2),
                           spreadRadius: 3,
                           blurRadius: 3,
                           offset: const Offset(0, 2), // changes position of shadow
@@ -89,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       borderRadius: BorderRadius.circular(7),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: Colors.grey.withOpacity(0.2),
                           spreadRadius: 3,
                           blurRadius: 3,
                           offset: Offset(0, 3), // changes position of shadow
@@ -115,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       borderRadius: BorderRadius.circular(7),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: Colors.grey.withOpacity(0.2),
                           spreadRadius: 3,
                           blurRadius: 3,
                           offset: const Offset(0, 3), // changes position of shadow

@@ -14,10 +14,11 @@ class MyHeatMap extends StatelessWidget {
         DateTime(2024, 3, 25): 10,
         DateTime(2024, 3, 29): 13,
       },
+      defaultColor: Colors.grey,
       startDate: DateTime(2023),
       endDate: DateTime.now().add(Duration(days: 40)),
       size: 30,
-      colorMode: ColorMode.opacity,
+      colorMode: ColorMode.color,
       showText: false,
       scrollable: true,
       colorsets: const {
