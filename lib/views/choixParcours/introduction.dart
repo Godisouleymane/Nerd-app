@@ -170,6 +170,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
     // Attendre quelques secondes avant de fermer l'animation et sauvegarder
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context).pop(); // Fermer l'animation de chargement
+      Navigator.pushNamed(context, '/html');
       // sauvegarderProgression();
     });
   }
@@ -228,5 +229,4 @@ class _IntroductionPageState extends State<IntroductionPage> {
 //       );
 //     }
 //   }
-
 }

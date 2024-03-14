@@ -56,7 +56,7 @@ class _CourseScreenState extends State<CourseScreen> {
                             ? showNotification(
                                 context, 'ce module est debloquer')
                             : showNotification(context,
-                                'Veuillez terminer le module presedent pour le debloquer'),
+                                'Veuillez terminer le module precedent pour le debloquer'),
                         child: Image.asset('assets/vector.png')),
                     const Gap(8),
                     Container(
