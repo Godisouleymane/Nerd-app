@@ -29,7 +29,7 @@ class _HTMLViewState extends State<HTMLView> {
   Widget build(BuildContext context) {
     final User? user = Provider.of<User?>(context);
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
