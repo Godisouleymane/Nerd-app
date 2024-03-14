@@ -46,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircleAvatar(
-                        radius: 40,
+                        radius: 45,
                         backgroundColor: Colors.grey,
                         backgroundImage: NetworkImage(user!.photoURL!)),
                     const Gap(10),
@@ -55,19 +55,89 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       style: const TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),
-                    const Text(
-                      '0 peers',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    )
                   ],
                 ))),
             const Gap(25),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+               Container(
+                width: MediaQuery.of(context).size.width * 0.22,
+                height: MediaQuery.of(context).size.height * 0.10,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(7),
+                  boxShadow: [
+                    BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 3,
+                          blurRadius: 3,
+                          offset: const Offset(0, 2), // changes position of shadow
+                        ),
+                  ]
+                ),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Text('0', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)), Text('Peers', style:TextStyle(fontWeight: FontWeight.bold))],),
+               ),
+                 Container(
+                  width: MediaQuery.of(context).size.width * 0.22,
+                  height: MediaQuery.of(context).size.height * 0.10,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(7),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 3,
+                          blurRadius: 3,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('0',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20)),
+                      Text('Mentors',
+                          style: TextStyle(fontWeight: FontWeight.bold))
+                    ],
+                  ),
+                ),
+                 Container(
+                  width: MediaQuery.of(context).size.width * 0.22,
+                  height: MediaQuery.of(context).size.height * 0.10,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(7),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 3,
+                          blurRadius: 3,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                     Icon(Icons.bookmark, color: Colors.teal),
+                      Text('Favoris',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            const Gap(20),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.0),
               child: Text(
-                'Learning Contribution',
+                'Contribution',
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
