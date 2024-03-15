@@ -36,59 +36,67 @@ class _CourseScreenState extends State<CourseScreen> {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
             return Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          blurRadius: 3,
-                          spreadRadius: 3,
-                          offset: const Offset(0, 3))
-                    ]),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                        onTap: () => data['estDebloquer']
-                            ? showNotification(
-                                context, 'ce module est debloquer')
-                            : showNotification(context,
-                                'Veuillez terminer le module presedent pour le debloquer'),
-                        child: Image.asset('assets/vector.png')),
-                    const Gap(8),
-                    Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.teal,
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(10),
-                              bottomLeft: Radius.circular(10))),
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 5.0, left: 5.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              data['titre'],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Icon(
-                                data['estDebloquer']
-                                    ? Icons.play_arrow
-                                    : Icons.lock,
-                                size: MediaQuery.of(context).size.width * 0.13,
-                                color: data['estDebloquer']
-                                    ? Colors.green
-                                    : Colors.red)
-                          ],
+              padding: const EdgeInsets.all(15.0),
+              child: GestureDetector(
+                onTap:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          CoursDetailScreen(moduleData: data),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            blurRadius: 3,
+                            spreadRadius: 3,
+                            offset: const Offset(0, 3))
+                      ]),
+                  child: Column(
+                    children: [
+                      Image.asset('assets/vector.png'),
+                      const Gap(8),
+                      Container(
+                        decoration: const BoxDecoration(
+                            color: Colors.teal,
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10))),
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 5.0, left: 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                data['titre'],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                    data['estDebloquer']
+                                        ? Icons.play_arrow
+                                        : Icons.lock,
+                                    size: 35,
+                                    color: data['estDebloquer']
+                                        ? const Color.fromARGB(255, 42, 255, 49)
+                                        : Colors.red),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             );
@@ -96,5 +104,47 @@ class _CourseScreenState extends State<CourseScreen> {
         );
       },
     );
+  }
+}
+
+class CoursDetailScreen extends StatelessWidget {
+  final Map<String, dynamic> moduleData;
+  const CoursDetailScreen({super.key, required this.moduleData});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('cours')
+          .doc('html_cours')
+          .collection('modules')
+          .doc(moduleData['id'])
+          .collection('lecons')
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Center(
+            child: Text('Quelques choses s\'est mal passé'),
+          );
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: Lottie.asset('assets/bulleLoading.json'),
+          );
+        }
+
+        return ListView(
+          children: snapshot.data!.docs.map((DocumentSnapshot document) {
+            Map<String, dynamic> lessonData =
+                document.data()! as Map<String, dynamic>;
+            return ListTile(
+              title: lessonData['titre'],
+              leading: Icon(Icons.usb_rounded),
+            );
+          }).toList(),
+        );
+      },
+    ));
   }
 }

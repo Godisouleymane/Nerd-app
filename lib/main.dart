@@ -1,6 +1,7 @@
 import 'package:code_crafters/firebase_options.dart';
 import 'package:code_crafters/views/choixParcours/introduction.dart';
 import 'package:code_crafters/views/login.dart';
+import 'package:code_crafters/views/parcours/html/coursDetail_screen.dart';
 import 'package:code_crafters/views/parcours/html/html.dart';
 import 'package:code_crafters/views/profile/profile.dart';
 import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
@@ -34,13 +35,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Nerd',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HTMLView(),
+        '/': (context) => const AuthWrapper(),
+        '/html':(context) => const HTMLView(),
         '/profile':(context) => const ProfileScreen(),
         '/onBoading_screen':(context) => const OnBoardingScreen(),
         '/login':(context) => const LoginPage(),
