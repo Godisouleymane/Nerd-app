@@ -1,7 +1,6 @@
 import 'package:code_crafters/firebase_options.dart';
 import 'package:code_crafters/views/choixParcours/introduction.dart';
 import 'package:code_crafters/views/login.dart';
-import 'package:code_crafters/views/parcours/html/coursDetail_screen.dart';
 import 'package:code_crafters/views/parcours/html/html.dart';
 import 'package:code_crafters/views/profile/profile.dart';
 import 'package:code_crafters/views/widgets/onBoarding_screen.dart';
