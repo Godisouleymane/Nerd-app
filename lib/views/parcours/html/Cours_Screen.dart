@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
 class CourseScreen extends StatefulWidget {
   const CourseScreen({super.key});
-
   @override
   State<CourseScreen> createState() => _CourseScreenState();
 }
@@ -114,7 +112,7 @@ class CoursDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: StreamBuilder<QuerySnapshot>(
+      body: StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection('cours')
           .doc('html_cours')
@@ -136,11 +134,12 @@ class CoursDetailScreen extends StatelessWidget {
 
         return ListView(
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            Map<String, dynamic> lessonData =
-                document.data()! as Map<String, dynamic>;
-            return ListTile(
-              title: lessonData['titre'],
-              leading: Icon(Icons.usb_rounded),
+            Map<String, dynamic> lessonData = document.data()! as Map<String, dynamic>;
+            return Center(
+              child: ListTile(
+                title: lessonData['titre'],
+                leading: const Icon(Icons.usb_rounded),
+              ),
             );
           }).toList(),
         );
