@@ -36,12 +36,11 @@ class _CourseScreenState extends State<CourseScreen> {
             return Padding(
               padding: const EdgeInsets.all(15.0),
               child: GestureDetector(
-                onTap:() {
+                onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          CoursDetailScreen(moduleData: data),
+                      builder: (context) => CoursDetailScreen(moduleData: data),
                     ),
                   );
                 },
@@ -112,7 +111,7 @@ class CoursDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<QuerySnapshot>(
+        body: StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection('cours')
           .doc('html_cours')
@@ -134,7 +133,8 @@ class CoursDetailScreen extends StatelessWidget {
 
         return ListView(
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            Map<String, dynamic> lessonData = document.data()! as Map<String, dynamic>;
+            Map<String, dynamic> lessonData =
+                document.data()! as Map<String, dynamic>;
             return Center(
               child: ListTile(
                 title: lessonData['titre'],
@@ -145,5 +145,14 @@ class CoursDetailScreen extends StatelessWidget {
         );
       },
     ));
+  }
+}
+
+class LessonDetailScreen extends StatelessWidget {
+  const LessonDetailScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
   }
 }
