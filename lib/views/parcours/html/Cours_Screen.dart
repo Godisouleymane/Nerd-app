@@ -37,11 +37,12 @@ class _CourseScreenState extends State<CourseScreen> {
               padding: const EdgeInsets.all(15.0),
               child: GestureDetector(
                 onTap: () {
-                  print("ID du module: ${data['id']}"); 
+                  print("ID du module: ${data['id']}");
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CoursDetailScreen(moduleId: data['id']),
+                      builder: (context) =>
+                          CoursDetailScreen(moduleId: data['id']),
                     ),
                   );
                 },
@@ -108,25 +109,27 @@ class _CourseScreenState extends State<CourseScreen> {
 
 class CoursDetailScreen extends StatelessWidget {
   final String moduleId;
+
   const CoursDetailScreen({Key? key, required this.moduleId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+     print("Identifiant du module : $moduleId"); 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Leçons du Module'),
+        title: Text('Leçons du Module'),
       ),
-      body: FutureBuilder<QuerySnapshot>(
-        future: FirebaseFirestore.instance
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
             .collection('cours')
             .doc('html_cours')
             .collection('modules')
             .doc(moduleId)
             .collection('lecons')
-            .get(),
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -136,8 +139,9 @@ class CoursDetailScreen extends StatelessWidget {
             );
           }
 
-          // Si tout va bien, affichez les leçons
+          // Si tout va bien, afficher les leçons
           final lessons = snapshot.data!.docs;
+          print(lessons);
           return ListView.builder(
             itemCount: lessons.length,
             itemBuilder: (context, index) {
