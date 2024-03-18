@@ -37,10 +37,11 @@ class _CourseScreenState extends State<CourseScreen> {
               padding: const EdgeInsets.all(15.0),
               child: GestureDetector(
                 onTap: () {
+                  print("ID du module: ${data['id']}"); 
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CoursDetailScreen(moduleData: data),
+                      builder: (context) => CoursDetailScreen(moduleId: data['id']),
                     ),
                   );
                 },
@@ -104,55 +105,51 @@ class _CourseScreenState extends State<CourseScreen> {
   }
 }
 
+
 class CoursDetailScreen extends StatelessWidget {
-  final Map<String, dynamic> moduleData;
-  const CoursDetailScreen({super.key, required this.moduleData});
+  final String moduleId;
+  const CoursDetailScreen({Key? key, required this.moduleId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance
-          .collection('cours')
-          .doc('html_cours')
-          .collection('modules')
-          .doc(moduleData['id'])
-          .collection('lecons')
-          .snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Center(
-            child: Text('Quelques choses s\'est mal passé'),
-          );
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: Lottie.asset('assets/bulleLoading.json'),
-          );
-        }
-
-        return ListView(
-          children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            Map<String, dynamic> lessonData =
-                document.data()! as Map<String, dynamic>;
+      appBar: AppBar(
+        title: const Text('Leçons du Module'),
+      ),
+      body: FutureBuilder<QuerySnapshot>(
+        future: FirebaseFirestore.instance
+            .collection('cours')
+            .doc('html_cours')
+            .collection('modules')
+            .doc(moduleId)
+            .collection('lecons')
+            .get(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
-              child: ListTile(
-                title: lessonData['titre'],
-                leading: const Icon(Icons.usb_rounded),
-              ),
+              child: CircularProgressIndicator(),
             );
-          }).toList(),
-        );
-      },
-    ));
-  }
-}
+          }
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Une erreur s\'est produite : ${snapshot.error}'),
+            );
+          }
 
-class LessonDetailScreen extends StatelessWidget {
-  const LessonDetailScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
+          // Si tout va bien, affichez les leçons
+          final lessons = snapshot.data!.docs;
+          return ListView.builder(
+            itemCount: lessons.length,
+            itemBuilder: (context, index) {
+              final lessonData = lessons[index].data() as Map<String, dynamic>;
+              return ListTile(
+                title: Text(lessonData['titre'] ?? 'Titre inconnu'),
+                leading: Icon(Icons.book),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 }
