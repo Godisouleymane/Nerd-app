@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:code_crafters/views/widgets/showSnackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
@@ -106,7 +107,6 @@ class _CourseScreenState extends State<CourseScreen> {
   }
 }
 
-
 class CoursDetailScreen extends StatelessWidget {
   final String moduleId;
 
@@ -114,10 +114,16 @@ class CoursDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     print("Identifiant du module : $moduleId"); 
+    print("Identifiant du module : $moduleId");
     return Scaffold(
       appBar: AppBar(
-        title: Text('Leçons du Module'),
+        backgroundColor: Colors.teal,
+        title: const Text(
+          'Leçons du Module',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
+        centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -130,7 +136,9 @@ class CoursDetailScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Colors.teal,
+              ),
             );
           }
           if (snapshot.hasError) {
@@ -146,9 +154,14 @@ class CoursDetailScreen extends StatelessWidget {
             itemCount: lessons.length,
             itemBuilder: (context, index) {
               final lessonData = lessons[index].data() as Map<String, dynamic>;
-              return ListTile(
-                title: Text(lessonData['titre'] ?? 'Titre inconnu'),
-                leading: Icon(Icons.book),
+              return GestureDetector(
+                onTap: () => lessonData['estDebloquer']
+                    ? showNotification(context, 'cette lesson est debloquer')
+                    : showNotification(context, 'cette lesson est bloquer'),
+                child: ListTile(
+                  title: Text(lessonData['titre'] ?? 'Titre inconnu'),
+                  leading: const Icon(Icons.book),
+                ),
               );
             },
           );
