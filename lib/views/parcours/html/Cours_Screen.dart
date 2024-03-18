@@ -35,7 +35,7 @@ class _CourseScreenState extends State<CourseScreen> {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
             return Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
               child: GestureDetector(
                 onTap: () {
                   print("ID du module: ${data['id']}");
@@ -65,7 +65,7 @@ class _CourseScreenState extends State<CourseScreen> {
                       const Gap(8),
                       Container(
                         decoration: const BoxDecoration(
-                            color: Colors.teal,
+                            color: Colors.grey,
                             borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(10),
                                 bottomLeft: Radius.circular(10))),
@@ -88,7 +88,7 @@ class _CourseScreenState extends State<CourseScreen> {
                                         : Icons.lock,
                                     size: 35,
                                     color: data['estDebloquer']
-                                        ? const Color.fromARGB(255, 42, 255, 49)
+                                        ? const Color.fromARGB(255, 7, 255, 16)
                                         : Colors.red),
                               )
                             ],
@@ -156,11 +156,14 @@ class CoursDetailScreen extends StatelessWidget {
               final lessonData = lessons[index].data() as Map<String, dynamic>;
               return GestureDetector(
                 onTap: () => lessonData['estDebloquer']
-                    ? showNotification(context, 'cette lesson est debloquer')
-                    : showNotification(context, 'cette lesson est bloquer'),
+                    ? showNotification(context, 'Cette leçon est debloquée')
+                    : showNotification(context, 'Cette leçon est bloquée'),
                 child: ListTile(
                   title: Text(lessonData['titre'] ?? 'Titre inconnu'),
                   leading: const Icon(Icons.book),
+                  trailing: lessonData['estDebloquer']
+                      ? const Icon(Icons.play_arrow)
+                      : const Icon(Icons.lock),
                 ),
               );
             },
