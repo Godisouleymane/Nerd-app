@@ -12,7 +12,7 @@ class AuthWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-
+    
     // Vérification si l'utilisateur est connecté ou non
     if (user == null) {
       return const LoginPage(); // Redirection vers la page de connexion
