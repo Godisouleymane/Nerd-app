@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
 
 class CourseScreen extends StatefulWidget {
   const CourseScreen({Key? key}) : super(key: key);
@@ -156,6 +157,7 @@ class CoursDetailScreen extends StatelessWidget {
               final videoUrl = data['videoUrl'] ?? '';
 
               return Container(
+                color: Colors.white,
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.22,
                 child: VideoPlayerWidget(videoUrl: videoUrl),
@@ -230,8 +232,6 @@ class CoursDetailScreen extends StatelessWidget {
   }
 }
 
-
-
 class VideoPlayerWidget extends StatefulWidget {
   final String videoUrl;
 
@@ -243,31 +243,59 @@ class VideoPlayerWidget extends StatefulWidget {
 
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   late VideoPlayerController _controller;
+  late ChewieController _chewieController;
+  bool _isLoading = true;
+  bool _isError = false;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(widget.videoUrl)
-      ..initialize().then((_) {
-        setState(() {
-          _controller.play();
-        });
+    _initializeVideo();
+  }
+
+  void _initializeVideo() async {
+    _controller = VideoPlayerController.network(widget.videoUrl);
+    try {
+      await _controller.initialize();
+      setState(() {
+        _chewieController = ChewieController(
+          videoPlayerController: _controller,
+          autoPlay: false,
+          looping: false,
+        );
+        _isLoading = false;
       });
+    } catch (error) {
+      setState(() {
+        _isLoading = false;
+        _isError = true;
+      });
+      print('Error initializing video: $error');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return _controller.value.isInitialized
-        ? AspectRatio(
-            aspectRatio: _controller.value.aspectRatio,
-            child: VideoPlayer(_controller),
+    return _isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
           )
-        : CircularProgressIndicator();
+        : _isError
+            ? const Center(
+                child: Text('Erreur lors du chargement de la vidéo'),
+              )
+            : _chewieController != null &&
+                    _chewieController.videoPlayerController.value.isInitialized
+                ? Chewie(
+                    controller: _chewieController,
+                  )
+                : Container(); // Afficher un conteneur vide si Chewie n'est pas initialisé
   }
 
   @override
   void dispose() {
     super.dispose();
     _controller.dispose();
+    _chewieController.dispose();
   }
 }
