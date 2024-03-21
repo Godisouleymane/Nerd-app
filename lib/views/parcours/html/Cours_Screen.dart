@@ -135,10 +135,32 @@ class CoursDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.22,
-            child: VideoPlayerScreen(), // Intégration de VideoPlayerScreen ici
+          FutureBuilder(
+            future: FirebaseFirestore.instance
+                .collection('cours')
+                .doc('html_cours')
+                .collection('modules')
+                .doc(moduleId)
+                .get(),
+            builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator(color: Colors.teal);
+              }
+              if (snapshot.hasError || !snapshot.hasData) {
+                return const Center(
+                  child: Text('Erreur lors de la récupération des données'),
+                );
+              }
+
+              final data = snapshot.data!.data() as Map<String, dynamic>;
+              final videoUrl = data['videoUrl'] ?? '';
+
+              return Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.22,
+                child: VideoPlayerWidget(videoUrl: videoUrl),
+              );
+            },
           ),
           Expanded(
             child: Container(
@@ -208,63 +230,39 @@ class CoursDetailScreen extends StatelessWidget {
   }
 }
 
-class VideoPlayerScreen extends StatefulWidget {
+
+
+class VideoPlayerWidget extends StatefulWidget {
+  final String videoUrl;
+
+  const VideoPlayerWidget({Key? key, required this.videoUrl}) : super(key: key);
+
   @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+  _VideoPlayerWidgetState createState() => _VideoPlayerWidgetState();
 }
 
-
-class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   late VideoPlayerController _controller;
-  Future<void>? _initializeVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
-    _initializeVideoPlayerFuture = _loadVideo();
-  }
-
-  Future<void> _loadVideo() async {
-    final String videoUrl = await FirebaseStorage.instance
-        .ref('htmlVideo/introductionHtml.mp4')
-        .getDownloadURL();
-    _controller = VideoPlayerController.network(videoUrl);
-    await _controller.initialize();
-    setState(() {});
+    _controller = VideoPlayerController.network(widget.videoUrl)
+      ..initialize().then((_) {
+        setState(() {
+          _controller.play();
+        });
+      });
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initializeVideoPlayerFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return _buildVideoPlayer();
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
-    );
-  }
-
-  Widget _buildVideoPlayer() {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          if (_controller.value.isPlaying) {
-            _controller.pause();
-          } else {
-            _controller.play();
-          }
-        });
-      },
-      child: AspectRatio(
-        aspectRatio: _controller.value.aspectRatio,
-        child: VideoPlayer(_controller),
-      ),
-    );
+    return _controller.value.isInitialized
+        ? AspectRatio(
+            aspectRatio: _controller.value.aspectRatio,
+            child: VideoPlayer(_controller),
+          )
+        : CircularProgressIndicator();
   }
 
   @override
