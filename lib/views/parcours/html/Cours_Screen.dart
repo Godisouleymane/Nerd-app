@@ -289,7 +289,9 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 ? Chewie(
                     controller: _chewieController,
                   )
-                : Container(); // Afficher un conteneur vide si Chewie n'est pas initialisé
+                : Container(
+                  color: Colors.teal,
+                ); // Afficher un conteneur vide si Chewie n'est pas initialisé
   }
 
   @override
