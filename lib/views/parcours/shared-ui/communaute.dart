@@ -10,10 +10,18 @@ class Communaute extends StatefulWidget {
 class _CommunauteState extends State<Communaute> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
+      body: const Center(
         child: Text('Communaute'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.teal,
+        onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }

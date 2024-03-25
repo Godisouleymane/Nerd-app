@@ -60,7 +60,7 @@ class _CourseScreenState extends State<CourseScreen> {
                         blurRadius: 3,
                         spreadRadius: 3,
                         offset: const Offset(0, 3),
-                      )
+                      ),
                     ],
                   ),
                   child: Column(
@@ -124,7 +124,7 @@ class CoursDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print("Identifiant du module : $moduleId");
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.teal,
         title: const Text(
@@ -157,7 +157,7 @@ class CoursDetailScreen extends StatelessWidget {
               final videoUrl = data['videoUrl'] ?? '';
 
               return Container(
-                color: Colors.white,
+                color: Colors.teal,
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.22,
                 child: VideoPlayerWidget(videoUrl: videoUrl),
@@ -289,9 +289,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 ? Chewie(
                     controller: _chewieController,
                   )
-                : Container(
-                 
-                ); // Afficher un conteneur vide si Chewie n'est pas initialisé
+                : Container(); // Afficher un conteneur vide si Chewie n'est pas initialisé
   }
 
   @override
