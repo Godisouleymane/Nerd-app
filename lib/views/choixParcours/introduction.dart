@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:gap/gap.dart';
 
 class IntroductionPage extends StatefulWidget {
   const IntroductionPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 217, 217, 217),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "Nerd",
@@ -61,62 +62,64 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   selectedCourseId = data['id'];
                 });
               },
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Card(
-                  color: isSelected ? Colors.teal : Colors.blueGrey,
-                  elevation: 5,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SvgPicture.network(
-                          data['imageUrl'],
-                          width: 90,
-                          height: 90,
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10.0, bottom: 8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data['titre'],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Text(
-                                data['description'],
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 5,
-                              ),
-                            ],
+              child: Card(
+                color: isSelected ? Colors.teal : Colors.blueGrey,
+                elevation: 10,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.network(data['imageUrl'], width: 90, height: 90),
+                    Gap(10),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            data['titre'],
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
                           ),
-                        ),
+                          Gap(5),
+                          Text(
+                            data['description'],
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             );
           }).toList();
 
           // Construction de la liste avec un En-tête
-          return SingleChildScrollView(
-            child: Column(
-              children: [header] + courseWidgets,
-            ),
+          return Column(
+            children: [
+              header,
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 15,
+                  ),
+                  itemCount: courseWidgets.length,
+                  itemBuilder: (context, index) {
+                    return courseWidgets[index];
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),
