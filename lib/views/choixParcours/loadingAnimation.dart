@@ -8,6 +8,7 @@ class LoadingAnimation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
@@ -17,7 +18,7 @@ class LoadingAnimation extends StatelessWidget {
           Lottie.asset('assets/Loading.json', width: 300, height: 300),
           const Gap(10),
           const Text('Bon apprentissage :)',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18))
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18))
         ],
       ),
     );

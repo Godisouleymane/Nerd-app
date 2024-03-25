@@ -84,15 +84,10 @@ class _HTMLViewState extends State<HTMLView> {
         icons: const [
           Icons.note,
           Icons.business_sharp,
-          Icons.school, 
-          Icons.trending_up, 
+          Icons.school,
+          Icons.trending_up,
         ],
-        labels: const [
-          "Modules",
-          "Communauté",
-          "Cours",
-          "Progression"
-        ],
+        labels: const ["Modules", "Communauté", "Cours", "Progression"],
         selectedColors: const [
           Colors.white,
           Colors.white,
@@ -100,10 +95,10 @@ class _HTMLViewState extends State<HTMLView> {
           Colors.white,
         ],
         unselectedColors: const [
-         Colors.white,
-         Colors.white, 
-         Colors.white, 
-         Colors.white, 
+          Colors.white,
+          Colors.white,
+          Colors.white,
+          Colors.white,
         ],
       ),
     );
