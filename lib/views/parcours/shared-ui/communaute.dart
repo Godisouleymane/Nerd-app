@@ -1,13 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:code_crafters/views/parcours/html/showMessageDialog.dart';
+class Communaute extends StatelessWidget {
+  final User? user;
+  const Communaute({this.user});
 
-class Communaute extends StatefulWidget {
-  const Communaute({super.key});
-
-  @override
-  State<Communaute> createState() => _CommunauteState();
-}
-
-class _CommunauteState extends State<Communaute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,9 +14,9 @@ class _CommunauteState extends State<Communaute> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.teal,
-        onPressed: () {},
+        onPressed: () => MessageDialog().showMessDialog(context),
         child: const Icon(
-          Icons.add,
+          Icons.edit,
           color: Colors.white,
         ),
       ),
