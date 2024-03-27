@@ -36,7 +36,7 @@ class MessageDialog {
                           validator: (value) =>
                               _sujetText.isEmpty ? _formErreurSujet : null,
                           decoration: const InputDecoration(
-                            labelText: "Mettez votre sujet ici",
+                            labelText: "Mettez votre sujet",
                             border: OutlineInputBorder(),
                           ),
                         )),
