@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:code_crafters/models/discussionModel.dart';
+import 'package:code_crafters/models/messageModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -61,8 +62,20 @@ class MessageDialog {
                           TextButton(
                               onPressed: () => Navigator.of(context).pop(),
                               child: const Text('ANNULER')),
-                          ElevatedButton(
-                              onPressed: () {}, child: const Text('LANCER')),
+                         ElevatedButton(
+                              onPressed: () {
+                                // Récupérez les valeurs saisies par l'utilisateur pour le sujet et le message
+                                String sujet = _sujetText;
+                                String message = _messageDesc;
+
+                                // Appelez la fonction _lancerDiscussion avec les valeurs saisies
+                                MessageDialog()._lancerDiscussion(sujet, message);
+
+                                // Fermez le dialogue après avoir lancé la discussion
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('LANCER')),
+
                         ],
                       ),
                     )
@@ -74,4 +87,58 @@ class MessageDialog {
         });
   }
 
+  void _lancerDiscussion(String sujet, String message) {
+    // reference a la collection discussion
+    CollectionReference discussionsRef =
+        FirebaseFirestore.instance.collection('discussions');
+
+    // Nouvel objet discussion
+    String discussionId = discussionsRef.doc().id;
+    Discussion nouvelDiscussion = Discussion(
+        id: discussionId,
+        sujet: sujet,
+        createurID: FirebaseAuth
+            .instance.currentUser!.uid, // l'id de l'utilisateur actuel
+        heureCreation: DateTime.now());
+
+    // Enregistrer la nouvelle discussion dans firestore
+    discussionsRef.doc(discussionId).set({
+      'sujet': nouvelDiscussion.sujet,
+      'createurId': nouvelDiscussion.createurID,
+      'heureCreation': nouvelDiscussion.heureCreation
+    }).then((_) {
+      // la discussion est enregistrée avec succès, ajoutons le premier message
+      CollectionReference messagesRef = FirebaseFirestore.instance
+          .collection('discussions/$discussionId/messages');
+
+      // Créez un nouvel identifiant unique pour le premier message
+      String premierMessageId = messagesRef.doc().id;
+
+      // Nouvel objet pour le message
+      Message premierMessage = Message(
+          id: premierMessageId,
+          discussionId: discussionId,
+          contenu: message,
+          auteurId: FirebaseAuth.instance.currentUser!.uid,
+          heureEnvoi: DateTime.now());
+
+      // Enregistrer le premier message dans firestore
+      messagesRef.doc(premierMessageId).set({
+        'discussionId': premierMessage.discussionId,
+        'contenu': premierMessage.contenu,
+        'auteurId': premierMessage.auteurId,
+        'heureEnvoi': premierMessage.heureEnvoi,
+      }).then((_) {
+        // Le premier message est enregistré avec succès
+        // naviguer vers la discussion nouvellement créée
+      }).catchError((error) {
+        // Gérez les erreurs lors de l'enregistrement du premier message
+        print("Erreur lors de l'enregistrement du premier message: $error");
+      });
+    }).catchError((error) {
+      // Gérez les erreurs lors de l'enregistrement de la discussion
+      print("Erreur lors de l'enregistrement de la discussion: $error");
+    });
+    ;
+  }
 }
