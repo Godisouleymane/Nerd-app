@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:code_crafters/models/discussionModel.dart';
+import 'package:code_crafters/models/messageModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -74,4 +75,41 @@ class MessageDialog {
         });
   }
 
+  void _lancerDiscussion(String sujet, String message) {
+    // reference a la collection discussion
+    CollectionReference discussionsRef =
+        FirebaseFirestore.instance.collection('discussions');
+
+    // Nouvel objet discussion
+    String discussionId = discussionsRef.doc().id;
+    Discussion nouvelDiscussion = Discussion(
+        id: discussionId,
+        sujet: sujet,
+        createurID: FirebaseAuth
+            .instance.currentUser!.uid, // l'id de l'utilisateur actuel
+        heureCreation: DateTime.now());
+
+    // Enregistrer la nouvelle discussion dans firestore
+    discussionsRef.doc(discussionId).set({
+      'sujet': nouvelDiscussion.sujet,
+      'createurId': nouvelDiscussion.createurID,
+      'heureCreation': nouvelDiscussion.heureCreation
+    }).then((_) {
+      // la discussion est enregistrée avec succès, ajoutons le premier message
+      CollectionReference messagesRef = FirebaseFirestore.instance
+          .collection('discussions/$discussionId/messages');
+      
+        // Créez un nouvel identifiant unique pour le premier message
+      String premierMessageId = messagesRef.doc().id;
+
+      // Nouvel objet pour le message
+      Message premierMessage = Message(
+        id : premierMessageId,
+        discussionId: discussionId,
+        contenu: message,
+        auteurId: FirebaseAuth.instance.currentUser!.uid,
+        heureEnvoi: DateTime.now()
+      );
+    });
+  }
 }
