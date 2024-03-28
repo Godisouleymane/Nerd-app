@@ -1,8 +1,8 @@
 import 'package:code_crafters/views/parcours/html/Cours_Screen.dart';
-import 'package:code_crafters/views/parcours/shared-ui/bottomNaviagtionBar.dart';
-import 'package:code_crafters/views/parcours/shared-ui/communaute.dart';
-import 'package:code_crafters/views/parcours/shared-ui/cours.dart';
-import 'package:code_crafters/views/parcours/shared-ui/progressionScreen.dart';
+import 'package:code_crafters/views/shared-ui/bottomNaviagtionBar.dart';
+import 'package:code_crafters/views/shared-ui/communaute.dart';
+import 'package:code_crafters/views/shared-ui/cours.dart';
+import 'package:code_crafters/views/shared-ui/progressionScreen.dart';
 import 'package:dev_icons/dev_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
