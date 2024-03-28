@@ -98,18 +98,35 @@ class MessageDialog {
       // la discussion est enregistrée avec succès, ajoutons le premier message
       CollectionReference messagesRef = FirebaseFirestore.instance
           .collection('discussions/$discussionId/messages');
-      
-        // Créez un nouvel identifiant unique pour le premier message
+
+      // Créez un nouvel identifiant unique pour le premier message
       String premierMessageId = messagesRef.doc().id;
 
       // Nouvel objet pour le message
       Message premierMessage = Message(
-        id : premierMessageId,
-        discussionId: discussionId,
-        contenu: message,
-        auteurId: FirebaseAuth.instance.currentUser!.uid,
-        heureEnvoi: DateTime.now()
-      );
+          id: premierMessageId,
+          discussionId: discussionId,
+          contenu: message,
+          auteurId: FirebaseAuth.instance.currentUser!.uid,
+          heureEnvoi: DateTime.now());
+
+      // Enregistrer le premier message dans firestore
+      messagesRef.doc(premierMessageId).set({
+        'discussionId': premierMessage.discussionId,
+        'contenu': premierMessage.contenu,
+        'auteurId': premierMessage.auteurId,
+        'heureEnvoi': premierMessage.heureEnvoi,
+      }).then((_) {
+        // Le premier message est enregistré avec succès
+        // naviguer vers la discussion nouvellement créée
+      }).catchError((error) {
+        // Gérez les erreurs lors de l'enregistrement du premier message
+        print("Erreur lors de l'enregistrement du premier message: $error");
+      });
+    }).catchError((error) {
+      // Gérez les erreurs lors de l'enregistrement de la discussion
+      print("Erreur lors de l'enregistrement de la discussion: $error");
     });
+    ;
   }
 }
