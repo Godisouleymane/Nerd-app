@@ -62,8 +62,20 @@ class MessageDialog {
                           TextButton(
                               onPressed: () => Navigator.of(context).pop(),
                               child: const Text('ANNULER')),
-                          ElevatedButton(
-                              onPressed: () {}, child: const Text('LANCER')),
+                         ElevatedButton(
+                              onPressed: () {
+                                // Récupérez les valeurs saisies par l'utilisateur pour le sujet et le message
+                                String sujet = _sujetText;
+                                String message = _messageDesc;
+
+                                // Appelez la fonction _lancerDiscussion avec les valeurs saisies
+                                MessageDialog()._lancerDiscussion(sujet, message);
+
+                                // Fermez le dialogue après avoir lancé la discussion
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('LANCER')),
+
                         ],
                       ),
                     )
