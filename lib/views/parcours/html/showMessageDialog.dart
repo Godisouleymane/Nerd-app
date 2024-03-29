@@ -104,7 +104,7 @@ class MessageDialog {
     Discussion nouvelDiscussion = Discussion(
       id: discussionId,
       sujet: sujet,
-      photoURL: user.photoURL!,
+      photoUrl: user.photoURL!,
       createurID: user.uid,
       heureCreation: DateTime.now(),
     );
@@ -113,6 +113,7 @@ class MessageDialog {
     discussionsRef.doc(discussionId).set({
       'sujet': nouvelDiscussion.sujet,
       'createurId': nouvelDiscussion.createurID,
+      'photoUrl': nouvelDiscussion.photoUrl,
       'heureCreation': nouvelDiscussion.heureCreation,
     }).then((_) {
       print('Discussion enregistrée avec succès.');
@@ -129,7 +130,7 @@ class MessageDialog {
         id: premierMessageId,
         discussionId: discussionId,
         contenu: message,
-        photoURL: user.photoURL!,
+        photoUrl: user.photoURL!,
         auteurId: user.uid,
         heureEnvoi: DateTime.now(),
       );
@@ -140,6 +141,7 @@ class MessageDialog {
         'contenu': premierMessage.contenu,
         'auteurId': premierMessage.auteurId,
         'heureEnvoi': premierMessage.heureEnvoi,
+        'photoUrl': premierMessage.photoUrl,
       }).then((_) {
         print('Premier message enregistré avec succès.');
         // Naviguer vers la discussion nouvellement créée
