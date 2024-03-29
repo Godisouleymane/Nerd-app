@@ -62,10 +62,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       ? const CircularProgressIndicator()
                       : ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                              Colors.teal,
+                            backgroundColor: Colors.teal,
                           ),
-                          onPressed: (){},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/login');
+                          },
                           child: const Icon(
                             Icons.arrow_forward,
                             color: Colors.white,
@@ -89,5 +90,4 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       ],
     ));
   }
-
 }
