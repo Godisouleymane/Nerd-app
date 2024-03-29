@@ -57,6 +57,7 @@ class Communaute extends StatelessWidget {
                         return Column(
                           children: [
                             ListTile(
+                              isThreeLine: true,
                               leading: CircleAvatar(
                                 backgroundImage: NetworkImage(photoUrl),
                               ),
