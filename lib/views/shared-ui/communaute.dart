@@ -136,9 +136,23 @@ class DiscussionDetailPage extends StatelessWidget {
                     return ListView.builder(
                         itemCount: messages.length,
                         itemBuilder: (context, index) {
-                          
+                          final message = messages[index];
+                          final contenu = message['contenu'];
+                          final heureEnvoi = message['heureEnvoi'];
+                          final photoUrl = message['photoUrl'];
+                          return ListTile(
+                            isThreeLine: true,
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(photoUrl),
+                            ),
+                            title: Text(contenu),
+                            subtitle: Text(
+                              '${heureEnvoi.toDate().day}/${heureEnvoi.toDate().month}/${heureEnvoi.toDate().year} ${heureEnvoi.toDate().hour}:${heureEnvoi.toDate().minute}',
+                            ),
+                          );
                         });
                   })),
+                  const Divider(),
         ],
       ),
     );
