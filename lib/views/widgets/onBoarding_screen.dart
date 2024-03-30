@@ -1,6 +1,6 @@
-import 'package:code_crafters/views/widgets/intro_screen/page1.dart';
-import 'package:code_crafters/views/widgets/intro_screen/page2.dart';
-import 'package:code_crafters/views/widgets/intro_screen/page3.dart';
+import 'package:code_crafters/views/intro_screen/page1.dart';
+import 'package:code_crafters/views/intro_screen/page2.dart';
+import 'package:code_crafters/views/intro_screen/page3.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
