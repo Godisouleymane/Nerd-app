@@ -100,7 +100,8 @@ class Communaute extends StatelessWidget {
 class DiscussionDetailPage extends StatelessWidget {
   final String discussionId;
   final String discussionSujet;
-  const DiscussionDetailPage({required this.discussionId, required this.discussionSujet});
+  const DiscussionDetailPage(
+      {required this.discussionId, required this.discussionSujet});
 
   @override
   Widget build(BuildContext context) {
@@ -108,8 +109,37 @@ class DiscussionDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(discussionSujet),
       ),
-      body: const Column(
-        children: [],
+      body: Column(
+        children: [
+          Expanded(
+              child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('discussions/$discussionId/messages')
+                      .orderBy('heureEnvoi', descending: false)
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.teal,
+                        ),
+                      );
+                    }
+
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: Text('Aucun message trouvé'),
+                      );
+                    }
+
+                    final messages = snapshot.data!.docs;
+                    return ListView.builder(
+                        itemCount: messages.length,
+                        itemBuilder: (context, index) {
+                          
+                        });
+                  })),
+        ],
       ),
     );
   }
