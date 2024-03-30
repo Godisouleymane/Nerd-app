@@ -164,7 +164,7 @@ class DiscussionDetailPage extends StatelessWidget {
                       leading: CircleAvatar(
                         backgroundImage: NetworkImage(photoUrl),
                       ),
-                      trailing: Icon(Icons.menu),
+                      trailing: const Icon(Icons.more_horiz_outlined),
                       title: Text(contenu),
                       subtitle: Text(
                         '${heureEnvoi.toDate().day}/${heureEnvoi.toDate().month}/${heureEnvoi.toDate().year} ${heureEnvoi.toDate().hour}:${heureEnvoi.toDate().minute}',
