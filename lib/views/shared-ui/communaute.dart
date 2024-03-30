@@ -21,12 +21,12 @@ class Communaute extends StatelessWidget {
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
                 if (!snapshot.hasData) {
-                  return Center(
+                  return const Center(
                     child: Text('Aucune discussion trouvée'),
                   );
                 }
@@ -41,7 +41,6 @@ class Communaute extends StatelessWidget {
                     // Accéder à la sous-collection des messages
                     CollectionReference messagesRef = FirebaseFirestore.instance
                         .collection('discussions/${discussion.id}/messages');
-
                     return StreamBuilder(
                       stream: messagesRef.orderBy('heureEnvoi').snapshots(),
                       builder: (context,
@@ -51,18 +50,19 @@ class Communaute extends StatelessWidget {
                           return const CircularProgressIndicator();
                         }
                         if (!messageSnapshot.hasData) {
-                          return Text('Pas de messages');
+                          return const Text('Pas de messages');
                         }
                         final messages = messageSnapshot.data!.docs;
                         return Column(
                           children: [
                             ListTile(
+                              isThreeLine: true,
                               leading: CircleAvatar(
                                 backgroundImage: NetworkImage(photoUrl),
                               ),
                               title: Text(
                                 sujet,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                               subtitle: Text(messages.isNotEmpty
@@ -73,7 +73,7 @@ class Communaute extends StatelessWidget {
                                 '${heureCreation.toDate().day}/${heureCreation.toDate().month}/${heureCreation.toDate().year} ${heureCreation.toDate().hour}:${heureCreation.toDate().minute}',
                               ),
                             ),
-                            Divider(),
+                            const Divider(),
                           ],
                         );
                       },
@@ -92,6 +92,24 @@ class Communaute extends StatelessWidget {
           Icons.edit,
           color: Colors.white,
         ),
+      ),
+    );
+  }
+}
+
+class DiscussionDetailPage extends StatelessWidget {
+  final String discussionId;
+  final String discussionSujet;
+  const DiscussionDetailPage({required this.discussionId, required this.discussionSujet});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(discussionSujet),
+      ),
+      body: const Column(
+        children: [],
       ),
     );
   }
