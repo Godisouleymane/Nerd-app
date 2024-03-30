@@ -38,6 +38,7 @@ class Communaute extends StatelessWidget {
                     final sujet = discussion['sujet'];
                     final heureCreation = discussion['heureCreation'];
                     final photoUrl = discussion['photoUrl'];
+                    final discussionId = discussion.id;
                     // Accéder à la sous-collection des messages
                     CollectionReference messagesRef = FirebaseFirestore.instance
                         .collection('discussions/${discussion.id}/messages');
@@ -53,28 +54,42 @@ class Communaute extends StatelessWidget {
                           return const Text('Pas de messages');
                         }
                         final messages = messageSnapshot.data!.docs;
-                        return Column(
-                          children: [
-                            ListTile(
-                              isThreeLine: true,
-                              leading: CircleAvatar(
-                                backgroundImage: NetworkImage(photoUrl),
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DiscussionDetailPage(
+                                  discussionId: discussionId,
+                                  discussionSujet: sujet,
+                                ),
                               ),
-                              title: Text(
-                                sujet,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              ListTile(
+                                isThreeLine: true,
+                                leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(photoUrl),
+                                ),
+                                title: Text(
+                                  sujet,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                subtitle: Text(messages.isNotEmpty
+                                    ? messages.last['contenu']
+                                    : ''),
+                                trailing: Text(
+                                  // Formater la date et l'heure de création de la discussion
+                                  '${heureCreation.toDate().day}/${heureCreation.toDate().month}/${heureCreation.toDate().year} ${heureCreation.toDate().hour}:${heureCreation.toDate().minute}',
+                                ),
                               ),
-                              subtitle: Text(messages.isNotEmpty
-                                  ? messages.last['contenu']
-                                  : ''),
-                              trailing: Text(
-                                // Formater la date et l'heure de création de la discussion
-                                '${heureCreation.toDate().day}/${heureCreation.toDate().month}/${heureCreation.toDate().year} ${heureCreation.toDate().hour}:${heureCreation.toDate().minute}',
-                              ),
-                            ),
-                            const Divider(),
-                          ],
+                              const Divider(),
+                            ],
+                          ),
                         );
                       },
                     );
@@ -100,6 +115,7 @@ class Communaute extends StatelessWidget {
 class DiscussionDetailPage extends StatelessWidget {
   final String discussionId;
   final String discussionSujet;
+
   const DiscussionDetailPage(
       {required this.discussionId, required this.discussionSujet});
 
@@ -107,52 +123,78 @@ class DiscussionDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(discussionSujet),
+        backgroundColor: Colors.teal,
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: Text(
+          discussionSujet,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Column(
         children: [
           Expanded(
-              child: StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('discussions/$discussionId/messages')
-                      .orderBy('heureEnvoi', descending: false)
-                      .snapshots(),
-                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.teal,
-                        ),
-                      );
-                    }
-
-                    if (!snapshot.hasData) {
-                      return const Center(
-                        child: Text('Aucun message trouvé'),
-                      );
-                    }
-
-                    final messages = snapshot.data!.docs;
-                    return ListView.builder(
-                        itemCount: messages.length,
-                        itemBuilder: (context, index) {
-                          final message = messages[index];
-                          final contenu = message['contenu'];
-                          final heureEnvoi = message['heureEnvoi'];
-                          final photoUrl = message['photoUrl'];
-                          return ListTile(
-                            isThreeLine: true,
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(photoUrl),
-                            ),
-                            title: Text(contenu),
-                            subtitle: Text(
-                              '${heureEnvoi.toDate().day}/${heureEnvoi.toDate().month}/${heureEnvoi.toDate().year} ${heureEnvoi.toDate().hour}:${heureEnvoi.toDate().minute}',
-                            ),
-                          );
-                        });
-                  })),
-                  const Divider(),
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('discussions/$discussionId/messages')
+                  .orderBy('heureEnvoi', descending: false)
+                  .snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: Text('Aucun message trouvé'),
+                  );
+                }
+                final messages = snapshot.data!.docs;
+                return ListView.builder(
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    final message = messages[index];
+                    final contenu = message['contenu'];
+                    final heureEnvoi = message['heureEnvoi'];
+                    final photoUrl = message['photoUrl'];
+                    return ListTile(
+                      isThreeLine: true,
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(photoUrl),
+                      ),
+                      trailing: Icon(Icons.menu),
+                      title: Text(contenu),
+                      subtitle: Text(
+                        '${heureEnvoi.toDate().day}/${heureEnvoi.toDate().month}/${heureEnvoi.toDate().year} ${heureEnvoi.toDate().hour}:${heureEnvoi.toDate().minute}',
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                const Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Taper votre message...',
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.send),
+                  onPressed: () {
+                    // Ajoutez ici la logique pour envoyer le message
+                  },
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
