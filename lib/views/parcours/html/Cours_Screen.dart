@@ -6,6 +6,8 @@ import 'package:lottie/lottie.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 
+import '../../widgets/AlertDialog.dart';
+
 class CourseScreen extends StatefulWidget {
   const CourseScreen({Key? key}) : super(key: key);
 
@@ -41,13 +43,40 @@ class _CourseScreenState extends State<CourseScreen> {
               child: GestureDetector(
                 onTap: () {
                   print("ID du module: ${data['id']}");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          CoursDetailScreen(moduleId: data['id']),
-                    ),
-                  );
+                  data['estDebloquer']
+                      ? Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                CoursDetailScreen(moduleId: data['id']),
+                          ),
+                        )
+                      : showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Module non débloqué'),
+                              content: const SingleChildScrollView(
+                                child: ListBody(
+                                  children: <Widget>[
+                                    Text('Desolé ce module est bloqué'),
+                                    Text(
+                                        'Veuillez finir le module précédent pour debloquer celui-ci'),
+                                  ],
+                                ),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: const Text('Fermer'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -124,7 +153,7 @@ class CoursDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print("Identifiant du module : $moduleId");
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.teal,
         title: const Text(
