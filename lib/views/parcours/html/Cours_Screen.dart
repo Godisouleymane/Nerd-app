@@ -237,8 +237,33 @@ class CoursDetailScreen extends StatelessWidget {
                         onTap: () => lessonData['estDebloquer']
                             ? showNotification(
                                 context, 'Cette leçon est débloquée')
-                            : showNotification(
-                                context, 'Cette leçon est bloquée'),
+                            : showDialog(
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (
+                                  BuildContext context,
+                                ) {
+                                  return AlertDialog(
+                                    title: Text('Leçon Bloquée'),
+                                    content: const SingleChildScrollView(
+                                      child: ListBody(
+                                        children: [
+                                          Text(
+                                              'Desolé cette léçon est bloquée'),
+                                          Text(
+                                              'Veuillez finir la leçon précédente pour debloquer celle-ci')
+                                        ],
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text('Fermer'))
+                                    ],
+                                  );
+                                }),
                         child: ListTile(
                           title: Text(
                             lessonData['titre'] ?? 'Titre inconnu',
