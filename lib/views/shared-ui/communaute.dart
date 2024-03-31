@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:code_crafters/views/parcours/html/showMessageDialog.dart';
+import 'package:gap/gap.dart';
 
 class Communaute extends StatelessWidget {
   final User? user;
@@ -68,26 +69,33 @@ class Communaute extends StatelessWidget {
                           },
                           child: Column(
                             children: [
-                              ListTile(
-                                isThreeLine: true,
-                                leading: CircleAvatar(
-                                  backgroundImage: NetworkImage(photoUrl),
-                                ),
-                                title: Text(
-                                  sujet,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                                subtitle: Text(messages.isNotEmpty
-                                    ? messages.last['contenu']
-                                    : ''),
-                                trailing: Text(
-                                  // Formater la date et l'heure de création de la discussion
-                                  '${heureCreation.toDate().day}/${heureCreation.toDate().month}/${heureCreation.toDate().year} ${heureCreation.toDate().hour}:${heureCreation.toDate().minute}',
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 6, right: 6),
+                                child: Card(
+                                  color: Colors.grey.shade50,
+                                  child: ListTile(
+                                    isThreeLine: true,
+                                    leading: CircleAvatar(
+                                      backgroundImage: NetworkImage(photoUrl),
+                                    ),
+                                    title: Text(
+                                      sujet,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                    subtitle: Text(messages.isNotEmpty
+                                        ? messages.last['contenu']
+                                        : ''),
+                                    trailing: Text(
+                                      // Formater la date et l'heure de création de la discussion
+                                      '${heureCreation.toDate().day}/${heureCreation.toDate().month}/${heureCreation.toDate().year} ${heureCreation.toDate().hour}:${heureCreation.toDate().minute}',
+                                    ),
+                                  ),
                                 ),
                               ),
-                              const Divider(),
+                              Gap(10)
                             ],
                           ),
                         );
