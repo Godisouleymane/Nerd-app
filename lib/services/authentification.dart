@@ -30,7 +30,7 @@ class AuthService {
   Stream<User?> get user => _auth.authStateChanges();
 
   // deconnexion
-
+  
   Future<void> signOut() async {
     await _googleSignIn.signOut();
     await _auth.signOut();
