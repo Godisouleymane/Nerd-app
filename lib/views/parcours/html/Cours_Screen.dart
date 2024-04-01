@@ -385,20 +385,23 @@ class _LessonScreenState extends State<LessonScreen> {
                       style: const TextStyle(fontSize: 16.0),
                     ),
                     const SizedBox(height: 20.0),
-                    ElevatedButton(
-                      onPressed: _continueLesson,
-                      child: Text(
-                        _currentSectionIndex == totalSections - 1
-                            ? 'Terminer'
-                            : 'Continuer',
-                      ),
-                    ),
                   ],
                 ),
               ),
             ),
           )
         ],
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ElevatedButton(
+          onPressed: _continueLesson,
+          child: Text(
+            _currentSectionIndex == totalSections - 1
+                ? 'Terminer'
+                : 'Continuer',
+          ),
+        ),
       ),
     );
   }
