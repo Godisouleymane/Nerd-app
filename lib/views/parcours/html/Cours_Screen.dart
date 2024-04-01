@@ -370,8 +370,8 @@ class _LessonScreenState extends State<LessonScreen> {
         children: [
           LinearProgressIndicator(
             value: (_currentSectionIndex + 1),
-            minHeight: 10,
-            color: Colors.blue,
+            minHeight: 15,
+            color: Colors.grey,
           ),
           Expanded(
             child: Padding(
@@ -395,11 +395,16 @@ class _LessonScreenState extends State<LessonScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.teal,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10))),
           onPressed: _continueLesson,
           child: Text(
             _currentSectionIndex == totalSections - 1
                 ? 'Terminer'
                 : 'Continuer',
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ),
