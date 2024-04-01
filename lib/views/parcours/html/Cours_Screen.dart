@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:code_crafters/views/widgets/showSnackbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -234,36 +237,48 @@ class CoursDetailScreen extends StatelessWidget {
                       final lessonData =
                           lessons[index].data() as Map<String, dynamic>;
                       return GestureDetector(
-                        onTap: () => lessonData['estDebloquer']
-                            ? showNotification(
-                                context, 'Cette leçon est débloquée')
-                            : showDialog(
-                                barrierDismissible: false,
-                                context: context,
-                                builder: (
-                                  BuildContext context,
-                                ) {
-                                  return AlertDialog(
-                                    title: Text('Leçon Bloquée'),
-                                    content: const SingleChildScrollView(
-                                      child: ListBody(
-                                        children: [
-                                          Text(
-                                              'Desolé cette léçon est bloquée'),
-                                          Text(
-                                              'Veuillez finir la leçon précédente pour debloquer celle-ci')
-                                        ],
-                                      ),
+                        onTap: () {
+                          if (lessonData['estDebloquer']) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LessonScreen(
+                                  moduleId: moduleId,
+                                  lessonId: lessonData['id'],
+                                ),
+                              ),
+                            );
+                          } else {
+                            showDialog(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (
+                                BuildContext context,
+                              ) {
+                                return AlertDialog(
+                                  title: const Text('Leçon Bloquée'),
+                                  content: const SingleChildScrollView(
+                                    child: ListBody(
+                                      children: [
+                                        Text('Désolé cette leçon est bloquée'),
+                                        Text(
+                                            'Veuillez finir la leçon précédente pour débloquer celle-ci'),
+                                      ],
                                     ),
-                                    actions: [
-                                      TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: const Text('Fermer'))
-                                    ],
-                                  );
-                                }),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('Fermer'),
+                                    )
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
                         child: ListTile(
                           title: Text(
                             lessonData['titre'] ?? 'Titre inconnu',
@@ -280,6 +295,109 @@ class CoursDetailScreen extends StatelessWidget {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class LessonScreen extends StatefulWidget {
+  final moduleId;
+  final lessonId;
+  const LessonScreen(
+      {super.key, required this.moduleId, required this.lessonId});
+
+  @override
+  State<LessonScreen> createState() => _LessonScreenState();
+}
+
+class _LessonScreenState extends State<LessonScreen> {
+  List<Map<String, dynamic>> _sections = [];
+  int _currentSectionIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchSections();
+  }
+
+  Future<void> _fetchSections() async {
+    final snapshot = await FirebaseFirestore.instance
+        .collection('cours')
+        .doc('html_cours')
+        .collection('modules')
+        .doc(widget.moduleId)
+        .collection('lecons')
+        .doc(widget.lessonId)
+        .collection('sections')
+        .get();
+    setState(() {
+      _sections = snapshot.docs
+          .map((doc) => doc.data() as Map<String, dynamic>)
+          .toList();
+    });
+  }
+
+  void _continueLesson() {
+    setState(() {
+      if (_currentSectionIndex < _sections.length - 1) {
+        _currentSectionIndex++;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_sections == null || _sections.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Chargement des sections')),
+        body: const Center(child: CircularProgressIndicator()),
+      );
+    }
+    final currentSection = _sections[_currentSectionIndex];
+    final totalSections = _sections.length;
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.teal,
+        title: Text(currentSection['titre'] ?? 'Titre inconnu'),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.flag_outlined))
+        ],
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          LinearProgressIndicator(
+            value: (_currentSectionIndex + 1),
+            minHeight: 10,
+            color: Colors.blue,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      currentSection['contenu'] ?? 'Contenu non disponible',
+                      style: const TextStyle(fontSize: 16.0),
+                    ),
+                    const SizedBox(height: 20.0),
+                    ElevatedButton(
+                      onPressed: _continueLesson,
+                      child: Text(
+                        _currentSectionIndex == totalSections - 1
+                            ? 'Terminer'
+                            : 'Continuer',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -343,7 +461,9 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 ? Chewie(
                     controller: _chewieController,
                   )
-                : Container(); // Afficher un conteneur vide si Chewie n'est pas initialisé
+                : Container(
+                    color: Colors.white,
+                  ); // Afficher un conteneur vide si Chewie n'est pas initialisé
   }
 
   @override
