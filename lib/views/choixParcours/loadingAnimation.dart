@@ -17,7 +17,7 @@ class LoadingAnimation extends StatelessWidget {
         children: [
           Lottie.asset('assets/Loading.json', width: 300, height: 300),
           const Gap(10),
-          const Text('Bon apprentissage :)',
+          const Text('Bon apprentissage (..)',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18))
         ],
       ),
