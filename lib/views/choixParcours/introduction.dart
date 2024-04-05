@@ -71,7 +71,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SvgPicture.network(data['imageUrl'], width: 90, height: 90),
-                    Gap(10),
+                    const Gap(10),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Column(
@@ -85,7 +85,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Gap(5),
+                          const Gap(5),
                           Text(
                             data['description'],
                             style: const TextStyle(
