@@ -193,7 +193,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
         await docRef.set(
             {
               'coursId': selectedCourseId,
-              'progression': 0, // Initialiser la progression à 0
               'dernierModule': 1,
               'dernièreLeçon':
                   1, // l'utilisateur commence à la leçon 1
