@@ -193,8 +193,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
       if (!docSnapshot.exists) {
         await docRef.set({
           'coursId': selectedCourseId,
-          'moduleEnCours': 0,
-          'leçonEnCours': 0,
+          'moduleEnCours': 1,
+          'leçonEnCours': 1,
           'dateDeDébut': FieldValue.serverTimestamp(),
           'progressionLeçons': {},
         });
