@@ -185,21 +185,27 @@ class _IntroductionPageState extends State<IntroductionPage> {
       final docRef = FirebaseFirestore.instance
           .collection('progressionUtilisateurs')
           .doc(user.uid)
-          .collection('cours')
+          .collection('coursEnCours')
           .doc(selectedCourseId);
 
+      // Verifier si le document existe deja pour l'utilisateur et pour le cours
       final docSnapshot = await docRef.get();
 
+      // si le document n'existe pas, initialiser la progression de l'utilisateur pour ce cours
       if (!docSnapshot.exists) {
         await docRef.set({
           'coursId': selectedCourseId,
-          'moduleEnCours': 1,
-          'leçonEnCours': 1,
+          'leçonActuelle': null,
+          'leçonsTerminee': [],
+          'progressionGlobale': 0,
+          'derniereLeçonTerminee': null,
+          'scrore': 0,
           'dateDeDébut': FieldValue.serverTimestamp(),
-          'progressionLeçons': {},
         });
+      } else {
+        // La progression de ce utilisateur existe deja
+        print('La progression de l\'utilisateur pour ce cours existe déjà.');
       }
     }
   }
-
 }
