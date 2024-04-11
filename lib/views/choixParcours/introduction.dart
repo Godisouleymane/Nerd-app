@@ -199,7 +199,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
           'leçonsTerminee': [],
           'progressionGlobale': 0,
           'derniereLeçonTerminee': null,
-          'scrore': 1,
+          'scrore': 0,
           'dateDeDébut': FieldValue.serverTimestamp(),
         });
       } else {
