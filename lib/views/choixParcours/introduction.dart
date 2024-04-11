@@ -175,36 +175,42 @@ class _IntroductionPageState extends State<IntroductionPage> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pop(); // Fermer l'animation de chargement
       Navigator.pushNamed(context, '/html');
-      // sauvegarderProgression();
+      initialiserProgression();
     });
   }
 
   void initialiserProgression() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null && selectedCourseId != null) {
-      final docRef = FirebaseFirestore.instance
-          .collection('progressionUtilisateurs')
-          .doc(user.uid)
-          .collection('coursEnCours')
-          .doc(selectedCourseId);
+      try {
+        final docRef = FirebaseFirestore.instance
+            .collection('progressionUtilisateurs')
+            .doc(user.uid)
+            .collection('coursEnCours')
+            .doc(selectedCourseId);
 
-      // Verifier si le document existe deja pour l'utilisateur et pour le cours
-      final docSnapshot = await docRef.get();
+        // Verifier si le document existe deja pour l'utilisateur et pour le cours
+        final docSnapshot = await docRef.get();
 
-      // si le document n'existe pas, initialiser la progression de l'utilisateur pour ce cours
-      if (!docSnapshot.exists) {
-        await docRef.set({
-          'coursId': selectedCourseId,
-          'leçonActuelle': null,
-          'leçonsTerminee': [],
-          'progressionGlobale': 0,
-          'derniereLeçonTerminee': null,
-          'scrore': 1,
-          'dateDeDébut': FieldValue.serverTimestamp(),
-        });
-      } else {
-        // La progression de ce utilisateur existe deja
-        print('La progression de l\'utilisateur pour ce cours existe déjà.');
+        // si le document n'existe pas, initialiser la progression de l'utilisateur pour ce cours
+        if (!docSnapshot.exists) {
+          await docRef.set({
+            'coursId': selectedCourseId,
+            'leçonActuelle': null,
+            'leçonsTerminee': [],
+            'progressionGlobale': 0,
+            'derniereLeçonTerminee': null,
+            'scrore': 0,
+            'dateDeDébut': FieldValue.serverTimestamp(),
+          }).then((_) {
+            print('Progression initialiser avec success');
+          });
+        } else {
+          // La progression de ce utilisateur existe deja
+          print('La progression de l\'utilisateur pour ce cours existe déjà.');
+        }
+      } catch (e) {
+        print('Erreur lors de la sauvegarde du progression ${e}');
       }
     }
   }
