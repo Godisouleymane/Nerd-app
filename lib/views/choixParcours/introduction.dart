@@ -197,10 +197,10 @@ class _IntroductionPageState extends State<IntroductionPage> {
           await docRef.set({
             'coursId': selectedCourseId,
             'leçonActuelle': null,
-            'leçonsTerminee': [],
+            'leçonsTerminee': [], 
             'progressionGlobale': 0,
             'derniereLeçonTerminee': null,
-            'scrore': 0,
+            'scrore': 10,
             'dateDeDébut': FieldValue.serverTimestamp(),
           }).then((_) {
             print('Progression initialiser avec success');
