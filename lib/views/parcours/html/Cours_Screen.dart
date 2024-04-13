@@ -347,9 +347,25 @@ class _LessonScreenState extends State<LessonScreen> {
     await FirebaseFirestore.instance
         .collection('progressionUtilisateurs')
         .doc(user.uid)
+        .collection('coursEnCours')
+        .doc('html')
         .update({
       'leçonActuelle': widget.lessonId,
     });
+  }
+
+  Future<void> _completeLesson() async {
+    // Mettre la leçon actuelle comme terminee
+    await FirebaseFirestore.instance
+        .collection('cours')
+        .doc('html_cours')
+        .collection('modules')
+        .doc(widget.moduleId)
+        .collection('lecons')
+        .doc(widget.lessonId)
+        .update({
+          'estTerminee': true
+        });
   }
 
   void _continueLesson() {
