@@ -363,9 +363,25 @@ class _LessonScreenState extends State<LessonScreen> {
         .doc(widget.moduleId)
         .collection('lecons')
         .doc(widget.lessonId)
-        .update({
-          'estTerminee': true
-        });
+        .update({'estTerminee': true});
+
+    // recuperer l'id de la leçon suivante
+    final nextLesson = await _getNextLessonId();
+    if (nextLesson != null) {
+      // Debloquer la leçon suivante
+      await FirebaseFirestore.instance
+          .collection('cours')
+          .doc('html_cours')
+          .collection('modules')
+          .doc(widget.moduleId)
+          .collection('lecons')
+          .doc(nextLesson)
+          .update({
+            'estDebloquer' : true
+          });
+    }
+
+    
   }
 
   void _continueLesson() {
