@@ -337,6 +337,10 @@ class _LessonScreenState extends State<LessonScreen> {
     });
   }
 
+  Future<void>_updateUserProgress()async {
+    
+  }
+
   void _continueLesson() {
     setState(() {
       if (_currentSectionIndex < _sections.length - 1) {
