@@ -376,13 +376,41 @@ class _LessonScreenState extends State<LessonScreen> {
           .doc(widget.moduleId)
           .collection('lecons')
           .doc(nextLesson)
-          .update({
-            'estDebloquer' : true
-          });
+          .update({'estDebloquer': true});
     }
 
-    
+    // Recuperer l'id de l'utilisateur
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      // Mettre la progression de l'utilisateur a jour
+      final userProgressRef = FirebaseFirestore.instance
+          .collection('progressionUtilisateurs')
+          .doc(user.uid)
+          .collection('coursEnCours')
+          .doc('html');
+
+      final userProgressDoc = await userProgressRef.get();
+
+      if (userProgressDoc.exists) {
+        final userProgressData = userProgressDoc.data() as Map<String, dynamic>;
+        // ajouter la leçon terminee au tableau des leçons terminees
+        final List<String> leconsTerminees =
+            List<String>.from(userProgressData['leçonsTerminees'] ?? []);
+        leconsTerminees.add(widget.lessonId);
+
+        // Mettre a jour le tableau des leçons terminees
+        await userProgressRef.update({'leçonsTerminees': leconsTerminees});
+
+        // Mettre a jour la derniere leçon terminee
+        await userProgressRef.update({
+          'derniereLeçonTerminee': widget.lessonId
+        });
+      } else {
+        return null;
+      }
+    }
   }
+
 
   void _continueLesson() {
     setState(() {
