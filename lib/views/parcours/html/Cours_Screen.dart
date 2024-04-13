@@ -402,15 +402,34 @@ class _LessonScreenState extends State<LessonScreen> {
         await userProgressRef.update({'leçonsTerminees': leconsTerminees});
 
         // Mettre a jour la derniere leçon terminee
-        await userProgressRef.update({
-          'derniereLeçonTerminee': widget.lessonId
-        });
+        await userProgressRef
+            .update({'derniereLeçonTerminee': widget.lessonId});
       } else {
         return null;
       }
     }
   }
 
+  Future<String?> _getNextLessonId() async {
+    // Recuperer l'id de la leçon suivante dans le meme module;
+    final snapshot = await FirebaseFirestore.instance
+        .collection('cours')
+        .doc('html_cours')
+        .collection('modules')
+        .doc(widget.moduleId)
+        .collection('lecons')
+        .where('id', isGreaterThan: widget.lessonId)
+        .orderBy('id')
+        .limit(1)
+        .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      return snapshot.docs.first.id;
+    } else {
+      print("L'id de la lesson a debloquer est null");
+      return null;
+    }
+  }
 
   void _continueLesson() {
     setState(() {
