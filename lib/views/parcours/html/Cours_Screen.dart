@@ -318,6 +318,7 @@ class _LessonScreenState extends State<LessonScreen> {
   void initState() {
     super.initState();
     _fetchSections();
+    _updateUserProgress();
   }
 
   Future<void> _fetchSections() async {
@@ -337,8 +338,18 @@ class _LessonScreenState extends State<LessonScreen> {
     });
   }
 
-  Future<void>_updateUserProgress()async {
-    
+  Future<void> _updateUserProgress() async {
+    // recuperer l'id de l'utilisateur
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return null; // verifier si l'utilisateur est connecté
+
+    // Mettre a jour la progression de l'utilisateur dans firestore
+    await FirebaseFirestore.instance
+        .collection('progressionUtilisateurs')
+        .doc(user.uid)
+        .update({
+      'leçonActuelle': widget.lessonId,
+    });
   }
 
   void _continueLesson() {
