@@ -249,7 +249,7 @@ class CoursDetailScreen extends StatelessWidget {
                             );
                           } else {
                             showDialog(
-                              barrierDismissible: false,
+                              barrierDismissible: true,
                               context: context,
                               builder: (
                                 BuildContext context,
@@ -355,6 +355,7 @@ class _LessonScreenState extends State<LessonScreen> {
   }
 
   Future<void> _completeLesson() async {
+    _showEncouragementDialog(context);
     // Mettre la leçon actuelle comme terminee
     await FirebaseFirestore.instance
         .collection('cours')
@@ -443,7 +444,9 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget build(BuildContext context) {
     if (_sections == null || _sections.isEmpty) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Chargement des sections')),
+        appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title: const Text('Chargement des sections')),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
@@ -452,6 +455,7 @@ class _LessonScreenState extends State<LessonScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.teal,
         title: Text(currentSection['titre'] ?? 'Titre inconnu'),
         actions: [
@@ -464,7 +468,7 @@ class _LessonScreenState extends State<LessonScreen> {
           LinearProgressIndicator(
             value: (_currentSectionIndex + 1),
             minHeight: 15,
-            color: Colors.grey,
+            color: Colors.blue,
           ),
           Expanded(
             child: Padding(
@@ -492,7 +496,13 @@ class _LessonScreenState extends State<LessonScreen> {
               backgroundColor: Colors.teal,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
-          onPressed: _continueLesson,
+          onPressed: (){
+             if (_currentSectionIndex == totalSections - 1) {
+              _completeLesson();
+            } else {
+              _continueLesson();
+            }
+          },
           child: Text(
             _currentSectionIndex == totalSections - 1
                 ? 'Terminer'
@@ -501,6 +511,30 @@ class _LessonScreenState extends State<LessonScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void _showEncouragementDialog(BuildContext context) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Félicitations 🎉"),
+          content:
+              const Text("Vous avez terminé la leçon. Continuez comme ça 🎯!"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Fermer la boîte de dialogue
+                Navigator.of(context)
+                    .pop(); // Retourner à l'interface CoursDetailScreen
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
     );
   }
 }
