@@ -249,7 +249,7 @@ class CoursDetailScreen extends StatelessWidget {
                             );
                           } else {
                             showDialog(
-                              barrierDismissible: true,
+                              barrierDismissible: false,
                               context: context,
                               builder: (
                                 BuildContext context,
