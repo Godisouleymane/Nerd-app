@@ -200,7 +200,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
             'leçonsTerminee': [], 
             'progressionGlobale': 0,
             'derniereLeçonTerminee': null,
-            'scrore': 10,
+            'scrore': 0,
             'dateDeDébut': FieldValue.serverTimestamp(),
           }).then((_) {
             print('Progression initialiser avec success');
