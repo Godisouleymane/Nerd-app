@@ -142,6 +142,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
             } else {
               Fluttertoast.showToast(
                 msg: "Veuillez sélectionner un cours.",
+                
                 toastLength: Toast.LENGTH_SHORT,
                 gravity: ToastGravity.BOTTOM,
               );
